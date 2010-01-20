@@ -1,0 +1,21 @@
+<?php
+/*
+$t = time()*3600;
+//$t=1229410800;
+//echo date("Ymd\THis\Z", $t); 
+
+
+
+$ary = Array("f83446549e7fc01a7240acb7d6e8b938_user" => 566993963 ,"f83446549e7fc01a7240acb7d6e8b938_session_key" => "2.22eZkALusGqIZdnu8I2QpA__.86400.1229410800-566993963" ,"f83446549e7fc01a7240acb7d6e8b938_expires" => 1229410800, "f83446549e7fc01a7240acb7d6e8b938" => "be97791cce030672766801079def009b" );
+
+$aryn= Array("f83446549e7fc01a7240acb7d6e8b938_user","f83446549e7fc01a7240acb7d6e8b938_session_key" ,"f83446549e7fc01a7240acb7d6e8b938_expires", "f83446549e7fc01a7240acb7d6e8b938");
+$aryv= Array(566993963 , "2.22eZkALusGqIZdnu8I2QpA__.86400.1229410800-566993963" , 1229410800, "be97791cce030672766801079def009b" );
+
+
+setcookie("f83446549e7fc01a7240acb7d6e8b938_user",566993963);
+setcookie("f83446549e7fc01a7240acb7d6e8b938_session_key","2.22eZkALusGqIZdnu8I2QpA__.86400.1229410800-566993963");
+setcookie("f83446549e7fc01a7240acb7d6e8b938_expires",1229410800);
+setcookie("f83446549e7fc01a7240acb7d6e8b938","be97791cce030672766801079def009b");
+*/
+print_r($_COOKIE);
+?>

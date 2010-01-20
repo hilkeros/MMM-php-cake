@@ -1,0 +1,3 @@
+cd /home/babar/public_html
+
+scp facebook/index.php kds11.caroweb.de:/home/babar/public_html/facebook
