@@ -294,68 +294,7 @@ endif;
 				</div>";
 			}
 			
-			if($lfm==1)
-			{
-		echo 	"<div class=summary>
-				<table align=center class=dashbox cellspacing=0 border=0>
-					<tr>
-							<td colspan=3 class=\"summaryhead\"><a href=$lfmsUrl TARGET=_blank>".$html->image('lastfm.png',array('border'=>0))."</a></td>
-					</tr>
-					<tr>
-							<td class=\"summarytext\">Listeners</td>
-							<td class=\"summarystats\">".number_format($listener,0,',',' ')."</td>
-							<td class=\"summaryimg\" style=\"text-align:right;\">";
-							
-								if($lfmPercentage>0)
-								{
-									echo $lfmPercentage." % ".$html->image('up_icon.png');
-								}
-								elseif($lfmPercentage<0)
-								{
-									echo abs($lfmPercentage)." % ".$html->image('down_icon.png');
-								}
-								else
-								{
-									echo $html->image('circle_icon.png');
-								}
-							
-						echo "</td>
-					</tr>
-					<tr>
-							<td class=\"summarytext\">Plays</td>
-							<td class=\"summarystats\">".number_format($plays,0,',',' ')."</td>
-							<td class=\"summaryimg\" style=\"text-align:right;\">";
-							
-								if($lfmPlaysPercentage>0)
-								{
-									echo $lfmPlaysPercentage." % ".$html->image('up_icon.png');
-								}
-								elseif($lfmPlaysPercentage<0)
-								{
-									echo abs($lfmPlaysPercentage)." % ".$html->image('down_icon.png');
-								}
-								else
-								{
-									echo $html->image('circle_icon.png');
-								}
-							
-						echo "</td>
-					</tr>
-					
-				</table>
-					<div class=\"summary-bottom\" style=\"margin-top:65px;\">
-							<a id=\"lfms\" href=\"$path/lfms/chart/?id=$lfm_m_id&bandid=$bandid\" class=\"thickbox statslogin\">Stats</a> / <a href=\"http://www.last.fm\" class=\"statslogin\">Login</a>
-					</div>
-			</div>";
-		
-			}
-			else
-			{
-				echo 	"<div class=\"summaryimage\">".$html->image('lastfm.png')."
-						<div class=\"summary-nodata\"> no data available </div>
-						<div class=\"summary-settings\"> go to the <a href=\"$this->base/band/manage/?bandid=$bandid\">settings</a> page to activate your account</div>
-				</div>";
-			}
+			
 	echo 	"<div style=clear:both;></div>
 		</div>";
 		

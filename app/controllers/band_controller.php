@@ -746,49 +746,6 @@ class BandController extends AppController {
 	 * called : called from band/index
 	 * 
 	 */
-	function lastfm() {
-		$id=NULL;
-		
-		
-		if($this->Session->check('band_id'))
-		{
-			$band_id =$this->Session->read('band_id');
-			$this->set('bandid',$band_id);
-			$mmm_id = $this->Session->read('id');
-			/*
-				Last.fm
-			*/
-			$this->set('lfm_flag', false );
-			$lfms = $this->Lfm->findAll(array('mmm_id' => $mmm_id , 'band_id' => $band_id,'active'=>'1'));
-			
-			if($lfms)
-			{
-				$lfmdata = NULL;
-				$lfmactive = NULL;
-				foreach($lfms as $key => $lfmval)
-				{
-					
-					$lfmdata[$lfmval['Lfm']['lfm_m_id']] = $lfmval['Lfm']['music_group'];
-					if($lfmval['Lfm']['status']==1)
-					{
-						$lfmactive = $lfmval['Lfm']['lfm_m_id'];		
-					}
-				}
-								
-				$this->set('lfmdata',$lfmdata);
-				$this->set('lfmactive',$lfmactive);
-				$this->set('lfm_flag', true );	
-			}
-			/*
-				End Last.fm
-			*/
-		} // if($this->Session->check('bandid'))
-		else
-		{
-			$this->Session->setFlash('Please enter the artist\'s name first.');
-			$this->redirect('/band/index/');
-		} // if($this->Session->check('bandid'))
-	} // function lastfm()
 	
 	
 	/*
@@ -806,7 +763,7 @@ class BandController extends AppController {
 			$this->set('bandid',$band_id);
 			$mmm_id = $this->Session->read('id');
 			/*
-				Last.fm
+				twitter
 			*/
 			
 			$qry= "select l.name , l.user_id , u.status from twt_login l , twt_user u where l.user_id = u.user_id and u.mmm_id = $mmm_id and u.band_id= $band_id and u.active=1";
@@ -830,7 +787,7 @@ class BandController extends AppController {
 				$this->set('twtactive',$twtactive);
 			}
 			/*
-				End Last.fm
+				End twitter
 			*/
 		} // if($this->Session->check('bandid'))
 		else
@@ -838,7 +795,7 @@ class BandController extends AppController {
 			$this->Session->setFlash('Please enter the artist\'s name first.');
 			$this->redirect('/band/index/');
 		} // if($this->Session->check('bandid'))
-	} // function lastfm()
+	} // function twitter()
 	
 	/*
 	 * Name: thanks
@@ -1012,11 +969,6 @@ class BandController extends AppController {
 			
 			$this->myspace();
 			
-			
-			/*
-				Last.fm
-			*/
-			$this->lastfm();
 			
 			/*
 				Youtube

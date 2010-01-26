@@ -3,7 +3,7 @@
 <?php
 	echo "  <div class=\"band-block\">
 			<div class=settings>
-				<div class=\"steps\">Step: 4 / 6</div> 
+				<div class=\"steps\">Step: 4 / 5</div> 
 				<div class=\"wizardhead\">Youtube Setup</div> 
 				<div class=register>";
 					
@@ -22,7 +22,7 @@
 					<div class=\"nextbar\">";
 						echo $html->input('fbs/previous',array('type'=>'button','value'=>'Previous',"onClick"=>"javascript:window.location.href='".$html->url('/band/facebook/')."'",'class'=>'next'));
 						echo "<input type=button value=\"Next\" class=\"next\" onclick=\"javascript:location.href='$this->base/yts/ytswelcome/'\">";
-						echo $html->input('mss/skip',array('type'=>'button','value'=>'Skip',"onClick"=>"javascript:window.location.href='".$html->url('/band/lastfm/')."'",'class'=>'next'));
+						echo $html->input('mss/skip',array('type'=>'button','value'=>'Skip',"onClick"=>"javascript:window.location.href='".$html->url('/band/twitter/')."'",'class'=>'next'));
 				echo 	"</div>
 				</div>
 			</div>

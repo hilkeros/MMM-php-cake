@@ -9,7 +9,7 @@ echo "<script type=text/javascript>
 
 		echo "<div class=\"band-block\">
 			<div class=settings>
-				<div class=\"steps\">Step: 3 / 6</div> 
+				<div class=\"steps\">Step: 3 / 5</div> 
 				<div class=\"wizardhead\">Facebook Setup</div>
 				<div class=register>";
 					
