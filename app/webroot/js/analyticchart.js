@@ -15,7 +15,6 @@
             $("#link").attr("href", baseurl+"&date="+id+"&type=fans");
 	    $("#msh").attr("href", baseurl+"&date="+id+"&id=msh&type=fans");
 	    $("#yth").attr("href", baseurl+"&date="+id+"&id=yth&type=fans");
-	    $("#lfmsh").attr("href", baseurl+"&date="+id+"&id=lfmsh&type=fans");
 	    $("#fbspages").attr("href", baseurl+"&date="+id+"&id=fbspages&type=fans");
 	    $("#fbsgroups").attr("href", baseurl+"&date="+id+"&id=fbsgroups&type=fans");
 	    
@@ -26,7 +25,6 @@
 	    $("#hlink").attr("href", baseurl+"&date="+hid+"&type=hits");
 	    $("#msv").attr("href", baseurl+"&date="+hid+"&id=msv&type=hits");
 	    $("#ytv").attr("href", baseurl+"&date="+hid+"&id=ytv&type=hits");
-	    $("#lfmsv").attr("href", baseurl+"&date="+hid+"&id=lfmsv&type=hits");
             
 	    // for tracks
             var tid  = $("#analyticTdate").val();

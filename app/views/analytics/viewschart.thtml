@@ -109,15 +109,6 @@ if($session->check('ytv'))
 		);
 }
 
-if($session->check('lfmsv'))
-{
-	$v["Last.fm"] = array('color' => '#150005',
-		'font_size' => 10,
-		'width' => 2,
-		'data' => $lfmplay,
-		'graph_style' => 'line_hollow',
-		);
-}
 
 foreach($v as $key => $val)
 {

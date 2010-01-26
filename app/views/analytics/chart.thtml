@@ -111,16 +111,6 @@ echo "	<script type=text/javascript>
 			}
 	echo 	"</li>
 		<li>";
-			if($session->check('lfmsh'))
-			{
-				echo $html->link('Last.fm',"/analytics/chart/?id=lfmsh&height=$cheight&width=$cwidth" , array('class'=>' thickbox active','id'=>'lfmsh'));
-			}
-			else
-			{
-				echo $html->link('Last.fm',"/analytics/chart/?id=lfmsh&height=$cheight&width=$cwidth", array('class'=>' thickbox' ,'id'=>'lfmsh'));
-			}
-	echo 	"</li>
-		<li>";
 			if($session->check('fbspages'))
 			{
 				echo $html->link('Facebook page',"/analytics/chart/?id=fbspages&height=$cheight&width=$cwidth" , array('class'=>'thickbox active' , 'id'=>'fbspages'));
@@ -198,17 +188,7 @@ echo "<div class=playsmenu>
 			
 	echo 	"</li>
 		<li>";
-			if($session->check('lfmsv'))
-			{
-			
-				echo $html->link('Last.fm',"/analytics/chart/?id=lfmsv&height=$cheight&width=$cwidth" , array('class'=>' thickbox active','id'=>'lfmsv'));
-			}
-			else
-			{
-				echo $html->link('Last.fm',"/analytics/chart/?id=lfmsv&height=$cheight&width=$cwidth" , array('class'=>' thickbox','id'=>'lfmsv'));
-			}
-	echo 	"</li>
-		<li>
+	echo 	"
 	</ul>
 </div>";			
                 open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/analytics/viewschart/",false,"$path");
@@ -222,8 +202,6 @@ echo "<div class=playsmenu>
                     echo "<div class=\"chart-col\">".$html->selecttag('analytic/tdate',$x,$lastdate)."</div> <div class=graphTab><a id=\"tlink\" href=\"\" class=\"thickbox update\">Update</a></div>";
 		    echo "<div style=\"clear:both;\"></div>";
 		    echo "<div class=\"chart-col\">".$html->selecttag('analytic/mss',$mss,$mssval)."</div> <div class=\"graphTab graphtext\"> Myspace</div>";
-		    echo "<div style=\"clear:both;\"></div>";
-		    echo "<div class=\"chart-col\">".$html->selecttag('analytic/lfmt',$lfmt,$lfmtval)."</div> <div class=\"graphTab graphtext\"> Last.fm</div>";
 		    echo "<div style=\"clear:both;\"></div>";
 		    echo "<div class=\"chart-col\">".$html->selecttag('analytic/yt',$yt,$ytval)."</div> <div class=\"graphTab graphtext\"> Youtube</div>";
 		    echo "<div style=\"clear:both;\"></div>
@@ -271,16 +249,6 @@ echo "<div class=playsmenu>
 			else
 			{
 				echo $html->link('Youtube',"/analytics/chart/?id=ytp&height=$cheight&width=$cwidth", array('class'=>' thickbox' ,'id'=>'ytp'));
-			}
-	echo 	"</li>
-		<li>";
-			if($session->check('lfmsp'))
-			{
-				echo $html->link('Last.fm',"/analytics/chart/?id=lfmsp&height=$cheight&width=$cwidth" , array('class'=>' thickbox active','id'=>'lfmsp'));
-			}
-			else
-			{
-				echo $html->link('Last.fm',"/analytics/chart/?id=lfmsp&height=$cheight&width=$cwidth", array('class'=>' thickbox' ,'id'=>'lfmsp'));
 			}
 	echo 	"</li>
 		

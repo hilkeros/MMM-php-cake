@@ -114,15 +114,6 @@ if($session->check('ytp'))
 		);
 }
 
-if($session->check('lfmsp'))
-{
-	$v["Last.fm"] = array('color' => '#150005',
-		'font_size' => 10,
-		'width' => 2,
-		'data' => $lfmplays,
-		'graph_style' => 'line_hollow',
-		);
-}
 
 
 foreach($v as $key => $val)

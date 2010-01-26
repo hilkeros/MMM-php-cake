@@ -486,39 +486,6 @@ class AnalyticsController extends AppController {
 			}
 			
 			
-			// Get and set values for Last.fm Tracks Tab		
-			$qry_lfm_track = "select distinct  t.name from lfm_top_tracks t , lfm_music m where t.lfm_m_id = m.lfm_m_id and m.mmm_id='$mmm_id' and m.band_id=$band_id and m.status=1";
-			$lfm_track = $this->Lfmalbum->findBySql($qry_lfm_track);
-			$lfmt=NULL;
-			if($lfm_track)
-			{
-				if(!empty($this->params['url']['lfmt']))
-				{
-					$this->Session->write('toptrack', $this->params['url']['lfmt']);
-					$this->set('lfmtval',$this->params['url']['lfmt']);
-				}
-				else
-				{
-					$this->Session->write('toptrack', $lfm_track[0]['t']['name']);
-					$this->set('lfmtval',$lfm_track[0]['t']['name']);
-				}
-				
-				
-				foreach($lfm_track as $key => $lfmval)
-				{
-					$lfmt[$lfmval['t']['name']] =  $lfmval['t']['name'];
-				}
-				$this->set('lfmt',$lfmt);
-			} // if($results)
-			else
-			{
-				$lfm_track[0]['t']['name'] = 'No data';
-				$this->Session->write('toptrack', $lfm_track[0]['t']['name']);
-				$lfmt['No data'] = 'No data';
-				$this->set('lfmt',$lfmt);
-				$this->set('lfmtval','No data');
-			}
-			
 			// Get and set values for Youtubne Tracks & comments Tab
 			$qry_yt_video= "select distinct y.title from yt_comments_stat y , yt_login l  where y.yt_id = l.yt_id and l.mmm_id='$mmm_id' and l.band_id=$band_id and l.status=1";
 			
@@ -620,13 +587,11 @@ class AnalyticsController extends AppController {
 						case 'hall' :
 								$this->Session->write('msv','msv');// Myspace hits
 								$this->Session->write('ytv','ytv');// Youtube hits
-								$this->Session->write('lfmsv','lfmsv'); // last.fm hits
 								$this->Session->write('hnone',0);
 								break;
 						case 'hnone' :
 								$this->Session->delete('msv');// Myspace hits
 								$this->Session->delete('ytv');// Youtube hits
-								$this->Session->delete('lfmsv');// last.fm hits
 								if($this->Session->read('hnone')==1)
 								{
 									$this->Session->write('hnone',0);
@@ -639,7 +604,6 @@ class AnalyticsController extends AppController {
 						case 'fall'  :
 								$this->Session->write('msh','msh');// Myspace fans
 								$this->Session->write('yth','yth');// Youtube fans
-								$this->Session->write('lfmsh','lfmsh'); // last.fm fans
 								$this->Session->write('fbspages','fbspages'); // facebook page flag
 								$this->Session->write('fbsgroups','fbsgroups'); // facebook group flag
 								$this->Session->write('fnone',0);
@@ -647,7 +611,6 @@ class AnalyticsController extends AppController {
 						case 'fnone' :
 								$this->Session->delete('msh');// Myspace fans
 								$this->Session->delete('yth');// Youtube fans
-								$this->Session->delete('lfmsh'); // last.fm fans
 								$this->Session->delete('fbspages'); // facebook page flag
 								$this->Session->delete('fbsgroups'); // facebook group flag
 								if($this->Session->read('fnone')==1)
@@ -663,14 +626,12 @@ class AnalyticsController extends AppController {
 						case 'tall' :
 								$this->Session->write('msp','msp');// Myspace tracks
 								$this->Session->write('ytp','ytp');// Youtube tracks
-								$this->Session->write('lfmsp','lfmsp'); // last.fm tracks
 								$this->Session->write('tnone',0);
 								break;
 			
 						case 'tnone' :
 								$this->Session->delete('msp');// Myspace tracks
 								$this->Session->delete('ytp');// Youtube tracks
-								$this->Session->delete('lfmsp'); // last.fm tracks
 								
 								if($this->Session->read('tnone')==1)
 								{
@@ -793,11 +754,6 @@ class AnalyticsController extends AppController {
 				$this->Session->write('ytp','ytp');// Youtube tracks
 				$this->Session->write('ytc','ytc');// Youtube comments
 				
-			
-				$this->Session->write('lfmsh','lfmsh'); // last.fm fans
-				$this->Session->write('lfmsv','lfmsv'); // last.fm hits
-				$this->Session->write('lfmsp','lfmsp'); // last.fm tracks
-			
 	
 				$this->Session->write('fbspages','fbspages'); // facebook page flag
 				$this->Session->write('fbsgroups','fbsgroups'); // facebook group flag

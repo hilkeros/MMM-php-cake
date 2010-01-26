@@ -112,15 +112,6 @@ if($session->check('yth'))
 		);
 }
 
-if($session->check('lfmsh'))
-{
-	$v["Last.fm"] = array('color' => '#150005',
-		'font_size' => 10,
-		'width' => 2,
-		'data' => $album_play,
-		'graph_style' => 'line_hollow',
-		);
-}
 
 if($session->check('fbspages'))
 {

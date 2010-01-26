@@ -50,18 +50,7 @@ echo "<div class=playsmenu>
 			}
 			
 	echo 	"</li>
-		<li>";
-			if($session->check('lfmsv'))
-			{
-			
-				echo $html->link('Last.fm',"/analytics/views/?id=lfmsv&height=$cheight&width=$cwidth" , array('class'=>' thickbox active','id'=>'lfms' , 'style'=>'color:#150005;'));
-			}
-			else
-			{
-				echo $html->link('Last.fm',"/analytics/views/?id=lfmsv&height=$cheight&width=$cwidth" , array('class'=>' thickbox','id'=>'lfms' , 'style'=>'color:#150005;'));
-			}
-	echo 	"</li>
-		<li>
+
 	</ul>
 </div>";			
 
@@ -96,13 +85,6 @@ echo 	"
 	{
 echo "
 	<tr> <th> Youtube </th> <td> ".$session->read('ytviewscount')."</td><td>".$session->read('ytaverage')."</td> </tr>";
-	}
-	
-	if($session->check('lfmsv'))
-	{
-echo "
-	<tr> <th> Last.fm </th><td> ".$session->read('lfmviewscount')."</td><td>".$session->read('lfmaverage')."</td>
-	</tr>";
 	}
 ?>
 </table>
