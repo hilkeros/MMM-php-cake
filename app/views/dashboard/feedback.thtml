@@ -1,0 +1,38 @@
+<?php $this->pageTitle = 'Motion Music Manager';?>
+<?php
+echo "
+	<div style=\"margin:0px auto;width:586px;\">
+			<div id=\"feedback-form-heading\"> Feedback form </div>
+			<div id=\"form-content\">
+				<form name=\"feedback\" method=\"post\" action=\"$this->base/dashboard/feedback/\">
+					<table>
+						<tr>
+							<td width=\"205\">
+								Your Operating System:
+							</td>
+							<td>".$html->input('Users/os')."
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Your browser:
+							</td>
+							<td>
+								".$html->selecttag('Users/browser',$browser,null,array('class'=>'selectDate'))."
+							</td>
+						</tr>
+						<tr>
+							<td colspan=\"2\" style=\"text-align:center;\">
+								".$html->textarea('Users/feedback',array('rows'=>4,'cols'=>75,'style'=>'margin:0px auto;background-color:#E8E8E8;'))."
+								".$html->hidden('Users/bandid',array('value'=>$bandid))."
+							</td>
+						</tr>
+							<td colspan=\"2\" style=\"text-align:center;\">
+							".$html->input('Users/submit', array('type'=>'image','src'=>$this->webroot.'img/send_feedback.png',"onClick"=>"return fbalert();",'name'=>'feedback','style'=>'margin:0px auto;','onmouseover'=>"this.src='".$this->webroot."img/send_feedbackOver.png'",'onmouseout'=>"this.src='".$this->webroot."img/send_feedback.png'"))."
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+	</div>";
+?>

@@ -1,0 +1,154 @@
+<? $this->pageTitle = 'Motion Music Manager Views Analytics'; ?>
+<br />
+<?php
+	
+	$base= $this->base; 
+        $path= "http://".$_SERVER['SERVER_NAME'].$this->webroot;   
+        $baseurl = $this->base."/analytics/hits/?height=$cheight&width=$cwidth";
+	
+	// set global baseurl & base
+	echo "<script type=text/javascript>
+		var baseurl = '$baseurl';
+		var base = '$base';
+	      </script>";
+	
+        if(isset($javascript)):
+            echo($javascript->link("hitschart"));
+        endif;
+	
+	
+echo"<div class=TabUpdate>";
+
+	$x['w'] = "Last Week";
+	$x['m'] = "Last monthly";
+	$x['y'] = "Last Year";
+
+	echo $html->selecttag('analytic/date',$x,$lastdate);
+	 echo "<a id=\"link\" href=\"\" class=\"thickbox link\">Update</a>
+        </div>";
+echo "<br>";
+
+echo "<strong>Click the links below to enable/disable graphs </strong>";
+
+echo "<div class=playsmenu>
+        <ul>
+                <li> ";
+					
+			if($session->check('msh'))
+			{
+				echo $html->link('MySpace',"/analytics/hits/?id=msh&height=$cheight&width=$cwidth", array('class'=>' thickbox active' ,'id'=>'ms', 'style'=>'color:#FF6600;'));
+												
+			}
+			
+			else
+			{
+				echo $html->link('MySpace',"/analytics/hits/?id=msh&height=$cheight&width=$cwidth", array('class'=>' thickbox','id'=>'ms' , 'style'=>'color:#FF6600;'));
+			}
+	echo    "</li>
+		<li>";
+			if($session->check('yth'))
+			{
+				echo $html->link('Youtube',"/analytics/hits/?id=yth&height=$cheight&width=$cwidth" , array('class'=>' thickbox active' ,'id'=>'yt' ,'style'=>'color:#688600;'));
+			}
+			else
+			{
+				echo $html->link('Youtube',"/analytics/hits/?id=yth&height=$cheight&width=$cwidth", array('class'=>' thickbox' ,'id'=>'yt', 'style'=>'color:#688600;'));
+			}
+	echo 	"</li>
+		<li>";
+			if($session->check('lfmsh'))
+			{
+				echo $html->link('Last.fm',"/analytics/hits/?id=lfmsh&height=$cheight&width=$cwidth" , array('class'=>' thickbox active','id'=>'lfms' , 'style'=>'color:#150005;'));
+			}
+			else
+			{
+				echo $html->link('Last.fm',"/analytics/hits/?id=lfmsh&height=$cheight&width=$cwidth", array('class'=>' thickbox' ,'id'=>'lfms', 'style'=>'color:#150005;'));
+			}
+	echo 	"</li>
+		<li>";
+			if($session->check('fbspages'))
+			{
+				echo $html->link('Facebook Pages',"/analytics/hits/?id=fbspages&height=$cheight&width=$cwidth" , array('class'=>'thickbox active' , 'id'=>'fbspages','style'=>'color:#505000;'));
+			}
+			else
+			{
+				echo $html->link('Facebook Pages',"/analytics/hits/?id=fbspages&height=$cheight&width=$cwidth", array('class'=>'thickbox' ,'id'=>'fbspages' , 'style'=>'color:#505000;'));
+			}
+	echo 	"</li>
+		<li>";
+			if($session->check('fbsgroups'))
+			{
+				echo $html->link('Facebook Groups',"/analytics/hits/?id=fbsgroups&height=$cheight&width=$cwidth" , array('class'=>'thickbox active','id'=>'fbsgroups' , 'style'=>'color:#050895;'));
+			}
+			else
+			{
+				echo $html->link('Facebook Groups',"/analytics/hits/?id=fbsgroups&height=$cheight&width=$cwidth", array('class'=>' thickbox','id'=>'fbsgroups' , 'style'=>'color:#050895;'));
+			}
+	echo 	"</li>
+	</ul>
+</div>";
+
+
+$path= "http://".$_SERVER['SERVER_NAME'].$this->webroot;
+
+
+if(!empty($id))
+{
+open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/analytics/hitschart/?height=$cheight&width=$cwidth&id=$id",false,"$path");
+}
+else
+{
+open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/analytics/hitschart/?height=$cheight&width=$cwidth",false,"$path");
+}
+?>
+
+<table class="white" align=center "width=90%">
+	<tr>
+	<th> Statistic </th><th> Total Hits </th> <th> Average Hits </th>
+	</tr>
+
+<?php
+	if($session->check('msh'))
+	{
+echo 	"
+	<tr>
+	<th> MySpace</th> <td > ".$session->read('mshitscount')."</td><td bgcolor=#a457856>".$session->read('msaverage')."</td> </tr>";
+	}
+	
+	if($session->check('yth'))
+	{
+echo "
+	<tr> <th> Youtube </th> <td> ".$session->read('ythitscount')."</td><td>".$session->read('ytaverage')."</td> </tr>";
+	}
+	
+	if($session->check('lfmsh'))
+	{
+echo "
+	<tr> <th> Last.fm </th><td> ".$session->read('lfmhitscount')."</td><td>".$session->read('lfmaverage')."</td>
+	</tr>";
+	}
+
+	if($session->check('fbspages'))
+	{
+echo "
+	<tr> 
+		<th> Facebook Pages</th>
+		<td> ".$session->read('pageshitscount')."</td><td>".$session->read('pagesaverage')."</td>
+	</tr>";
+
+	}
+
+	if($session->check('fbsgroups'))
+	{
+	echo "
+	<tr> 
+		<th> Facebook Groups</th>
+		<td> ".$session->read('groupshitscount')."</td><td>".$session->read('groupsaverage')."</td>
+	</tr>";
+
+	}
+
+
+
+?>
+</table>

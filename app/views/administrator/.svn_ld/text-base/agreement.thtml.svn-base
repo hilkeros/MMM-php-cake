@@ -1,0 +1,14 @@
+<? $this->pageTitle = 'Music Motion Manager'; ?>
+<h1>Music Motion Manager</h1>
+
+<h2>Term of Services</h2>
+
+term of services ... term of services ...term of services ... term of services ...term of services ... <br />
+term of services ...term of services ...term of services ...term of services ...term of services ... <br />
+term of services ...term of services ...term of services ...term of services ...term of services ... <br />
+term of services ...term of services ...term of services ...term of services ...term of services ... <br />
+
+
+<a onclick="closed();">Close</a>
+
+

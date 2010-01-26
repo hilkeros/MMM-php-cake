@@ -1,0 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<body>
+
+<?php 
+echo "User &nbsp; &nbsp; ".$session->read('user')."&nbsp; : &nbsp;&nbsp;".$topic; 
+echo "<br>";
+echo $message;
+echo "<br>";
+echo "Regards <br>";
+echo $session->read('email');
+?>
+</body>
+</html>

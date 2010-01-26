@@ -1,0 +1,14 @@
+<? $this->pageTitle = 'Motion Music Manager Last.fm Statistics'; ?>
+<br />
+<h2>Add Music Group</h2>
+<br /><br />
+
+<?php
+	
+	echo "<form name=lfm method=post>";
+	echo "Please enter Music Group".$html->input('Lfm/music_group');
+	echo $html->tagErrorMsg('Lfm/music', 'Music Group Required Field');
+	echo "<br>";
+	echo $html->submit('Submit');
+	echo "</form>";
+?>

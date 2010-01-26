@@ -1,0 +1,63 @@
+<?php
+// Sets height and width
+
+$i=0;
+$flashChart->begin(1000, 500 ,'Date','Views',false);
+
+	if($session->read('lastdate')=='w')
+	{	
+		foreach($dt as $key => $val)
+		{
+			$ds= strtotime($val);
+			$et[]=date('D',$ds);
+		}
+	}
+	else
+	{
+		$et = $dt;
+	}
+
+
+
+
+
+	// set chart label , title and x axis heading style 
+	$flashChart->labels($et);
+	$flashChart->title('Date - Listeners');
+	$flashChart->set_x_style( 10, 'gray' , 2 );   // 1=horizental heading , 2= between horizental & vertical heading , 3= vertical heading
+
+	$min = min($lfmlisteners);
+	$max = max($lfmlisteners);
+	if($min>5)	
+	{
+		$min=$min-5;
+	} // 	if($min>5)	
+	
+	if($max<5)
+	{	
+		$max=$max+5;
+	} // if($max<5)
+
+	
+	$max = (5-($max % 5))+$max;
+	$min = $min-($min % 5);
+	
+	$flashChart->set_y_min($min);
+	$flashChart->set_y_max($max);	
+
+
+
+$data = array(
+'Plays' => array('color' => '#a457856',
+'font_size' => 11,
+'data' => $lfmlisteners,
+//'links' => $links,   // used with bar graph
+'graph_style' => 'line',
+)
+);
+
+$flashChart->setData($data);
+// Show the graph
+echo $flashChart->render();?>
+
+

@@ -1,0 +1,251 @@
+<? $this->pageTitle = 'Motion Music Manager';  ?>
+<div class="board">
+	<h1 class="main">
+		Statistics for <?php if($bandname) echo $bandname; ?>
+	</h1>
+</div>
+<?php
+if(isset($javascript)):
+  echo $javascript->link('jquery.js');
+
+$url= $_SERVER['SERVER_NAME'].$this->base."/analytics/album/";
+$url_comm= $_SERVER['SERVER_NAME'].$this->base."/analytics/comments/";
+$url_mss= $_SERVER['SERVER_NAME'].$this->base."/analytics/mssplays/";
+$url_tracks= $_SERVER['SERVER_NAME'].$this->base."/analytics/tracks/";
+$url_pages= $_SERVER['SERVER_NAME'].$this->base."/analytics/fbspages/";
+$url_groups= $_SERVER['SERVER_NAME'].$this->base."/analytics/fbsgroups/";
+
+
+echo "<script type=text/javascript charset=utf-8>
+   	$(function(){
+  	$('select#dataMusic').change(function()
+	{ 
+    		var hostname ='$url' ;
+		$.getJSON(\"http://$url\",{id: $(this).val(), ajax: 'true'}, function(j)
+		{
+		var options = ''; 
+      			for (var i = 0; i < j.length; i++) 
+			{
+        		options += '<option value=\"' + j[i].optionValue + '\">' + j[i].optionDisplay + '</option>';
+      			}
+      		$(\"select#dataAlbum\").html(options);
+    		})
+
+		
+		$.getJSON(\"http://$url_tracks\",{id: $(this).val(), ajax: 'true'}, function(j)
+		{
+		var options = ''; 
+	 	     for (var i = 0; i < j.length; i++) 
+		     {
+		     options += '<option value=\"' + j[i].optionValue + '\">' + j[i].optionDisplay + '</option>';
+		     }
+      		$(\"select#dataTracks\").html(options);
+ 		})
+ 	 })
+
+
+     $('select#dataChannel').change(function(){ 
+    		var hostname ='$url_comm' ;
+		$.getJSON(\"http://$url_comm\",{id: $(this).val(), ajax: 'true'}, function(j){
+		var options = ''; 
+
+      for (var i = 0; i < j.length; i++) {
+        options += '<option value=\"' + j[i].optionValue + '\">' + j[i].optionDisplay + '</option>';
+      }
+      $(\"select#dataVideo\").html(options);
+    })
+
+  })
+
+	$('select#dataFbuser').change(function(){ 
+    		var hostname ='$url_pages' ;
+		$.getJSON(\"http://$url_pages\",{id: $(this).val(), ajax: 'true'}, function(j){
+		var options = ''; 
+
+      for (var i = 0; i < j.length; i++) {
+        options += '<option value=\"' + j[i].optionValue + '\">' + j[i].optionDisplay + '</option>';
+      }
+      $(\"select#dataPages\").html(options);
+    })
+
+		$.getJSON(\"http://$url_groups\",{id: $(this).val(), ajax: 'true'}, function(j)
+		{
+		var options = ''; 
+	 	     for (var i = 0; i < j.length; i++) 
+		     {
+		     options += '<option value=\"' + j[i].optionValue + '\">' + j[i].optionDisplay + '</option>';
+		     }
+      		$(\"select#dataGroups\").html(options);
+ 		})
+
+  })
+
+
+
+
+ $('select#dataProfile').change(function(){ 
+    		var hostname ='$url_mss' ;
+		$.getJSON(\"http://$url_mss\",{id: $(this).val(), ajax: 'true'}, function(j){
+		var options = ''; 
+
+      for (var i = 0; i < j.length; i++) {
+        options += '<option value=\"' + j[i].optionValue + '\">' + j[i].optionDisplay + '</option>';
+      }
+      $(\"select#dataMssvideo\").html(options);
+    })
+
+  })";
+  
+  ?>
+
+
+
+
+<?php
+echo "$(document).ready(function(){
+
+	var ids = window.document.getElementById(\"dataMusic\").value;
+		$.getJSON(\"http://$url\",{id:ids, ajax: 'true'}, function(j)
+		{
+		var options = ''; 
+  			for (var i = 0; i < j.length; i++) 
+			{
+        			options += '<option value=\"' + j[i].optionValue + '\">' + j[i].optionDisplay + '</option>';
+			}
+      		$(\"select#dataAlbum\").html(options);
+
+   		})
+
+	$.getJSON(\"http://$url_tracks\",{id:ids, ajax: 'true'}, function(j)
+	{
+	var options = ''; 
+      		for (var i = 0; i < j.length; i++) 
+		{
+	        options += '<option value=\"' + j[i].optionValue + '\">' + j[i].optionDisplay + '</option>';
+	      	}	
+	$(\"select#dataTracks\").html(options);
+    	})
+
+	var ids = window.document.getElementById(\"dataFbuser\").value;
+		$.getJSON(\"http://$url_pages\",{id:ids, ajax: 'true'}, function(j)
+		{
+		var options = ''; 
+  			for (var i = 0; i < j.length; i++) 
+			{
+        			options += '<option value=\"' + j[i].optionValue + '\">' + j[i].optionDisplay + '</option>';
+			}
+      		$(\"select#dataPages\").html(options);
+
+   		})
+
+	$.getJSON(\"http://$url_groups\",{id:ids, ajax: 'true'}, function(j)
+	{
+	var options = ''; 
+      		for (var i = 0; i < j.length; i++) 
+		{
+	        options += '<option value=\"' + j[i].optionValue + '\">' + j[i].optionDisplay + '</option>';
+	      	}	
+	$(\"select#dataGroups\").html(options);
+    	})
+
+	
+	var idy = window.document.getElementById(\"dataChannel\").value;
+	
+	$.getJSON(\"http://$url_comm\",{id:idy, ajax: 'true'}, function(j){
+		var options = ''; 
+
+      for (var i = 0; i < j.length; i++) {
+        options += '<option value=\"' + j[i].optionValue + '\">' + j[i].optionDisplay + '</option>';
+      }
+      $(\"select#dataVideo\").html(options);
+    }) 
+
+	var idy = window.document.getElementById(\"dataProfile\").value;
+	
+	$.getJSON(\"http://$url_mss\",{id:idy, ajax: 'true'}, function(j){
+		var options = ''; 
+
+      for (var i = 0; i < j.length; i++) {
+        options += '<option value=\"' + j[i].optionValue + '\">' + j[i].optionDisplay + '</option>';
+      }
+      $(\"select#dataMssvideo\").html(options);
+    }) 
+  
+
+  })  
+}) "; ?>
+</script>
+<?php
+endif; 
+?>
+
+
+
+<form name=users method=post>
+<div class="halign">
+<table align="center">
+<?php
+
+	foreach($mss_plays as $key => $val)
+	{
+		$title=$val['p']['title'];
+		$datamssplays[$title]=$title;
+		
+	}
+	echo "<tr>";
+	echo "<td>MySpace Plays</td>";	
+	echo "<td>".$html->selecttag('data/mssvideo',$datamssplays)."</td>";
+	echo "</tr>";
+	
+	
+	
+	foreach($lfm_album as $key => $val)
+	{
+		$title=$val['a']['name'];
+		$datalfmalbum[$title]=$title;
+		
+	}
+		
+	echo "<tr>";
+	echo "<td>Choose Last.fm Top Album</td>";	
+	echo "<td>".$html->selecttag('data/album',$datalfmalbum)."</td>";
+	echo "</tr>";
+	
+	
+	foreach($lfm_track as $key => $val)
+	{
+		$title=$val['t']['name'];
+		$datalfmtrack[$title]=$title;
+		
+	}
+		
+	echo "<tr>";
+	echo "<td>Choose Last.fm Top Tracks</td>";	
+	echo "<td>".$html->selecttag('data/tracks',$datalfmtrack)."</td>";
+	echo "</tr>";
+	
+	
+	foreach($ytvideo as $key => $val)
+	{
+		$title=$val['y']['title'];
+		$dataytvideo[$title]=$title;
+		
+	}
+		
+	echo "<tr>";
+	echo "<td>Choose Youtube Video</td>";	
+	echo "<td>".$html->selecttag('data/video',$dataytvideo)."</td>";
+	echo "</tr>";
+	
+
+	echo "<tr>";
+	echo "<td colspan=\"2\" class=center>";
+	echo $html->submit('Submit');
+	echo "</td>";
+	echo "</tr>";
+	?>
+	</table>
+	</form>	
+
+</div>
+

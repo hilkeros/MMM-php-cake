@@ -1,0 +1,85 @@
+<?php
+// Sets height and width
+
+$i=0;
+
+
+if($type=='p') // in case of pages
+{
+$flashChart->begin(1000, 500 ,'Date','Number of Fans',false);
+}
+
+if($type=='g') // in case of pages
+{
+$flashChart->begin(1000, 500 ,'Date','Number of Members',false);
+}
+
+	if($session->read('lastdate')=='w')
+	{	
+		foreach($dt as $key => $val)
+		{
+			$ds= strtotime($val);
+			$et[]=date('D',$ds);
+		}
+	}
+	else
+	{
+		$et = $dt;
+	}
+
+
+
+
+
+	// set chart label , title and x axis heading style 
+	$flashChart->labels($et);
+	$flashChart->setToolTip('#val#');
+	if($type=='p') // in case of pages
+	{
+	$flashChart->title('Facebook Pages Number of Fans');
+	} // if($type=='p') // in case of pages
+
+	if($type=='g') // in case of groups
+	{
+	$flashChart->title('Facebook Groups Number of Members');
+	} // 	if($type=='g') // in case of groups
+
+
+	$flashChart->set_x_style( 10 , '#666633' , 2 );   // 1=horizental heading , 2= between horizental & vertical heading , 3= vertical heading
+
+	$min = min($fbhits);
+	$max = max($fbhits);
+	if($min>5)	
+	{
+		$min=$min-5;
+	} // 	if($min>5)	
+	
+	if($max<5)
+	{	
+		$max=$max+5;
+	} // if($max<5)
+
+	
+	$max = (5-($max % 5))+$max;
+	$min = $min-($min % 5);
+	
+	$flashChart->set_y_min($min);
+	$flashChart->set_y_max($max);	
+
+
+
+$data = array(
+'Plays' => array('color' => '#FF6600',
+'font_size' => 10,
+'width' => 2,
+'data' => $fbhits,
+//'links' => $links,   // used with bar graph
+'graph_style' => 'line_hollow',
+)
+);
+
+$flashChart->setData($data);
+// Show the graph
+echo $flashChart->render();?>
+
+

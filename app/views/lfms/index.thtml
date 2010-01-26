@@ -1,0 +1,11 @@
+<? $this->pageTitle = 'Motion Music Manager Last.fm Statistics'; ?>
+<br />
+<h2>Last Fm Content Management System</h2>
+<br /><br />
+
+<?php
+echo $html->link('Add Music Group','/lfms/addgroup')."&nbsp;&nbsp; | &nbsp;&nbsp;";
+echo $html->link('List Music Group','/lfms/grouplist')."&nbsp;&nbsp;";
+
+?>
+

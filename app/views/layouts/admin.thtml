@@ -1,0 +1,119 @@
+<?php
+/**
+* Developed By :  Babar Ali
+* Dated         : Nov. 3 , 2008
+* Project 	: Motion Music Manager
+*
+*/
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+if(isset($javascript)):
+  echo($javascript->link("javascript"));
+endif; 
+?>
+<title><?php echo $title_for_layout; ?></title>
+<?php echo $html->charset(); ?>
+<?php echo $html->css('mmm'); ?>
+</head>
+<body>
+	<div id="feed-back">
+		<?php
+		echo " <a href=\"mailto:bug@mmmotion.com?subject=bug report\" onmouseover=\"document.reportBug.src='".$this->webroot."img/reportBugOver.png'\" onmouseout=\"document.reportBug.src='".$this->webroot."img/reportBug.png'\">";
+		 echo $html->image('reportBug.png',array('border'=>0,'name'=>'reportBug')); 
+		echo "</a>";
+		?>
+	</div>
+	<div class="container">
+		<div class="top">
+			<div class="topmenu">
+				<ul>
+					<?php
+						if($session->check('id'))
+						{
+					echo "<li>";
+						echo $html->link($session->read('user'),"/band/index/",array('class'=>'selected'));
+					echo "</li>";
+					echo "<li>";
+						echo $html->link('( Logout )','/users/logout/' ,array('class'=>'logout'));	
+						
+					echo "</li>";
+						}
+					?>
+	
+				</ul>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+		<div style="clear:both;"></div>
+		<div class="header">
+				<span class="google-position">
+				<form action="<?php echo $this->base."/dashboard/search/"; ?>" id="cse-search-box" class="google-form">
+				  <div>
+				    <input type="hidden" name="cx" value="005780817609840085455:p1i-pbftduc" />
+				    <input type="hidden" name="cof" value="FORID:9" />
+				    <input type="hidden" name="ie" value="UTF-8" />
+				    <div class="google-tab"><input type="text" name="q" size="15" class="google-search"/> </div>
+				    <div class="google-tab">
+				<?php
+					echo "<input type=\"image\" src=\"".$this->webroot."img/google.png\" name=\"sa\" id=\"sa\" value=\"Google\" onmouseover=\"this.src='".$this->webroot."img/googleOver.png'\" onmouseout=\"this.src='".$this->webroot."img/google.png'\" class=\"google-search-submit\" /> </div>";
+				?>
+				    <div style="clear:both;"> </div>
+				  </div>
+				</form>
+				</span>
+		
+		<div style="clear:both;"></div>
+			<div id=main-menu>
+			<div class="menu">
+				<ul>
+					<?php
+				if($session->read('usertype')=='A')
+				{
+				echo 	"
+					<li>
+						".$html->link('Home','/users/index/')."
+					</li>
+					<li>
+						".$html->link('User List','/administrator/userlist/')."
+					</li>
+					<li>
+						".$html->link('Cms Panel','/administrator/cmspanel/')."
+					</li>
+					<li>
+						".$html->link('Invite people','/administrator/invitation/')."
+					</li>
+					<li>
+						".$html->link('Mail report','/administrator/mailreport/')."
+					</li>
+					<li>
+						".$html->link('Feedback report','/administrator/feedback/')."
+					</li>
+					";
+				}
+				?>
+				</ul>
+			</div>
+			</div>
+		</div>
+		<div style="clear:both;"></div>	
+		<div class="content">
+				<?php
+					echo $content_for_layout;
+				?>
+		</div>
+		
+	</div>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+	try {
+		var pageTracker = _gat._getTracker("UA-9952449-1");
+		pageTracker._trackPageview();
+	} catch(err) {}</script>
+</body>
+</html>

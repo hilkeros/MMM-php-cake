@@ -1,0 +1,9 @@
+<? $this->pageTitle = 'Motion Music Manager Last.fm Statistics'; ?>
+<br />
+<h2>Facebook Content Management System</h2>
+<br /><br />
+<?php
+echo $html->link('New Registration','/fbs/index/')."&nbsp;&nbsp; | &nbsp;&nbsp;";
+echo $html->link("Show Statistics",'/fbs/fbgroup/')."&nbsp;&nbsp;";
+?>
+

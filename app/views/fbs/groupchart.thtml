@@ -1,0 +1,69 @@
+<?php
+$i=0;
+$flashChart->begin(400, 600 ,'Date','No. of hits',false);
+
+	if($session->read('lastdate')=='w')
+	{	
+		foreach($dt as $key => $val)
+		{
+			$ds= strtotime($val);
+			$et[]=date('D',$ds);
+		} // foreach($dt as $key => $val)
+	} // if($session->read('lastdate')=='w')
+	else
+	{
+		$et = $dt;
+	} // if($session->read('lastdate')=='w')
+
+
+
+	// set chart label , title and x axis heading style 
+	$flashChart->labels($et);
+	$flashChart->title('Date - Facebook Group');
+	$flashChart->set_x_style( 10, 'gray' , 2 );   // 1=horizental heading , 2= between horizental & vertical heading , 3= vertical heading
+	
+	/* set chart y-axis min & max values */
+	
+	
+	$min = min($fbgroup);
+	$max = max($fbgroup);
+	if($min>5)	
+	{
+		$min=$min-5;
+	} // 	if($min>5)	
+	
+	if($max<5)
+	{	
+		$max=$max+5;
+	} // if($max<5)
+
+	$max = (5-($max % 5))+$max;
+	
+	if(($min % 5)<0)
+	{
+		$min = $min+($min % 5);
+	}
+	else
+	{
+	$min = $min-($min % 5);
+	}
+	
+	$flashChart->set_y_min($min);
+	$flashChart->set_y_max($max);
+	
+	/* end set chart y-axis min & max values */
+
+
+
+$data = array('Group' =>
+		array('color' => '#FF6600',
+			'font_size' => 10,
+			'width' => 2,
+			'data' => $fbgroup,
+			'graph_style' => 'line_hollow',
+		)
+	);
+
+$flashChart->setData($data);
+// Show the graph
+echo $flashChart->render();?>

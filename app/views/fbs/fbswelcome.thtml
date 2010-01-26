@@ -1,0 +1,38 @@
+<? $this->pageTitle = 'Motion Music Manager Facebook authentication'; ?>
+<?php
+echo " <div  class=\"fbs-block\">
+	      <div class=\"fbs-light-block\">
+		     <div class=\"wizard-title\">
+			    <div class=\"wizard-closeWindow\">";
+				   if($flag=='m')
+				   {
+					   echo "<input type=\"button\" class=\"update\" value=\"close\" onclick=\"javascript:location.href='$this->base/band/manage/'\">";
+				   }
+				   else
+				   {
+					   echo "<input type=\"button\" class=\"update\" value=\"close\" onclick=\"javascript:location.href='$this->base/band/facebook/'\"> ";
+				   }
+	      	     echo "
+			    </div>
+                     </div>
+		     <div class=\"wizard-heading\"> You're about to connect your Facebook account with Motion Music Manager.</div>
+		     <div class=\"wizard-text\">
+			<ul>
+				<li> 
+					if you are not logged in to Facebook , you will first be asked to provide your login data.
+				</li>
+				<li>
+					if you are logged in to Facebook , you will be asked to set the right permissions.
+				</li>	
+			        <li>
+			If you want to connect another Facebook account to Motion Music Manager than the one you are currently logged in with, <a target=\"_blank\" href=\"http://www.facebook.com\">click here</a> to sign out from your current account in a different browser tab. When you signed out, close the tab to return to the setup procedure.
+			        </li>
+			</ul>
+		     </div>
+		     <div style=\"clear:both;\"> </div>
+		     <div class=\"wizard-finish\">
+			    <input type=\"button\" class=\"next\" value=\"Continue\" onclick=\"javascript:location.href='$this->base/fbs/index/'\">
+		     </div>
+	      </div>
+       </div>";
+?>

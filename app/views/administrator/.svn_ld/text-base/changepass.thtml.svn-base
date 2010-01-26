@@ -1,0 +1,27 @@
+<h1>New Password Screen</h1>
+<br>
+<?php	
+	echo "<table align=left border=0 width=40%>";
+	echo "<form name=newpass method=post>";
+
+	echo "<tr>";	
+	echo "<td><strong>Old Password</strong></td><td>";	
+	echo $html->password('Newpass/password');
+	echo $html->tagErrorMsg('Newpass/password','Required Field');
+	echo "</td></tr>";
+
+	echo "<tr><td><strong>New Password</strong></td><td>";	
+	echo $html->password('Newpass/npassword');
+	echo $html->tagErrorMsg('Newpass/npassword','Required Field');
+	echo "</td></tr>";
+
+	echo "<tr><td><strong>Confirm Password</strong></td><td>";	
+	echo $html->password('Newpass/cpassword');
+	echo $html->tagErrorMsg('Newpass/cpassword','Required Field');
+	echo "</td></tr>";
+
+	echo $html->submit('Confirm');
+	echo "</form>";
+	echo "</table>";
+?>
+

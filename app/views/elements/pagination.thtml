@@ -1,0 +1,15 @@
+<?php
+echo "<div align=center>";
+	 	$preimg = 'Previous'; // $html->image('go-previous.gif', array('alt'=>'previous', 'title'=>'previous', 'align'=>'bottom'));
+	  	$firstimg = 'First'; // $html->image('go-next.gif', array('alt'=>'first', 'title'=>'first'));
+	echo $pagination->firstPage($firstimg)."&nbsp;&nbsp; | &nbsp;&nbsp;".$pagination->prevPage($preimg);
+	echo "&nbsp;&nbsp; | &nbsp;&nbsp;";
+		 $nextimg = 'Next'; // $html->image('go-last.png', array('alt'=>'last', 'title'=>'last'));
+		 $lastimg = 'Last'; // $html->image('go-last.png', array('alt'=>'last', 'title'=>'last'));
+	 echo $pagination->nextPage($nextimg)."&nbsp;&nbsp; | &nbsp;&nbsp;".$pagination->lastPage($lastimg);
+
+	echo "<br><br> Page Number : &nbsp;&nbsp;&nbsp;";
+	echo $pagination->pageNumbers();
+echo "</div>";
+?>
+

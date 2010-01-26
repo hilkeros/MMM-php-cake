@@ -1,0 +1,134 @@
+<?php
+/**
+* Developed By :  Babar Ali
+* Dated         : Nov. 3 , 2008
+* Project 	: Motion Music Manager
+*
+*/
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+if(isset($javascript)):
+  echo($javascript->link("javascript"));
+endif; 
+?>
+<title><?php echo $title_for_layout; ?></title>
+<?php echo $html->charset(); ?>
+<?php echo $html->css('mmm'); ?>
+</head>
+<body>
+	<div class="google-container">
+		<div class="top">
+			<div class="topmenu">
+				<ul>
+				<?php
+					if($session->read('usertype')=='A')
+					{
+					echo "<li>
+						".$html->link('Admin Panel','/administrator/userlist/',array('class'=>'unselected'));
+						echo "<span class=line>/</span>
+					</li>";
+					}
+				
+					if($session->check('id'))
+					{
+					echo "<li>";
+						echo $session->read('user');
+						
+					echo "</li>";
+					echo "<li>";
+						echo $html->link('( Logout )','/users/logout/' ,array('class'=>'logout'));
+												
+					echo "</li>";
+					}
+				?>
+
+				</ul>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+		<div class="header">
+			<span class="google-position">
+
+				<form action="<?php echo $this->base."/dashboard/search/"; ?>" id="cse-search-box" class="google-form">
+				  <div>
+				    <input type="hidden" name="cx" value="005780817609840085455:p1i-pbftduc" />
+				    <input type="hidden" name="cof" value="FORID:9" />
+				    <input type="hidden" name="ie" value="UTF-8" />
+				    <div class="google-tab"><input type="text" name="q" size="15" class="google-search"/> </div>
+				    <div class="google-tab"><input type="image" src="<?php echo $this->webroot; ?>img/google.png" name="sa" value="Google" class="google-search-submit" /> </div>
+				    <div style="clear:both;"> </div>
+				  </div>
+				</form>
+			</span>
+			<div style="clear:both;"></div>
+			<div class="menu">
+				
+				<ul>
+				<?php
+				if(!empty($dashboard))
+				{
+					echo 	"<li>";
+						
+						if (!empty($bandid))
+						{
+							echo $html->link($html->image('dashboard.png',array('border'=>0,'name'=>'dashboard')),"/dashboard/index/?bandid=$bandid", array("onmouseover"=>"document.dashboard.src='".$this->webroot."img/dashboardOver.png'","onmouseout"=>"document.dashboard.src='".$this->webroot."img/dashboard.png'") , false , false);
+							
+						}
+						else
+						{
+							echo $html->link($html->image('dashboard.png',array('border'=>0,'name'=>'dashboard')),"/dashboard/index/", array("onmouseover"=>"document.dashboard.src='".$this->webroot."img/dashboardOver.png'","onmouseout"=>"document.dashboard.src='".$this->webroot."img/dashboard.png'") , false , false);
+							
+						}
+					
+					echo   "</li>";
+					echo 	"<li>";
+							echo $html->link($html->image('settings.png',array('border'=>0,'name'=>'settings')),"/band/manage/?bandid=$bandid", array("onmouseover"=>"document.settings.src='".$this->webroot."img/settingsOver.png'","onmouseout"=>"document.settings.src='".$this->webroot."img/settings.png'") , false , false);
+					echo 	"</li>";
+							
+					echo 	"<li>";
+							echo $html->link($html->image('statistics.png',array('border'=>0,'name'=>'statistics')),"/analytics/chart/?bandid=$bandid" ,array('class'=>'thickbox','id'=>'statistics',"onmouseover"=>"document.statistics.src='".$this->webroot."img/statisticsOver.png'","onmouseout"=>"document.statistics.src='".$this->webroot."img/statistics.png'") , false , false);
+					echo   "</li>";
+					
+				}
+				foreach ($cms as $key => $data)
+					{	
+						$id=$data['Cms']['id'] ;
+						$title = $data['Cms']['title'] ;
+						
+				echo 	"<li>";
+						if($title=="F.A.Q.")
+						{
+							echo $html->link($html->image('faq.png',array('border'=>0,'name'=>'faq')),'/users/showcms/?id='.$id,array("onmouseover"=>"document.faq.src='".$this->webroot."img/faqOver.png'","onmouseout"=>"document.faq.src='".$this->webroot."img/faq.png'") , false , false);
+						}
+						elseif($title=="About Us")
+						{
+							echo $html->link($html->image('about.png',array('border'=>0,'name'=>'about')),'/users/showcms/?id='.$id,array("onmouseover"=>"document.about.src='".$this->webroot."img/aboutOver.png'","onmouseout"=>"document.about.src='".$this->webroot."img/about.png'") , false , false);
+						}
+				echo	"</li>";
+				
+					} // foreach ($results as $key => $data)
+					
+					
+				echo 	"<li>";
+						echo $html->link($html->image('blog.png',array('border'=>0,'name'=>'blog')),"http://www.mmmotion.com/", array("onmouseover"=>"document.blog.src='".$this->webroot."img/blogOver.png'","onmouseout"=>"document.blog.src='".$this->webroot."img/blog.png'") , false , false);
+				echo 	"</li>";
+					?>
+					
+				</ul>
+			</div>
+		</div>
+		<div style="clear:both;"></div>	
+		<div class="content">
+				<?php
+					echo $content_for_layout;
+				?>
+		</div>
+		
+	</div>
+
+	<?php echo $cakeDebug; ?>
+</body>
+</html>

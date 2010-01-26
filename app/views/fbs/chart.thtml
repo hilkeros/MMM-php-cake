@@ -1,0 +1,131 @@
+
+<?php   $this->pageTitle = 'Motion Music Manager Statistics';
+
+        $lastdate = $session->read('lastdate');		// lastdate ( Last week , Last month , Last year)
+	$opt= $session->read('opt'); 			// opt (Day by day / cumulative )
+
+	
+	$base= $this->base; 
+        $path= "http://".$_SERVER['SERVER_NAME'].$this->webroot;   
+        $baseurl = $this->base."/fbs/chart/?height=$cheight&width=$cwidth";
+	
+	// set global baseurl & base
+	echo "<script type=text/javascript>
+		var baseurl = '$baseurl';
+		var base = '$base';";
+		if($flag==1)
+		{
+			echo "tb_remove();";
+			echo "var bandid= '$bandid';";
+			
+		?>
+			document.location.href = base+"/dashboard/index/?bandid="+bandid;
+		<?php
+		}
+	echo	"</script>";
+	
+        if(isset($javascript)):
+            echo($javascript->link("tab"));
+	    echo($javascript->link("fbschart"));
+        endif;
+	
+?>
+
+    <script type="text/javascript">
+        <?php
+            if($type=='page')
+            {
+                echo "TabView.switchTab(0,0);";
+            }
+            elseif($type=='group')
+            {
+                echo "TabView.switchTab(0,1);";
+            }
+        ?>
+	
+    </script>
+    
+    <?php
+    
+                /*
+                   Date array
+                */
+                $x['w'] = "Last Week";
+                $x['m'] = "Last Month";
+                $x['y'] = "Last Year";
+    ?>
+
+
+    <div class="TabView" id="TabView1">
+        <!--Tabs-->
+        <div class="Tabs">
+		<?php if($pageflag==1) { echo "<a>Facebook Page</a>"; }  if($groupflag==1) { echo " <a>Facebook Group</a>"; } ?>
+	</div>
+        <!--Pages-->
+        <div class="Pages">
+            <!--Page 1-->
+          <?php if($pageflag==1) { ?>
+	   <div class="Page">
+                <?php
+                  
+                echo "<div class=TabUpdate>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/date',$x,$lastdate,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/opt',array('d'=>'Day-by-day','c'=>'Cumulative'),$opt,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\"> <a id=\"link\" href=\"\" class=\"thickbox update\">Update</a> </div>
+		    <div style=\"clear:both;\"> </div>";
+		    
+                     if($opt=='c')
+		   {
+		   echo "<table class=white>
+				<tr>
+					<td>	<strong> Total Gain </strong> </td>
+					<td>	$ptotal	 </td>
+				
+					<td>
+						<strong> Today Gain </strong> </td>
+					<td>	$pdiff ( $ppercentage %)  </td>
+				
+					<td>   <strong> Weekly Gain </strong> </td>
+					<td>	$pwdiff ( $pwpercentage % )  </td>
+				</tr>
+			</table>";
+		   }
+                echo "</div>";
+                open_flash_chart_object($width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/fbs/pagechart/",false,"$path");
+                ?>
+            </div>
+	<?php } ?>
+            <!--Page 2-->
+	<?php if($groupflag==1) { ?>
+            <div class="Page">
+                <?php
+                   
+                echo "<div class=TabUpdate>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/gdate',$x,$lastdate,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/gopt',array('d'=>'Day-by-day','c'=>'Cumulative'),$opt,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\"> <a id=\"glink\" href=\"\" class=\"thickbox update\">Update</a> </div>
+		    <div style=\"clear:both;\"> </div>";
+		    
+                     if($opt=='c')
+		   {
+		   echo "<table class=white>
+				<tr>
+					<td>	<strong> Total Gain </strong> </td>
+					<td>	$gtotal	 </td>
+				
+					<td>
+						<strong> Today Gain </strong> </td>
+					<td>	$gdiff ( $gpercentage %)  </td>
+				
+					<td>   <strong> Weekly Gain </strong> </td>
+					<td>	$gwdiff ( $gwpercentage % )  </td>
+				</tr>
+			</table>";
+		   }
+                echo "</div>";
+                open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/fbs/groupchart/",false,"$path");
+                ?>
+            </div>
+	<?php } ?>
+        </div>
+    </div>

@@ -1,0 +1,68 @@
+<? $this->pageTitle = 'Motion Music Manager'; ?>
+	<div class="page">
+
+<?php
+	if ($session->check('Message.flash'))
+	{	
+		echo "<div style=\"text-align:center;\">";
+			$session->flash();
+		echo "</div>";
+	}
+?>
+		
+		<div id="home">
+			<div id="movie">
+			
+				<object type="application/x-shockwave-flash" data="http://www.youtube.com/v/uG5HdJ2_w0Q" width="325" height="244">
+					<param name="movie" value="http://www.youtube.com/v/uG5HdJ2_w0Q" />
+					<param name="FlashVars" value="playerMode=embedded" />
+				</object>
+			</div>
+		</div>
+		
+		<div id="home-rightbar">
+<?php 		echo "
+			<div id=\"home-register\">
+				<form name=\"Login\" method=\"post\" action=\"".$html->url('/users/add/')."\">
+					<div class=\"textLogin\">
+						Invitation code
+					</div>
+					<div class=\"textLogin\">			
+						".$html->input('Login/invitation',array('size'=>15))."
+					</div>
+					<div class=\"btnLogin\">
+						".$html->submit('register',array('class'=>'login-btn'))."
+					</div>
+				</form>
+			</div>
+			<div id=\"home-textLogin\">
+
+				<div id=\"home-login\">
+					<form name=\"Login\" method=\"post\" action=\"".$html->url('/users/login')."\">
+						<div class=\"textLogin\">
+							email address
+						</div>
+						<div class=\"textLogin\">			
+							".$html->input('Login/email',array('size'=>15))."
+							".$html->tagErrorMsg('Login/email','Required Field')."
+						</div>
+						<div class=\"textLogin\">
+							password
+						</div>
+						<div class=\"textLogin\">
+							".$html->password('Login/password',array('size'=>15))."
+							".$html->tagErrorMsg('Login/password','Required Field')."
+						</div>
+						<div class=\"btnLogin\">
+							".$html->submit('login',array('class'=>'login-btn'))."
+						</div>
+						<div class=\"btnLogin\">				
+							".$html->link('forgot password ?','/users/forgetpassword')."
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>";
+?>
+	

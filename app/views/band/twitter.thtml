@@ -1,0 +1,30 @@
+<? $this->pageTitle = 'Motion Music Manager User Management'; ?>
+
+<?php
+	echo "  <div class=\"band-block\">
+			<div class=settings>
+				<div class=\"steps\">Step: 6 / 6</div> 
+				<div class=\"wizardhead\">Twitter Setup</div> 
+				<div class=register>";
+					
+				
+				if ($session->check('Message.flash'))
+				{	
+				echo "<div style=\"text-align:center;\">";
+					$session->flash();
+				echo "</div>";
+				}
+
+				echo "	<div style=\"padding:10px;\"></div>";
+				echo "	<div style=\"margin: 0px auto; text-align: center; width: 320px;\">To get your Twitter data you need to give us access to your account. When you click on the Next button, you will be redirected to Twitter. You'll have to log in to Twitter (if you aren't already) and give us permission to access your account.</div>
+					<div style=\"clear:both;\"></div>
+					
+					<div class=\"nextbar\">";
+						echo $html->input('Twitter/previous',array('type'=>'button','value'=>'Previous',"onClick"=>"javascript:window.location.href='".$html->url('/band/lastfm/')."'",'class'=>'next'));
+						echo "<input type=button value=\"Next\" class=\"next\" onclick=\"javascript:location.href='$this->base/twitter/welcome/'\">";
+						echo $html->input('mss/skip',array('type'=>'button','value'=>'Skip',"onClick"=>"javascript:window.location.href='".$html->url('/band/thanks/')."'",'class'=>'next'));
+				echo 	"</div>
+				</div>
+			</div>
+		</div>";
+?>

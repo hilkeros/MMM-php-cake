@@ -1,0 +1,33 @@
+<?php
+
+echo  "<h1> PAGES </h2>";
+		foreach($pages as $key => $val)
+		{
+			echo "name &nbsp; :- &nbsp;".$val['name']."<br>";
+			echo "<img src=".$val['pic_small']."<br>";
+			 echo "type &nbsp; :- &nbsp;".$val['type']."<br>";
+			 echo "Fan count &nbsp; :- &nbsp;".$val['fan_count']."<br>";
+			 echo "location &nbsp; :- &nbsp;".$val['location']."<br>";
+			 echo "Website &nbsp; :- &nbsp;".$val['website']."<br>";
+			echo "Company Overview &nbsp; :- &nbsp;".$val['company_overview']."<br>";
+			 echo "Mission &nbsp; :- &nbsp;".$val['mission']."<br>";
+			echo "<br><br><br>";} //foreach(pages as $key => $val)
+		}
+
+echo "<h1> Groups </h1>";
+			foreach ($grp as $key => $val)
+			{
+				if($val['creator']==$user_id)
+				{
+
+				echo "<strong>Group &nbsp; :-</strong> &nbsp;".$val['name'];echo "<br>";
+				echo "<img src=".$val['pic']."><br><br>";
+				echo "Group Catagory &nbsp; :- &nbsp;".$val['group_type']."<br>";
+				echo "Sub catagory &nbsp; :- &nbsp;".$val['group_subtype']."<br>";
+				echo "Update Time &nbsp; :- &nbsp;".$val['update_time']."<br>";
+				echo "Website &nbsp; :- &nbsp;".$val['website']."<br>";
+				} // 			if($val['creator']==$user_id)
+			} // foreach ($grp as $key => $val)
+
+
+?>

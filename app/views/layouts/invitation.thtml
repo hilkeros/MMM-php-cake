@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<body>
+<p> Beste band of muzikant, </p>
+
+<p> Het is alweer ontzettend lang geleden dat ik nog eens van mij heb laten horen. Meer dan een jaar terug stuurde ik je een online enquête waarin in een aantal vragen stelde over hoe je je online promotie aanpakt. Ik had namelijk een aantal ideeën om bands te helpen bij het beheer van hun online profielen en wilde aftoetsen of de problemen die ik zelf als muzikant ondervond, ook bij jullie leefden.
+
+Ondertussen zijn die ideeën een beetje werkelijkheid geworden. Motion Music Manager wordt een dashboard van waaruit je al je online profielen (MySpace, Facebook, YouTube en Last.fm) centraal beheert. Je kan al statistieken bekijken over je vorderingen op die netwerken en binnenkort kan je ook status updates, nieuws, foto's of video's uploaden naar meerdere platformen tegelijk.
+
+De testversie van Motion Music Manager staat ondertussen online en we zijn nu klaar om een eerste groep gebruikers op het platform toe te laten.  </p>
+
+<p> Ik nodig je dan ook graag uit om zo'n testgebruiker te worden. Je moet je er wel van bewust zijn dat alles zich nog in een testfase bevindt ('private beta' heet dat dan in softwareontwikkelingtermen). Het aantal features is nog wat beperkt en zal in de komende weken gevoelig uitgebreid worden. Hoewel wij hard ons best doen om dit te vermijden, is het ook altijd mogelijk dat er fouten optreden, bugs ontdekt worden of dat er informatie verloren gaat. Gelieve ons hiervoor te verontschuldigen. In geval van problemen of opmerkingen, horen wij het graag. Hoe meer feedback we krijgen, hoe beter we de service kunnen maken.
+
+Voorlopig beperken we het aantal testgebruikers ook tot 100 (vandaar de term 'private' beta). Wie eerst komt, eerst maalt. Maar geen nood als je aan de late kant bent: van zodra alles vlot verloopt, laten wij meer mensen toe.
+
+Je kunt een account opzetten via <?php echo "<a href=http://".$_SERVER['HTTP_HOST'].$this->base."/users/register/?code=$code>deze link</a>";?>. Je hebt ook een invitation code nodig om te kunnen registreren: </p>
+
+<p> invitation code: <?php echo "<a href=http://".$_SERVER['HTTP_HOST'].$this->base."/users/register/?code=$code>$code</a>"; ?> </p>
+
+<p> We hopen alvast dat onze service jouw muzikale carrière verder op de goede weg kan zetten!</p>
+
+<p> Vriendelijke groet, </p>
+
+<p> Hilke </p>
+
+<p> Check ook mijn blog op http://mmmotion.com, waar je allerlei tips en nieuws vindt over muziek en internet.</p>
+
+<p> P.S. Sorry als je deze mail liever niet wilde ontvangen. Als je geen mail meer wenst te ontvangen, kun je hier <?php echo "<a href=http://".$_SERVER['HTTP_HOST'].$this->base."/users/unsubscribe/?code=$code>uitschrijven</a>"; ?>.</p>
+</body>
+</html>
+
+

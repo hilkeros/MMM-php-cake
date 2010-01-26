@@ -1,0 +1,157 @@
+<?php
+// Sets height and width
+
+$i=0;
+$flashChart->begin(null , null ,'Date','No. of fans',false);
+
+	if($session->read('lastdate')=='w')
+	{	
+		foreach($dt as $key => $val)
+		{
+			$ds= strtotime($val);
+			$et[]=date('D',$ds);
+		}
+	}
+	else
+	{
+		$et = $dt;
+	}
+
+	// set chart label , title and x axis heading style 
+	$flashChart->labels($et);
+	$flashChart->title('Date - Fans');
+	$flashChart->set_x_style( 10, 'gray' , 2 );   // 1=horizental heading , 2= between horizental & vertical heading , 3= vertical heading
+
+	$hits['msh']=$mshit;
+	$hits['yth']=$ythit;
+	$hits['lfmsh']=$album_play;
+	$hits['fbspages']=$pageshits;
+	$hits['fbsgroups']=$groupshits;
+	
+		foreach($hits as $key => $hitsval)
+		{
+	
+			if($session->check($key))
+			{
+				$min = min($hitsval);
+				$max = max($hitsval);
+							
+				echo $min."<br>";
+				if($i==0)
+				{		
+					$premin = $min;
+					$premax = $max;
+					$i=1;
+				}
+
+				if($premin<$min)
+				{	
+					$min=$premin;
+				}
+				else	
+				{
+					$premin = $min;
+				}
+
+				if($premax>$max)
+				{
+					$max=$premax;
+					
+				}
+				else { $premax= $max; }
+				
+			}
+		}
+		
+		if($min>5)	
+		{
+			$min=$min-5;
+		} // 	if($min>5)	
+
+		if($max<5)
+		{	
+			$max=$max+5;
+		} // if($max<5)
+
+
+		$max = (5-($max % 5))+$max;
+		
+		if(($min % 5)<0)
+		{
+			$min = $min+($min % 5);
+		}
+		else
+		{
+			$min = $min-($min % 5);
+		}
+
+
+		$flashChart->set_y_min($min);
+		$flashChart->set_y_max($max);
+		
+	
+
+if($session->check('msh'))
+{
+	$v["Myspace"] = array('color' => '#FF6600',
+		'font_size' => 10,
+		'width' => 2,
+		'data' => $mshit,
+		'graph_style' => 'line_hollow',
+		);
+}
+
+
+if($session->check('yth'))
+{
+	$v["Youtube"] = array('color' => '#688600',
+		'font_size' => 10,
+		'width' => 2,
+		'data' => $ythit,
+		'graph_style' => 'line_hollow',
+		);
+}
+
+if($session->check('lfmsh'))
+{
+	$v["Last.fm"] = array('color' => '#150005',
+		'font_size' => 10,
+		'width' => 2,
+		'data' => $album_play,
+		'graph_style' => 'line_hollow',
+		);
+}
+
+if($session->check('fbspages'))
+{
+	$v["Facebook page"] = array('color' => '#505000',
+		'font_size' => 10,
+		'width' => 2,
+		'data' => $pageshits,
+		'graph_style' => 'line_hollow',
+		);
+}
+
+if($session->check('fbsgroups'))
+{
+	$v["Facebook group"] = array('color' => '#050895',
+		'font_size' => 10,
+		'width' => 2,
+		'data' => $groupshits,
+		'graph_style' => 'line_hollow',
+		);
+}
+
+	
+foreach($v as $key => $val)
+{
+	$data[$key] = $val;
+}
+
+
+
+$flashChart->setData($data);
+// Show the graph
+echo $flashChart->render();?>
+
+

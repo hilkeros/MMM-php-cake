@@ -1,0 +1,29 @@
+<? $this->pageTitle = 'Motion Music Manager MySpace Statistics'; ?>
+<br />
+<?php
+echo "<h2> Last Fm Motion Music Manager Statistics <h2><br>";
+			echo "<h2> $music </h2>";
+			echo "<strong> Listeners &nbsp; : &nbsp;&nbsp; </strong>".$listners."<br>";
+		//      echo "<strong> Play Count &nbsp; : &nbsp;&nbsp; </strong>".$count."<br>";
+			echo "<strong> url &nbsp; : &nbsp;&nbsp; </strong>".$url."<br>";
+
+			echo "<h2> Top Album </h2>";
+
+			for($i=0;$i<$TopAlbumCount;$i++)
+			{
+				echo "<strong> Rank &nbsp; : &nbsp;&nbsp; </strong>".$TopAlbum[$i]['rank']."<br>";
+				echo "<strong> Name &nbsp; : &nbsp;&nbsp; </strong>".$TopAlbum[$i]['name']."<br>";
+				echo "<strong> Play Count &nbsp; : &nbsp;&nbsp; </strong>".$TopAlbum[$i]['playcount']."<br>";
+				echo "<br><br>";
+			} // for($i=0;$i<$TopAlbumCount;$i++)
+
+			echo "<h2> Top Tracks </h2>";
+
+			for($i=0;$i<$TopTrackCount;$i++)
+			{
+				echo "<strong> Rank &nbsp; : &nbsp;&nbsp; </strong>".$TopTrack[$i]['rank']."<br>";
+				echo "<strong> Name &nbsp; : &nbsp;&nbsp; </strong>".$TopTrack[$i]['name']."<br>";
+				echo "<strong> Play Count &nbsp; : &nbsp;&nbsp; </strong>".$TopTrack[$i]['playcount']."<br>";
+				echo "<br><br>";
+			} // for($i=0;$i<$TopTrackCount;$i++)
+?>

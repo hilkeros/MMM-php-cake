@@ -1,0 +1,24 @@
+<? $this->pageTitle = 'Motion Music Manager Views Analytics'; ?>
+<br />
+<h2>Views Analytics</h2>
+
+<br /><br />
+<?php
+
+		echo $html->link('Top Album','/lfms/topalbum/?id='.$id.'&etime='.$etime)."&nbsp;&nbsp; | &nbsp;&nbsp;".$html->link('Top Tracks','/lfms/toptracks/?id='.$id.'&etime='.$etime);
+		echo "<br><br>";
+
+echo "<form name=users method=post>";
+	$x['w'] = "Last Week";
+	$x['m'] = "Last monthly";
+	$x['y'] = "Last Year";
+
+	echo $html->selecttag('analytic/date',$x,$lastdate);
+
+	echo $html->submit('Update Stats');
+	echo "</form>";
+echo "<br>";
+$path= "http://".$_SERVER['SERVER_NAME'].$this->webroot;
+open_flash_chart_object( 800, 300, "http://".$_SERVER['SERVER_NAME'].$this->base."/lfms/charts/",false,"$path");
+
+

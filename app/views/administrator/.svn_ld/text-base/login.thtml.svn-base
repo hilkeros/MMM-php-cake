@@ -1,0 +1,20 @@
+<h1>User Login Screen</h1>
+
+<div align=left><h4><a href="forgetpassword">I cannot access my account , I forget my password</a></h4></div>
+<?php	
+	echo "<form name=login method=post>";
+	echo "<table align=left width=70% border=0>";
+	echo "<tr>";	
+	echo "<td><strong>Email Address</strong></td><td>";
+	echo $html->input('Login/email');
+	echo $html->tagErrorMsg('Login/email','Required Field');
+	echo "</td></tr>";
+	echo "<tr>";	
+	echo "<td><strong>Password</strong></td><td>";	
+	echo $html->password('Login/password');
+	echo $html->tagErrorMsg('Login/password','Required Field');
+	echo "</td></tr>";
+	echo $html->submit('Login');
+	echo "</table>";
+	echo "</form>";
+?>

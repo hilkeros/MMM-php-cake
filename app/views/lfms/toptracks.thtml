@@ -1,0 +1,18 @@
+<? $this->pageTitle = 'Motion Music Manager Last.fm Statistics'; ?>
+<br />
+<h2>Top Tracks</h2>
+
+<br /><br />
+
+<?php
+
+/*	
+		foreach($results as $key => $val)
+		{
+			echo "Ranks &nbsp; : &nbsp; ".$val['t']['rank']."<br>Name &nbsp; : &nbsp; ".$val['t']['name']."<br>Play Count &nbsp; : &nbsp; ".$val['t']['playcount']."<br><br>";
+		} // foreach($results as $key => $val)
+*/
+	
+	$path= "http://".$_SERVER['SERVER_NAME'].$this->webroot; 
+	open_flash_chart_object( 800, 600, "http://".$_SERVER['SERVER_NAME'].$this->base."/lfms/trackchart/?id=$id&etime=$etime",false,"$path");
+?>

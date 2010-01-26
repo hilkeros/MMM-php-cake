@@ -1,0 +1,35 @@
+<? $this->pageTitle = 'Motion Music Manager Facebook Statistics'; ?>
+<?php
+echo "<h2> Facebook Band Statistics</h2>";
+echo $html->link('Back','/fbs/fbgroup/');
+echo "<br>";
+
+		if(@$pages)
+		{
+		echo  "<h1> PAGES </h2>";
+			foreach($pages as $key => $val)
+			{
+				
+				$name = $val['p']['name'];
+				echo "Name &nbsp; : &nbsp;".$html->link($name,'/fbs/hits/?type=p&id='.$id.'&name='.$name)."<br>";
+				echo "<br>";
+
+		        } //foreach(pages as $key => $val)
+		} // 		if($pages)
+
+
+		if(@$grp)
+		{
+		echo "<h1> Groups </h1>";
+			foreach ($grp as $key => $val)
+			{
+
+				
+				$name = $val['g']['name'];
+
+				echo "Name &nbsp; : &nbsp;".$html->link($name,'/fbs/hits/?type=g&id='.$id.'&name='.$name)."<br>";
+				echo "<br>";
+		
+			} // foreach ($grp as $key => $val)
+		} // if($grp)
+?>

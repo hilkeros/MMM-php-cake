@@ -1,0 +1,21 @@
+                    
+                    <div class="header">
+                       <a href="#" onClick="FB.Connect.logout(function() { refresh_page(); })">Logout of Facebook</a>
+                    </div>
+                       
+                            
+                    <div class="content"><div class='fbconnect_welcome'>
+                    <input type='button' name='fbconnect_spd_submit' class='fbconnect_button' onclick='fbc_show_status_update_permission_dialog();' value='Authorize Status Updates'></div></div>
+                    
+                    <div class='fbconnect_title_wrapper'>
+                    
+                    <input type='button' name='fbconnect_oad_submit' class='fbconnect_button' onclick='fbc_show_offline_access_permission_dialog();' value='Authorize Offline Access'>
+                    </div>
+                        
+                    <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+   
+                    <script type="text/javascript">
+                            var root = "<?php echo $this->webroot."xd_receiver.php"; ?>";
+                            FB.init("a40d686f305f666382ce6ac7369bb9cb", "/xd_receiver.htm");
+                    </script>
+                    <script type="text/javascript">window.onload = function() { facebook_onload(true); };</script>

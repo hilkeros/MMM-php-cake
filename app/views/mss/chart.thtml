@@ -1,0 +1,326 @@
+<?php   $this->pageTitle = 'Motion Music Manager Statistics';
+        
+	$type= $session->read('type');              // type ( channel , friends , sucbscribers , views , comments) ,
+	$lastdate = $session->read('lastdate');     // lastdate ( Last week , Last month , Last year)
+	$opt= $session->read('opt');                // opt (Day by day / cumulative )
+     
+	$base= $this->base; 
+        $path= "http://".$_SERVER['SERVER_NAME'].$this->webroot;   
+        $baseurl = $this->base."/mss/chart/?height=$cheight&width=$cwidth";
+	   
+	// set global baseurl & base
+	echo "<script type=text/javascript>
+		var baseurl = '$baseurl';
+		var base = '$base'; ";
+		
+               	if($flag==1)
+		{
+			echo "tb_remove();";
+			echo "var bandid= '$bandid';";
+			
+		?>
+			document.location.href = base+"/dashboard/index/?bandid="+bandid;
+		<?php
+		}
+		
+	echo "</script>";
+	
+        if(isset($javascript)):
+            echo($javascript->link("tab"));
+	    echo($javascript->link("msschart"));
+        endif;
+	
+?>
+
+    <script type="text/javascript">
+        <?php
+            if($type=='views')
+            {
+                echo "TabView.switchTab(0,0);";
+            }
+            elseif($type=='friends')
+            {
+                echo "TabView.switchTab(0,1);";
+            }
+            elseif($type=='comments')
+            {
+                echo "TabView.switchTab(0,2);";
+            }
+            elseif($type=='plays')
+            {
+                echo "TabView.switchTab(0,3);";
+            }
+            elseif($type=='downloads')
+            {
+                echo "TabView.switchTab(0,4);";
+            }
+        ?>
+    </script>
+    
+    <?php
+    
+                /*
+                   Date array
+                */
+                $x['w'] = "Last Week";
+                $x['m'] = "Last Month";
+                $x['y'] = "Last Year";
+                
+                 $colors=array('#FF6600','#688600','#150005','#505000','#050895','#750031','#550031','#55CC31','#CCFF31','#55FF00','#FF0031');
+    ?>
+
+
+    <div class="TabView" id="TabView1">
+        <!--Tabs-->
+        <div class="Tabs"><a>Profile Views</a> <a>Friends</a> <a>Comments</a><a>Plays</a><a>Downloads</a></div>
+        <!--Pages-->
+        <div class="Pages">
+            <!--Page 1-->
+            <div class="Page">
+                <?php
+                  
+                echo "<div class=TabUpdate>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/date',$x,$lastdate,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/opt',array('d'=>'Day-by-day','c'=>'Cumulative'),$opt,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\"> <a id=\"link\" href=\"\" class=\"thickbox update\">Update</a> </div>
+                          <div style=\"clear:both;\"> </div>";
+                     if($opt=='c')
+		   {
+		   echo "<table class=white>
+				<tr>
+					<td>	<strong> Total Gain </strong> </td>
+					<td>	$vtotal	 </td>
+				
+					<td>
+						<strong> Today Gain </strong> </td>
+					<td>	$vdiff ( $vpercentage %)  </td>
+				
+					<td>   <strong> Weekly Gain </strong> </td>
+					<td>	$vwdiff ( $vwpercentage % )  </td>
+				</tr>
+			</table>";
+		   }
+                echo "</div>";
+                open_flash_chart_object($width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/mss/viewschart/",false,"$path");
+                ?>
+            </div>
+            <!--Page 2-->
+            <div class="Page">
+                <?php
+                   
+                echo "<div class=TabUpdate>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/fdate',$x,$lastdate,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/fopt',array('d'=>'Day-by-day','c'=>'Cumulative'),$opt,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\"> <a id=\"flink\" href=\"\" class=\"thickbox update\">Update</a> </div>
+                    <div style=\"clear:both;\"> </div>";
+                    if($opt=='c')
+                    {
+                    echo "<table class=white>
+				<tr>
+					<td>	<strong> Total Gain </strong> </td>
+					<td>	$ftotal	 </td>
+				
+					<td>
+						<strong> Today Gain </strong> </td>
+					<td>	$fdiff ( $fpercentage %)  </td>
+				
+					<td>   <strong> Weekly Gain </strong> </td>
+					<td>	$fwdiff ( $fwpercentage % )  </td>
+				</tr>
+			</table>";
+		   }
+                echo "</div>";
+                open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/mss/friendschart/",false,"$path");
+                ?>
+            </div>
+            <div class="Page">
+            <!--Page 3 -->
+             <?php
+                  
+                echo "<div class=TabUpdate>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/cdate',$x,$lastdate,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/copt',array('d'=>'Day-by-day','c'=>'Cumulative'),$opt,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\"> <a id=\"clink\" href=\"\" class=\"thickbox update\">Update</a> </div>
+                    <div style=\"clear:both;\"> </div>";
+                    if($opt=='c')
+                    {
+                    echo "<table class=white>
+				<tr>
+					<td>	<strong> Total Gain </strong> </td>
+					<td>	$ctotal	 </td>
+				
+					<td>
+						<strong> Today Gain </strong> </td>
+					<td>	$cdiff ( $cpercentage %)  </td>
+				
+					<td>   <strong> Weekly Gain </strong> </td>
+					<td>	$cwdiff ( $cwpercentage % )  </td>
+				</tr>
+			</table>";
+		   }
+                echo "</div>";
+                open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/mss/commentschart/",false,"$path");
+                ?>
+            </div>
+            <div class="Page">
+            <!--Page 4 -->
+             <?php
+                
+                    
+                echo"<div class=TabUpdate>
+                        <div class=\"chart-col\">".$html->selecttag('analytic/pdate',$x,$lastdate,array('class'=>'selectDate'))."</div>
+                        <div class=\"chart-col\">".$html->selecttag('analytic/popt',array('d'=>'Day-by-day','c'=>'Cumulative'),$opt,array('class'=>'selectDate'))."</div>
+                        <div class=\"chart-col\"><a id=\"plink\" href=\"\" class=\"thickbox update\">Update</a> </div>
+                        <div style=\"clear:both;\"> </div>
+                        <div class=\"chart-help-text chart-col\">Press the buttons below to enable/disable graphs</div>
+                    </div> ";
+                    
+                
+                     if(!empty($plays_mss))
+	                {
+                        
+                           
+                            $i=0;
+	                echo "<div class=playsmenu>
+                                <div id=plays>
+                                <ul>
+                                   
+                                    <li>";
+                                         echo "<a id=\"all\" href=\"".$this->base."/mss/chart/?height=$cheight&width=$cwidth&color=330031\" class=\"thickbox\">All</a>";
+                                        
+                              
+                                echo "</li>
+                                    <li>";
+                                        if($mss_plids=='none')
+                                        {
+                                           echo " <a id=\"none\" href=\"".$this->base."/mss/chart/?height=$cheight&width=$cwidth&color=none\" class=\"thickbox active\">None</a>";
+                                        }else
+                                        {
+                                           echo " <a id=\"none\" href=\"".$this->base."/mss/chart/?height=$cheight&width=$cwidth&color=none\" class=\"thickbox allnone\">None</a>";                             
+                                        }
+                             
+                                echo "</li>
+                                </ul>
+                                <div style=clear:both;> </div>
+                                <ul>
+                                    <li>";
+                                           if($session->read('tplay')==1)
+                                           {
+                                                      echo "<a id=\"tplay\" href=\"".$this->base."/mss/chart/?height=$cheight&width=$cwidth&color=800000\" class=\"thickbox active\">Total Plays</a>";
+                                           }else
+                                           {
+                                                      echo "<a id=\"tplay\" href=\"".$this->base."/mss/chart/?height=$cheight&width=$cwidth&color=800000\" class=\"thickbox\">Total Plays</a>";
+                                           }
+                                 
+                                echo "</li>";
+                                    
+                                    foreach($plays_mss as $key => $val)
+                                    {
+                                        $ids =  $val['s']['mss_plid'];
+                                        $color = str_replace('#','',$colors[$i]);
+                                        $title = $val['s']['title'];
+                                        
+                                                                  
+                                        echo "<li>";
+                                        if($_SESSION[$title]==1)
+                                        {
+                                            echo " <a id=\"$ids\" href=\"".$this->base."/mss/chart/?height=$cheight&width=$cwidth&color=$color\" class=\"thickbox active\">".$val['s']['title']."</a>";
+                                        }else
+                                        {
+                                           echo " <a id=\"$ids\" href=\"".$this->base."/mss/chart/?height=$cheight&width=$cwidth&color=$color\" class=\"thickbox\">".$val['s']['title']."</a>";
+                                        }
+                                        
+                                        echo "</li>";
+                                        $i++;
+                                       
+                                    } //   foreach($plays_mss as $key => $val)
+                                
+                                    
+                            echo "</ul>";
+                        echo "</div>
+                        </div>";
+	                
+                        open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/mss/playschart/",false,"$path");
+	                } //            if($stats)
+                ?>
+            </div>
+            
+            <div class="Page">
+            <!--Page 5 -->
+             <?php
+                echo"<div class=TabUpdate>
+                        <div class=\"chart-col\"> ".$html->selecttag('analytic/ddate',$x,$lastdate,array('class'=>'selectDate'))."</div>";
+                echo    "<div class=\"chart-col\">".$html->selecttag('analytic/dopt',array('d'=>'Day-by-day','c'=>'Cumulative'),$opt,array('class'=>'selectDate'))."</div>";
+                echo    "<div class=\"chart-col\"> <a id=\"dlink\" href=\"\" class=\"thickbox update\">Update</a> </div> 
+                    
+                    <div style=\"clear:both;\"> </div>
+                    <div class=\"chart-help-text chart-col\">Press the buttons below to enable/disable graphs</div>
+                    </div>
+                    ";
+                     if(!empty($plays_mss))
+	                {
+                        
+                            $i=0;
+	                echo "<div class=playsmenu>
+                                <div id=downloads>
+                                <ul>
+                                   
+                                    <li>";
+                                         echo "<a id=\"dall\" href=\"".$this->base."/mss/chart/?height=$cheight&width=$cwidth&color=330031\" class=\"thickbox allnone\">All</a>";
+                                        
+                              
+                                echo "</li>
+                                    <li>";
+                                        if($mss_plids=='dnone')
+                                        {
+                                           echo " <a id=\"dnone\" href=\"".$this->base."/mss/chart/?height=$cheight&width=$cwidth&color=none\" class=\"thickbox active\">None</font></a>";
+                                        }else
+                                        {
+                                           echo " <a id=\"dnone\" href=\"".$this->base."/mss/chart/?height=$cheight&width=$cwidth&color=none\" class=\"thickbox allnone\">None</a>";                             
+                                        }
+                             
+                                echo "</li>
+                                </ul>
+                                <div style=clear:both;> </div>
+                                <ul>
+                                    <li>";
+                                           if($session->read('dtdownloads')==1)
+                                           {
+                                                      echo "<a id=\"tdownloads\" href=\"".$this->base."/mss/chart/?height=$cheight&width=$cwidth&color=800000\" class=\"thickbox active\">Total Downloads</a>";
+                                           }else
+                                           {
+                                                      echo "<a id=\"tdownloads\" href=\"".$this->base."/mss/chart/?height=$cheight&width=$cwidth&color=800000\" class=\"thickbox\">Total Downloads</a>";
+                                           }
+                                 
+                                echo "</li>";
+                                    foreach($plays_mss as $key => $val)
+                                    {
+                                        $ids =  $val['s']['mss_plid'];
+                                        $color = str_replace('#','',$colors[$i]);
+                                        $title = $val['s']['title'];
+                                        
+                                        echo "<li>";
+                                        
+                                        if($_SESSION["d".$title]==1)
+                                        {
+                                            echo " <a id=\"d$ids\" href=\"".$this->base."/mss/chart/?height=$cheight&width=$cwidth&color=$color\" class=\"thickbox active\">".$val['s']['title']."</a>";
+                                        }else
+                                        {
+                                            echo " <a id=\"d$ids\" href=\"".$this->base."/mss/chart/?height=$cheight&width=$cwidth&color=$color\" class=\"thickbox\">".$val['s']['title']."</a>";
+                                        }
+                                        
+                                        echo "</li>";
+                                        $i++;
+                                    } //   foreach($plays_mss as $key => $val)
+                                
+                                    
+                            echo "</ul>";
+                        echo "</div>
+                        </div>";
+	                
+                        open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/mss/downloadschart/",false,"$path");
+	                } //            if($stats)
+                ?>
+            </div>
+        </div>
+    </div>

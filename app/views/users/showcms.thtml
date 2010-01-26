@@ -1,0 +1,12 @@
+<? $this->pageTitle = 'Motion Music Manager'; ?>
+
+<div class="page">
+<?php
+
+	echo $results['Cms']['description'];
+?>
+</div>
+<div style="clear:both;"></div>	
+
+
+

@@ -1,0 +1,14 @@
+<? $this->pageTitle = 'Motion Music Manager Facebook Statistics'; ?>
+<?php
+echo "<h2> Facebook Band Statistics</h2>";
+echo $html->link('Back','/fbs/cmslist/');
+echo "<br>";
+$count=1;
+	foreach($result as $key => $val)
+	{
+		$id= $val['Fb']['login_id'];
+		$etime= $val['Fb']['etime'];
+		echo "<strong> $count &nbsp; : &nbsp; ".$html->link($val['Fb']['name'],"/fbs/userlist/?id=$id&etime=$etime")." <br> </strong>";	
+		$count ++;
+	} // foreach($result as $key => $val)
+?>

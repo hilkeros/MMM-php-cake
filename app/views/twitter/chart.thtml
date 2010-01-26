@@ -1,0 +1,196 @@
+<?php   $this->pageTitle = 'Motion Music Manager Statistics';
+        
+	$type= $session->read('type');              // type ( channel , friends , sucbscribers , views , comments) ,
+	$lastdate = $session->read('lastdate');     // lastdate ( Last week , Last month , Last year)
+	$opt= $session->read('opt');                // opt (Day by day / cumulative )
+     
+	$base= $this->base; 
+        $path= "http://".$_SERVER['SERVER_NAME'].$this->webroot;   
+        $baseurl = $this->base."/twitter/chart/?height=$cheight&width=$cwidth";
+	   
+	// set global baseurl & base
+	echo "<script type=text/javascript>
+		var baseurl = '$baseurl';
+		var base = '$base'; ";
+		
+               	if($flag==1)
+		{
+			echo "tb_remove();";
+			echo "var bandid= '$bandid';";
+			
+		?>
+			document.location.href = base+"/dashboard/index/?bandid="+bandid;
+		<?php
+		}
+		
+	echo "</script>";
+	
+        if(isset($javascript)):
+            echo($javascript->link("tab"));
+	    echo($javascript->link("twitterchart"));
+        endif;
+	
+?>
+
+    <script type="text/javascript">
+        <?php
+            if($type=='follower')
+            {
+                echo "TabView.switchTab(0,0);";
+            }
+            elseif($type=='following')
+            {
+                echo "TabView.switchTab(0,1);";
+            }
+            elseif($type=='tweets')
+            {
+                echo "TabView.switchTab(0,2);";
+            }
+            elseif($type=='favorites')
+            {
+                echo "TabView.switchTab(0,3);";
+            }
+            
+        ?>
+    </script>
+    
+    <?php
+    
+                /*
+                   Date array
+                */
+                $x['w'] = "Last Week";
+                $x['m'] = "Last Month";
+                $x['y'] = "Last Year";
+                
+                 $colors=array('#FF6600','#688600','#150005','#505000','#050895','#750031','#550031','#55CC31','#CCFF31','#55FF00','#FF0031');
+    ?>
+
+
+    <div class="TabView" id="TabView1">
+        <!--Tabs-->
+        <div class="Tabs"><a>Followers</a> <a>Following</a> <a>Tweets</a><a>Favorites</a></div>
+        <!--Pages-->
+        <div class="Pages">
+            <!--Page 1-->
+            <div class="Page">
+                <?php
+                  
+                echo "<div class=TabUpdate>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/frdate',$x,$lastdate,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/fropt',array('d'=>'Day-by-day','c'=>'Cumulative'),$opt,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\"> <a id=\"frlink\" href=\"\" class=\"thickbox update\">Update</a> </div>
+                          <div style=\"clear:both;\"> </div>";
+                     if($opt=='c')
+		   {
+		   echo "<table class=white>
+				<tr>
+					<td>	<strong> Total Gain </strong> </td>
+					<td>	$frtotal </td>
+				
+					<td>
+						<strong> Today Gain </strong> </td>
+					<td>	$frdiff ( $frpercentage %)  </td>
+				
+					<td>   <strong> Weekly Gain </strong> </td>
+					<td>	$frwdiff ( $frwpercentage % )  </td>
+				</tr>
+			</table>";
+		   }
+                echo "</div>";
+                open_flash_chart_object($width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/twitter/followerchart/",false,"$path");
+                ?>
+            </div>
+            <!--Page 2-->
+            <div class="Page">
+                <?php
+                   
+                echo "<div class=TabUpdate>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/fgdate',$x,$lastdate,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/fgopt',array('d'=>'Day-by-day','c'=>'Cumulative'),$opt,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\"> <a id=\"fglink\" href=\"\" class=\"thickbox update\">Update</a> </div>
+                    <div style=\"clear:both;\"> </div>";
+                    if($opt=='c')
+                    {
+                    echo "<table class=white>
+				<tr>
+					<td>	<strong> Total Gain </strong> </td>
+					<td>	$fgtotal	 </td>
+				
+					<td>
+						<strong> Today Gain </strong> </td>
+					<td>	$fgdiff ( $fgpercentage %)  </td>
+				
+					<td>   <strong> Weekly Gain </strong> </td>
+					<td>	$fgwdiff ( $fgwpercentage % )  </td>
+				</tr>
+			</table>";
+		   }
+                echo "</div>";
+                open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/twitter/followingchart/",false,"$path");
+                ?>
+            </div>
+            <div class="Page">
+            <!--Page 3 -->
+             <?php
+                  
+                echo "<div class=TabUpdate>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/tdate',$x,$lastdate,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/topt',array('d'=>'Day-by-day','c'=>'Cumulative'),$opt,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\"> <a id=\"tlink\" href=\"\" class=\"thickbox update\">Update</a> </div>
+                    <div style=\"clear:both;\"> </div>";
+                    if($opt=='c')
+                    {
+                    echo "<table class=white>
+				<tr>
+					<td>	<strong> Total Gain </strong> </td>
+					<td>	$ttotal	 </td>
+				
+					<td>
+						<strong> Today Gain </strong> </td>
+					<td>	$tdiff ( $tpercentage %)  </td>
+				
+					<td>   <strong> Weekly Gain </strong> </td>
+					<td>	$twdiff ( $twpercentage % )  </td>
+				</tr>
+			</table>";
+		   }
+                echo "</div>";
+                open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/twitter/tweetschart/",false,"$path");
+                ?>
+            </div>
+            <div class="Page">
+            <!--Page 4 -->
+             <?php
+                  
+                echo "<div class=TabUpdate>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/fdate',$x,$lastdate,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/fopt',array('d'=>'Day-by-day','c'=>'Cumulative'),$opt,array('class'=>'selectDate'))."</div>";
+                    echo "<div class=\"chart-col\"> <a id=\"flink\" href=\"\" class=\"thickbox update\">Update</a> </div>
+                    <div style=\"clear:both;\"> </div>";
+                    if($opt=='c')
+                    {
+                    echo "<table class=white>
+				<tr>
+					<td>	<strong> Total Gain </strong> </td>
+					<td>	$ftotal	 </td>
+				
+					<td>
+						<strong> Today Gain </strong> </td>
+					<td>	$fdiff ( $fpercentage %)  </td>
+				
+					<td>   <strong> Weekly Gain </strong> </td>
+					<td>	$fwdiff ( $fwpercentage % )  </td>
+				</tr>
+			</table>";
+		   }
+                echo "</div>";
+                open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/twitter/favoriteschart/",false,"$path");
+                ?>
+            </div>
+            
+            
+            
+           
+        </div>
+    </div>

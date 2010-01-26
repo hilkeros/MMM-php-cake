@@ -1,0 +1,8 @@
+<div class="header"><div id="header-account">Hello Guest </div></div><div class="content"><div class='fbconnect_welcome'><img src='http://pakt.com/scripts/facebook/connect/img/connect_logo.jpg' class='logo' />Welcome to a demo of the Quick Start Facebook Connect PHP API.  This is an optimized version of Facebook's Runaround demo that allows you to quickly implement the FB Connect PHP library onto your website.<br/><br/>You can also check out a FB Connect <a href='http://www.pakt.com/pakt/?id=5e17b48f5679ab47&t=How_to_add_Facebook_Connect_to_your_website_using_PHP_API' title='Facebook Connect Tutorial'>setup tutorial</a> as well as the <a href='http://code.google.com/p/facebook-connect-php5-library/downloads/list' title='Facebook Connect PHP library'>code library</a> used for this demo.</div><div class="fbconnect_title_wrapper"><h2>Login to this application using facebook</h2></div><div class="fbconnect_login"><a href="#" onclick="FB.Connect.requireSession(); return false;" >
+		<img id="fb_login_image" src="http://static.ak.fbcdn.net/images/fbconnect/login-buttons/connect_light_medium_long.gif" alt="Connect"/>
+
+		</a></div><div class='footer'>demo by <a href='http://www.facebook.com/profile.php?id=1174181864'>Chris Weitenberner</a></div></div><script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+		 <script type="text/javascript">
+			 FB.init("a40d686f305f666382ce6ac7369bb9cb", "xd_receiver.htm");
+		 </script>
+		 <script type="text/javascript">window.onload = function() { facebook_onload(false); };</script></body></html>

@@ -1,0 +1,19 @@
+<? $this->pageTitle = 'Motion Music Manager MySpace Statistics'; ?>
+<br />
+<h2>Band Profile List</h2>
+
+<br /><br />
+
+<?php
+$count=1;
+	
+	foreach($results as $key => $val)
+	{
+	$id=$val['Msslogin']['mss_id'];
+	$name=$val['Msslogin']['name'];
+	$etime=$val['Msslogin']['etime'];
+
+		echo "<strong> $count &nbsp; : &nbsp;&nbsp; ".$html->link($name,'/mss/statistics/?id='.$id.'&etime='.$etime)."</strong><br><br>";
+		$count ++;
+	} // foreach($results as $key => $val)
+?>

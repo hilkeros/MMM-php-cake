@@ -1,0 +1,49 @@
+<?php
+// Sets height and width
+$flashChart->begin(400, 250 ,'Date','Play Count',false);
+
+// loop to get data for groups & listerners
+foreach($record as $key => $val)
+	{
+	$et=date('d-m-Y',$val['a']['etime']);
+	$etime[]= $et;
+	$listeners[]=$val['a']['playcount'];
+	$server = $_SERVER['SERVER_NAME'];
+	$path = $this->base;
+	} // foreach($results as $key => $val)
+
+// set chart label , title and x axis heading style
+	$flashChart->labels($etime);
+	$flashChart->title('Date - Play Count');
+	$flashChart->set_x_style( 10, 'gray' , 2 );   // 1=horizental heading , 2= between horizental & vertical heading , 3= vertical heading
+	$min = min($listeners);
+	$max = max($listeners);
+	if($min>5)	
+	{
+		$min=$min-5;
+	} // 	if($min>5)	
+	
+	if($max<5)
+	{	
+		$max=$max+5;
+	} // if($max<5)
+	$max = (5-($max % 5))+$max;
+	$min = $min-($min % 5);
+
+	$flashChart->set_y_min($min);
+	$flashChart->set_y_max($max);	
+// Register each data set with its information.
+$data = array(
+'Hits' => array('color' => '#a457856',
+'font_size' => 11,
+'data' => $listeners,
+'graph_style' => 'line',
+)
+);
+
+$flashChart->setData($data);
+// Show the graph
+echo $flashChart->render();
+?>
+
+

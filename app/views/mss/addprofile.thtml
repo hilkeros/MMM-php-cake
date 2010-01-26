@@ -1,0 +1,15 @@
+<? $this->pageTitle = 'Motion Music Manager MySpace Statistics'; ?>
+<br />
+
+<h2>MySpace Statistics</h2>
+<br /><br />
+
+<?php
+	
+	echo "<form name=mss method=post>";
+	echo "Please enter Profile url".$html->input('Msslogin/user_id',array('size'=>100));
+	echo "e.g  http://profile.myspace.com/index.cfm?fuseaction=user.viewprofile&friendid=xxxxxxxx";
+	echo "<br><br>";
+	echo $html->submit('Submit');
+	echo "</form>";
+?>

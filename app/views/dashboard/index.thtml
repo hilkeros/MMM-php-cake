@@ -1,0 +1,786 @@
+<? $this->pageTitle = 'Motion Music Manager Statistics';
+
+
+	$base= $this->base;
+echo "	<script type=text/javascript>
+		var base = '$base';
+	</script>";
+	
+echo "<script type=text/javascript>
+	var url = '".$html->url("/mss/gethomepage/")."';
+</script>";
+
+if(isset($javascript)):
+        echo($javascript->link("dashboard.js"));
+endif;
+?>
+
+<?php
+	$count=1;
+        $count=1;
+        $path= $this->base;
+	
+	if($dsetting=='E')
+	{
+	
+	 echo "<style type=\"text/css\">
+		#contentSummary { display: none; }
+	       </style>";
+	}
+		
+        echo "
+	<div class=page>";
+		if ($session->check('Message.flash')) // flash messages
+		{
+			$session->flash();
+		} // if ($session->check('Message.flash'))
+		
+	echo 	"<div id=\"contentSummary\">";
+			if($mss==1)
+			{
+		echo 	"<div class=summary>
+				<table align=center class=dashbox cellspacing=0 border=0>
+					<tr>
+							<td colspan=3 class=\"summaryhead\"><a href=$mssUrl TARGET=_blank>".$html->image('myspace.png',array('border'=>0))."</a></td>
+					</tr>
+					<tr>
+							<td class=\"summarytext\">Views</td>
+							<td class=\"summarystats\">".number_format($mssviews,0,',',' ')."</td>
+							<td class=\"summaryimg \">";
+								if($mssViewsPercentage>0)
+								{
+									echo $mssViewsPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($mssViewsPercentage<0)
+								{
+									echo abs($mssViewsPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+							
+						echo 	"</td>
+					</tr>
+					<tr>
+							<td class=summarytext>Friends</td>
+							<td class=\"summarystats\">".number_format($mssfriends,0,',',' ')."</td>
+							<td class=\"summaryimg\">";
+								if($mssFriendsPercentage>0)
+								{
+									echo $mssFriendsPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($mssFriendsPercentage<0)
+								{
+									echo abs($mssFriendsPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+						echo 	"</td>
+					</tr>
+					<tr>
+							<td class=summarytext>Comments</td>
+							<td class=\"summarystats\">".number_format($msscomments,0,',',' ')."</td>
+							<td class=\"summaryimg\">";
+								if($mssCommentsPercentage>0)
+								{
+									echo $mssCommentsPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($mssCommentsPercentage<0)
+								{
+									echo abs($mssCommentsPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+						echo 	"</td>
+					</tr>
+					<tr>
+							<td class=summarytext>Song plays</td>
+							<td class=\"summarystats\" >".number_format($mssplays,0,',',' ')."</td>
+							<td class=\"summaryimg\">";
+								if($mssPlaysPercentage>0)
+								{
+									echo $mssPlaysPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($mssPlaysPercentage<0)
+								{
+									echo abs($mssPlaysPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+						echo 	"</td>
+					</tr>
+				</table>
+				
+				<div class=\"summary-bottom\">
+						  <a id=\"myspace\" href=\"$path/mss/chart/?id=$id&bandid=$bandid\" class=\"thickbox statslogin\">Stats</a> /  <a href=\"http://www.myspace.com\" target=\"_blank\" class=\"statslogin\">Login</a>
+				</div>
+			</div>";
+			}
+			else
+			{
+				echo 	"
+				<div class=\"summaryimage\">".$html->image('myspace.png')."
+				<div class=\"summary-nodata\"> no data available </div>
+				<div class=\"summary-settings\"> go to the <a href=\"$this->base/band/manage/?bandid=$bandid\">settings</a> page to activate your account</div>
+				</div>
+					";
+			
+			}
+			
+			if($yt==1)
+			{
+			
+		echo	"<div class=summary>
+				<table align=center class=dashbox cellspacing=0 border=0>
+					<tr>
+							<td colspan=3 class=\"summaryhead\"><a href=$ytsUrl TARGET=_blank>".$html->image('youtube.png',array('border'=>0))."</a></td>
+					</tr>
+					<tr>
+							<td class=\"summarytext\">Views</td>
+							<td class=\"summarystats\">".number_format($ytViews,0,',',' ')."</td>
+							<td class=\"summaryimg\">";
+								if($ytViewsPercentage>0)
+								{
+									echo $ytViewsPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($ytViewsPercentage<0)
+								{
+									echo abs($ytViewsPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+						echo 	"</td>
+					</tr>
+					<tr>
+							<td class=summarytext>Friends</td>
+							<td class=\"summarystats\">".number_format($ytFriends,0,',',' ')."</td>
+							<td class=\"summaryimg\">";
+								if($ytFriendsPercentage>0)
+								{
+									echo $ytFriendsPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($ytFriendsPercentage<0)
+								{
+									echo abs($ytFriendsPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+						echo 	"</td>
+					</tr>
+					<tr>
+							<td class=summarytext>Subscribers</td>
+							<td class=\"summarystats\">".number_format($ytSubscribers,0,',',' ')."</td>
+							<td class=\"summaryimg\">";
+								if($ytSubscribersPercentage>0)
+								{
+									echo $ytSubscribersPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($ytSubscribersPercentage<0)
+								{
+									echo abs($ytSubscribersPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+						echo 	"</td>
+					</tr>
+					<tr>
+							<td class=summarytext>Plays</td>
+							<td class=\"summarystats\">".number_format($ytPlays,0,',',' ')."</td>
+							<td class=\"summaryimg\">";
+								if($ytPlaysPercentage>0)
+								{
+									echo $ytPlaysPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($ytPlaysPercentage<0)
+								{
+									echo abs($ytPlaysPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+						echo 	"</td>
+					</tr>
+				</table>	
+					
+					<div class=\"summary-bottom\">
+							 <a id=\"yts\" href=\"$path/yts/chart/?id=$yt_id&bandid=$bandid\" class=\"thickbox statslogin\">Stats</a> / <a href=\"http://www.youtube.com\" class=\"statslogin\">Login</a>
+					</div>
+			</div>";
+			
+			}
+			else
+			{
+				echo 	"<div class=\"summaryimage\">".$html->image('youtube.png')."
+						<div class=\"summary-nodata\"> no data available </div>
+						<div class=\"summary-settings\"> go to the <a href=\"$this->base/band/manage/?bandid=$bandid\">settings</a> page to activate your account</div>
+				</div>";
+			}
+			
+			
+			
+			if($fbs==1)
+			{
+			
+		echo 	"<div class=summary>
+				<table align=center class=dashbox cellspacing=0 border=0>
+					<tr>
+							<td colspan=3 class=\"summaryhead\"><a href=$fbsUrl TARGET=_blank>".$html->image('facebook.png',array('border'=>0))."</a></td>
+					</tr>
+					<tr>
+							<td class=\"summarytext\">Page fans</td>
+							<td class=\"summarystats\">".number_format($fancount,0,',',' ')."</td>
+							<td class=\"summaryimg\">";
+								if($fbFansPercentage>0)
+								{
+									echo $fbFansPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($fbFansPercentage<0)
+								{
+									echo abs($fbFansPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+							echo "</td>
+					</tr>
+					<tr>
+							<td class=summarytext>Members</td>
+							<td class=\"summarystats\">".number_format($member,0,',',' ')."</td>
+							<td class=\"summaryimg\">";
+								if($fbMembersPercentage>0)
+								{
+									echo $fbMembersPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($fbMembersPercentage<0)
+								{
+									echo abs($fbMembersPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+						echo 	"</td>
+					</tr>
+					
+				</table>
+					<div class=\"summary-bottom\" style=\"margin-top:65px;\">
+					
+							 <a id=\"fbs\" href=\"$path/fbs/chart/?id=$login_id&bandid=$bandid\" class=\"thickbox statslogin\">Stats</a> / <a href=\"http://www.facebook.com\" class=\"statslogin\">Login</a>
+							 
+					</div>
+			</div>";
+			
+			}
+			else
+			{
+				echo 	"<div class=\"summaryimage\">".$html->image('facebook.png')."
+						<div class=\"summary-nodata\"> no data available </div>
+						<div class=\"summary-settings\"> go to the <a href=\"$this->base/band/manage/?bandid=$bandid\">settings</a> page to activate your account</div>
+				</div>";
+			}
+			
+			if($lfm==1)
+			{
+		echo 	"<div class=summary>
+				<table align=center class=dashbox cellspacing=0 border=0>
+					<tr>
+							<td colspan=3 class=\"summaryhead\"><a href=$lfmsUrl TARGET=_blank>".$html->image('lastfm.png',array('border'=>0))."</a></td>
+					</tr>
+					<tr>
+							<td class=\"summarytext\">Listeners</td>
+							<td class=\"summarystats\">".number_format($listener,0,',',' ')."</td>
+							<td class=\"summaryimg\" style=\"text-align:right;\">";
+							
+								if($lfmPercentage>0)
+								{
+									echo $lfmPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($lfmPercentage<0)
+								{
+									echo abs($lfmPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+							
+						echo "</td>
+					</tr>
+					<tr>
+							<td class=\"summarytext\">Plays</td>
+							<td class=\"summarystats\">".number_format($plays,0,',',' ')."</td>
+							<td class=\"summaryimg\" style=\"text-align:right;\">";
+							
+								if($lfmPlaysPercentage>0)
+								{
+									echo $lfmPlaysPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($lfmPlaysPercentage<0)
+								{
+									echo abs($lfmPlaysPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+							
+						echo "</td>
+					</tr>
+					
+				</table>
+					<div class=\"summary-bottom\" style=\"margin-top:65px;\">
+							<a id=\"lfms\" href=\"$path/lfms/chart/?id=$lfm_m_id&bandid=$bandid\" class=\"thickbox statslogin\">Stats</a> / <a href=\"http://www.last.fm\" class=\"statslogin\">Login</a>
+					</div>
+			</div>";
+		
+			}
+			else
+			{
+				echo 	"<div class=\"summaryimage\">".$html->image('lastfm.png')."
+						<div class=\"summary-nodata\"> no data available </div>
+						<div class=\"summary-settings\"> go to the <a href=\"$this->base/band/manage/?bandid=$bandid\">settings</a> page to activate your account</div>
+				</div>";
+			}
+	echo 	"<div style=clear:both;></div>
+		</div>";
+		
+
+	echo 	"<div class=expandline>
+			
+				<div id=\"DivLinkImg\" style=\"text-align:right;\">
+					
+					<ul>
+						<li>
+							<div style=\"border-bottom: 1px solid #B0B0B0;width=100%;\">
+							
+								<div id=\"expand-up\">
+									
+									<a id=\"imageDivLinkup\" onmouseover=\"document.expandup.src='".$this->webroot."img/expand_up_hover.png'\" onmouseout=\"document.expandup.src='".$this->webroot."img/expand_up.png'\" href=\"#\" onClick=\"javascript:toggle('contentSummary', 'imageDivLinkup' ,'appTag-img');\">".$html->image('expand_up.png',array('name'=>'expandup'))."</a>
+								</div>
+							</div>
+						</li>
+					
+						<li>
+							<div id=\"appTag\"> ";
+							 if($dsetting=='C')
+								echo "<div id=\"appTag-img\" style=\"display:none;\">".$html->image('appTags.png')."</div>";
+							else
+								echo "<div id=\"appTag-img\" style=\"display:block;\">".$html->image('appTags.png')."</div>";
+							echo "<div>We are working hard on new features. Please send us feedback via <a href=\"$path/dashboard/feedback/\" class=\"thickbox\" id=\"feedback-form\"> this form </a></div>
+							</div>
+							<div id=\"imageDivLinkimg\"> ";
+								
+								  if($dsetting=='E')
+									echo "Expand";
+								  else
+									echo "Collapse";
+							echo "
+							</div>
+							<div style=\"clear:both;\"> </div>
+						</li>
+					
+						<li>
+							<div style=\"border-top: 1px solid #B0B0B0;width=100%;\">
+								<div id=\"expand-down\">
+									&nbsp;
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>";
+			echo "<div class=expand></div>
+			<div style=clear:both;>&nbsp;</div>";
+		
+			
+		echo "	
+			<div style=clear:both;>&nbsp;</div>  ";
+		
+		
+		echo	"<div id=\"twitter-container\">
+				<div id=\"twitter-result\" class=\"form-result\"> </div>
+				<div id=\"facebook-result\" class=\"form-result\"> </div>
+				<div id=\"myspace-result\" class=\"form-result\"> </div>";
+				if($twt)
+				{
+				echo "
+				<div class=\"twitter-summary\">
+					<table align=center class=dashbox cellspacing=0 border=0 style=\"margin: 0px;\">
+					<tr>
+							
+							<td colspan=3 class=\"summaryhead\"><a href=$twtUrl TARGET=_blank>".$html->image('publish/twitter.png',array('border'=>0))."</a></td>
+					</tr>
+					<tr>
+							<td class=\"summarytext\">Followers</td>
+							<td class=\"summarystats\">".number_format($twtFollower,0,',',' ')."</td>
+							<td class=\"summaryimg\">";
+								if($twtFollowerPercentage>0)
+								{
+									echo $twtFollowerPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($twtFollowerPercentage<0)
+								{
+									echo abs($twtFollowerPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+						echo 	"</td>
+					</tr>
+					<tr>
+							<td class=summarytext>Following</td>
+							<td class=\"summarystats\">".number_format($twtFollowing,0,',',' ')."</td>
+							<td class=\"summaryimg\">";
+								if($twtFollowingPercentage>0)
+								{
+									echo $twtFollowingPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($twtFollowingPercentage<0)
+								{
+									echo abs($twtFollowingPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+						echo 	"</td>
+					</tr>
+					<tr>
+							<td class=summarytext>Tweets</td>
+							<td class=\"summarystats\">".number_format($twtTweets,0,',',' ')."</td>
+							<td class=\"summaryimg\">";
+								if($twtTweetsPercentage>0)
+								{
+									echo $twtTweetsPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($twtTweetsPercentage<0)
+								{
+									echo abs($twtTweetsPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+						echo 	"</td>
+					</tr>
+					<tr>
+							<td class=summarytext>Favorites</td>
+							<td class=\"summarystats\">".number_format($twtFavorites,0,',',' ')."</td>
+							<td class=\"summaryimg\">";
+								if($twtFavoritesPercentage>0)
+								{
+									echo $twtFavoritesPercentage." % ".$html->image('up_icon.png');
+								}
+								elseif($twtFavoritesPercentage<0)
+								{
+									echo abs($twtFavoritesPercentage)." % ".$html->image('down_icon.png');
+								}
+								else
+								{
+									echo $html->image('circle_icon.png');
+								}
+						echo 	"</td>
+					</tr>
+				</table>	
+					
+					<div class=\"summary-bottom\" style=\"margin-top:10px;\">
+							 <a id=\"twt\" href=\"$path/twitter/chart/?id=$twt_user_id&bandid=$bandid\" class=\"thickbox statslogin\">Stats</a> / <a href=\"http://twitter.com/\" target=\"_blank\" class=\"statslogin\">Login</a>
+					</div>
+				</div>
+				";
+				}
+				else
+				{
+				echo 	"<div class=\"twitter-empty-summary\">".$html->image('publish/twitter.png')."
+						<div class=\"summary-nodata\"> no data available </div>
+						<div class=\"summary-settings\"> go to the <a href=\"$this->base/band/manage/?bandid=$bandid\">settings</a> page to activate your account</div>
+				</div>";
+				}
+							
+				echo "
+				
+				<input name=\"twitterid\" id=\"twitterid\" type=\"hidden\" value=\"$twt_user_id\">
+				".$html->hidden('Twitter/bandid',array('value'=>$bandid,'name'=>'TwitterBandid'))."
+				
+				
+				<div id=\"twitter-publish\">
+				<div id=\"dashboard-status-update\">
+				<form id=\"dashboard-form\" name=\"twtform\" method=\"post\" >
+				".$html->hidden('Dashboard/bandid',array('value'=>$bandid))."
+					<div id=\"twt-status-message\">
+						<div style=\"margin:0px;\">";					
+						
+							echo $html->textarea('Dashboard/status',array('rows'=>4,'cols'=>$col,'style'=>'margin:0px auto;background-color:#EDEDED;margin:0px;width:378px;','onkeyup'=>'limiter()'));
+						
+					echo 	"</div>";
+						/*
+						<div id=\"shorten-url\">
+							<div id=\"url\"style=\"float:left;color:#25AAE1;padding-left:15px;\"> shorten url </div>
+							
+							<div style=\"clear:both;\"> </div> ";
+							if($twt_user_id==-1)
+							{
+								echo $html->input('Dashboard/shorten',array('size'=>$size,'disabled'=>'disabled','style'=>'margin:0px;'));
+							}
+							else
+							{
+								echo $html->input('Dashboard/shorten',array('size'=>$size,'style'=>'margin:0px;'));
+							}
+							echo "
+						</div>
+						*/
+						echo "
+						
+						<div id=\"status\" style=\"padding-top:10px;float:left;\"> ";
+						echo $html->input('Dashboard/submit', array('type'=>'image','src'=>$this->webroot.'img/publish/updateStatusBtn.png'));
+						echo "
+						</div>
+						<div id=\"update-block\" style=\"float:left;padding-top:10px;padding-left:5px;\">
+							
+								<div id=\"socialsite-update-tag\">
+									<div class=\"socialsite\">";
+									if($twt_state)
+									{
+										echo "<input type=\"checkbox\" id=\"DashboardTwt\" checked=\"checked\" name=\"data[Dashboard][twt]\">";
+									}
+									else
+									{
+										echo "<input type=\"checkbox\" id=\"DashboardTwt\" name=\"data[Dashboard][twt]\">";
+									}
+				
+										echo "twitter
+									</div>
+									
+									<div class=\"socialsite\">";
+									if($fbs_profile=='1')
+									{
+										echo "<input type=\"checkbox\" id=\"DashboardFbsProfile\" checked=\"checked\" name=\"data[Dashboard][fbs_profile]\">";
+									}
+									else
+									{
+										echo "<input type=\"checkbox\" id=\"DashboardFbsProfile\" name=\"data[Dashboard][fbs_profile]\">";
+									}
+					
+									
+										echo "facebook personal profile
+									</div>
+									
+									<div class=\"socialsite\">";
+									if($fbs_page=='1')
+									{
+										echo "<input type=\"checkbox\" id=\"DashboardFbsPage\" checked=\"checked\" name=\"data[Dashboard][fbs_page]\">";
+									}
+									else
+									{
+										echo "<input type=\"checkbox\" id=\"DashboardFbsPage\" name=\"data[Dashboard][fbs_page]\">";
+									}
+									
+										echo "facebook page
+									</div>
+									<div class=\"socialsite\">";
+									if($mss_status=='1')
+									{
+										echo "<input type=\"checkbox\" id=\"DashboardMss\" checked=\"checked\" name=\"data[Dashboard][mss]\">";
+									}
+									else
+									{
+										echo "<input type=\"checkbox\" id=\"DashboardMss\" name=\"data[Dashboard][mss]\">";
+									}
+									
+										echo "myspace
+									</div>
+									
+								</div>
+							
+						</div>
+						<div id=\"status-number\" style=\"float:left;\">
+							<script language=javascript>
+								document.write(\"<input type=text id=limitcount name=limit size=$number_size readonly value=\"+count+\">\");
+							</script>
+						
+						</div>
+						
+					</div>
+										
+					<div class=\"twitter-DMs\" id=\"tweet-update-block\">
+						<div class=\"twitter-small-summary\" style=\"margin:0px;\">
+							<div class=\"twitter-img\">
+							 ".$html->image('publish/latestUpdateTxt.png')."</div>
+						</div>
+						<div class=\"twitter-messages\" id=\"tweets-update-messages\" style=\"margin-left:0px;\"> 
+							<div id=\"tweets_update_message\">
+								 
+							</div>					
+						</div>
+						<div class=\"twt-bottom-border\" style=\"margin:0px;\"> </div>
+					</div>
+					
+					<div style=\"clear:both;\"> </div>
+					<div id=\"update-status\"> ";
+						
+						/*
+						<div id=\"status\" style=\"float:left;margin-left:192px;\"> ";
+						// $html->input('Dashboard/submit', array('type'=>'image','src'=>$this->webroot.'img/publish/updateStatusBtn.png','onmouseover'=>"this.src='".$this->webroot."img/publish/updateStatusOver.png'",'onmouseout'=>"this.src='".$this->webroot."img/publish/updateStatusBtn'"))."
+						echo $html->input('Dashboard/submit', array('type'=>'image','src'=>$this->webroot.'img/publish/updateStatusBtn.png'));
+						echo "
+						</div>
+						
+						echo "
+						<div id=\"update-block\" style=\"float:right;margin-top:10px;\">
+							<div id=to>
+								<div id=\"socialsite-update-tag\">
+									<div class=\"socialsite\">";
+										echo "<input type=\"checkbox\" id=\"DashboardTwt\" checked=\"checked\" name=\"data[Dashboard][twt]\">";
+										
+									echo "twitter </div>
+									<div class=tosocialsite>facebook (coming soon)</div>
+									<div class=tosocialsite>myspace (coming soon)</div>
+								</div>
+							</div>
+						</div>
+						
+						*/
+						echo "
+					</div>
+				</form>
+				</div> 
+				</div>
+				
+				<div style=\"clear:both;\"> </div>
+				<div id=\"twt-summary-box\">
+					
+					
+					<div class=\"twitter-empty-DMs\" id=\"tweet-empty-block\"> 
+						<div class=\"twitter-small-summary\">
+								
+								<div class=\"twitter-img\">
+								".$html->image('publish/tweetsTxt.png')."
+								</div>
+								
+								<div class=\"twitter-img\" id=\"tweet-msg\">
+								".$html->image('publish/downArrow.png',array("onClick"=>"twttoggle('tweet-empty-block','tweet-block')"))."
+								</div>
+								
+						</div>
+					</div>
+					
+					<div class=\"twitter-DMs\" id=\"tweet-block\">
+						<div class=\"twitter-small-summary\">
+							
+							<div class=\"twitter-img\"> <span id=\"tweets_number\"> </span>
+							".$html->image('publish/tweetsTxt.png')."
+							</div>
+							
+							<div class=\"twitter-img\" id=\"tweet-msg\">
+							".$html->image('publish/upArrow.png',array("onClick"=>"twttoggle('tweet-block','tweet-empty-block')"))."
+							</div>
+							
+							
+						</div>
+						
+						<div class=\"twitter-messages\" id=\"tweets-messages\"> 
+							<div id=\"twt_tweets_message\">
+								 
+							</div>
+							<div id=\"tweets-more\">
+								 more 
+							</div>
+						</div>
+						<div class=twt-bottom-border> </div>
+						
+					</div>
+					
+					<div class=\"twitter-empty-DMs\" id=\"mention-empty-block\">
+						<div class=\"twitter-small-summary\">
+								
+								<div class=\"twitter-img\">
+								".$html->image('publish/mentionsTxt.png')."
+								</div>
+								
+								<div class=\"twitter-img\" id=\"mention-msg\">
+								".$html->image('publish/downArrow.png',array("onClick"=>"twttoggle('mention-empty-block','mention-block')"))."
+								</div>
+								
+						</div>
+					</div>
+					<div class=\"twitter-DMs\" id=\"mention-block\">
+						<div class=\"twitter-small-summary\">
+							
+							<div class=\"twitter-img\"> <span id=\"mentions_number\"> </span>
+							".$html->image('publish/mentionsTxt.png')."
+							</div>
+							
+							<div class=\"twitter-img\" id=\"mention-msg\">
+							".$html->image('publish/upArrow.png',array('onClick'=>"twttoggle('mention-block','mention-empty-block')"))."
+							</div>
+							
+						</div>
+						<div class=\"twitter-messages\" id=\"mentions-messages\">
+							<div id=\"twt_mentions_message\">
+								 
+							</div>					
+							<div id=\"mentions-more\">
+								 more 
+							</div>
+						</div>
+						<div class=twt-bottom-border> </div>
+					</div>
+					
+					<div class=\"twitter-empty-DMs\" id=\"dms-empty-block\">
+						<div class=\"twitter-small-summary\">
+								
+								<div class=\"twitter-img\">
+								".$html->image('publish/directMsgTxt.png')."
+								</div>
+								
+								<div class=\"twitter-img\" id=\"dms-msg\">
+								".$html->image('publish/downArrow.png',array("onClick"=>"twttoggle('dms-empty-block','dms-block')"))."
+								</div>
+								
+						</div>
+					</div>
+					<div class=\"twitter-DMs\" id=\"dms-block\">
+						<div class=\"twitter-small-summary\">
+							
+							<div class=\"twitter-img\"> <span id=\"dms_number\"> </span>
+							".$html->image('publish/directMsgTxt.png')."
+							</div>
+							
+							<div class=\"twitter-img\" id=\"dms-msg\">
+							".$html->image('publish/upArrow.png',array("onClick"=>"twttoggle('dms-block','dms-empty-block')"))."
+							</div>
+							
+						</div>
+						<div class=\"twitter-messages\" id=\"dms-messages\">
+							<div id=\"twt_dm_message\">
+								 
+							</div>					
+							<div id=\"dms-more\">
+								 more 
+							</div>
+						</div>
+						<div class=twt-bottom-border> </div>
+						
+					</div>
+				</div>
+				<div style=\"clear:both;\"> &nbsp; </div>
+			</div> ";
+			
+echo "</div>";
+?>

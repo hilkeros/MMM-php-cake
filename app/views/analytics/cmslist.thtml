@@ -1,0 +1,38 @@
+<? $this->pageTitle = 'Motion Music Manager Last.fm Statistics'; ?>
+
+<?php
+    echo $html->css('thickbox');
+    if(isset($javascript)):
+        echo($javascript->link("jquery"));
+        echo($javascript->link("jquerys"));
+	echo($javascript->link("thickbox"));
+        echo($javascript->link("statistics"));
+    endif;
+?>
+
+<div class="board">
+	<h1 class="main">
+		Statistics for <?php if($bandname) echo $bandname; ?>
+	</h1>
+</div>
+
+<br /><br />
+<?php
+    echo "<div class=page>
+            <div id=statsalign>
+                <div class=stats>";
+                        echo $html->link('Hits','/analytics/hits/' , array('class'=>'thickbox' , 'id'=>'hits'));
+            echo "</div>
+                <div class=stats>";
+                    echo $html->link("Views",'/analytics/views/', array('class'=>'thickbox' , 'id'=>'views'));
+            echo "</div>
+                <div class=stats>";
+                    echo $html->link("Plays",'/analytics/plays/', array('class'=>'thickbox', 'id'=>'plays'));
+            echo "</div>
+                <div class=stats>";
+                    echo $html->link("Comments",'/analytics/comment/', array('class'=>'thickbox', 'id'=>'comments'));
+            echo "</div>
+            </div>
+        </div>";
+    ?>
+

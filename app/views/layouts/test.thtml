@@ -1,0 +1,39 @@
+<?php
+/**
+* Developed By :  Babar Ali
+* Dated         : Nov. 3 , 2008
+* Project 	: Motion Music Manager
+*
+*/
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+		<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+		<head>
+<head>
+<?php
+if(isset($javascript)):
+	echo($javascript->link("javascript"));
+	echo($javascript->link("fbconnect"));
+endif; 
+?>
+
+<title><?php echo $title_for_layout; ?></title>
+<?php echo $html->charset(); 
+      echo $html->css('mmm');
+      echo $html->css('thickbox');
+?>
+<link type="text/css" rel="stylesheet" href="http://pakt.com/scripts/facebook/connect/css/style.css" />
+</head>
+<body>
+	
+	<div class="container">
+		
+		<div class="content">
+				<?php
+					echo $content_for_layout;
+				?>
+		</div>
+	</div>
+</body>
+</html>

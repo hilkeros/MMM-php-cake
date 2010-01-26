@@ -1,0 +1,41 @@
+<?php
+// Sets height and width
+$flashChart->begin(400, 600 ,'Date','No. of track plays',false);
+
+// loop to get data for groups & listerners
+foreach($top_tracks as $key => $val)
+	{
+		$name[]		= 	$val['t']['name'];
+		$tracks[]	=	$val['t']['playcount'];
+	
+	} // foreach($results as $key => $val)
+
+// set chart label , title and x axis heading style 
+	$flashChart->labels($name);
+	$flashChart->title('Name - Track Plays');
+	$flashChart->set_x_style( 10, 'gray' , 2 );   // 1=horizental heading , 2= between horizental & vertical heading , 3= vertical heading
+	
+	
+	$max = max($tracks);
+	$max=$max+5;
+	$max = (5-($max % 5))+$max;
+	$flashChart->set_y_max($max);		
+
+
+// Register each data set with its information.
+
+$data = array(
+'Tracks Hits' => array('color' => '#FF6600',
+'font_size' => 10,
+'width' => 2,
+'data' => $tracks,
+'links' => $links,   // used with bar graph
+'graph_style' => 'bar',
+)
+);
+
+$flashChart->setData($data);
+// Show the graph
+echo $flashChart->render();
+?>
+

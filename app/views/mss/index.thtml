@@ -1,0 +1,197 @@
+<? $this->pageTitle = 'Motion Music Manager MySpace Statistics'; ?>
+<div class="board">
+	<h1 class="main">
+		Dashboard for <?php if($bandname) echo $bandname; ?>
+	</h1>
+</div>
+<?php
+if(isset($javascript)):
+        echo($javascript->link("jquery"));
+        echo($javascript->link("jquerys"));
+	echo($javascript->link("thickbox"));
+      
+endif; 
+?>
+
+<script type="text/javascript">
+    function pop()
+        {
+            var left = (screen.width/2)-(650/2);
+            var top = (screen.height/2)-(550/2);
+            
+            window.open("<?php echo $html->url("/mss/gethomepage/"); ?>","MySpace Profile Home Page",'location=0,menubar=0,resizable=0,scrollbars=1,width=650,height=550, top='+top+', left='+left);
+        }
+</script>
+<?php
+$count=1;
+
+
+        if(!empty($record))
+        {
+                echo $html->css('thickbox');
+                $count=1;
+		$id= $record[0]['s']['mss_id'];
+                
+                $path= $this->base;
+		
+        echo "
+        <div class=page> 
+                <div class=summary>
+		<table align=center class=color>
+				<tr>
+						<td colspan=2 align=center><h5> MySpace </h5></td>
+				</tr>
+				<tr>
+						<td><span class=textbold>profile views :</span></td>
+						<td>".$record[0]['s']['views']."</td>
+				</tr>
+				<tr>
+						<td><span class=textbold>friends :</span></td>
+						<td>".$record[0]['s']['friends']."</td>
+				</tr>
+				<tr>
+						<td><span class=textbold>comments :</span></td>
+						<td>".$record[0]['s']['comments']."</td>
+				</tr>
+				<tr>
+						<td><span class=textbold>songs plays :</span></td>
+						<td>".$record[0]['s']['plays']."</td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left class=textbold> no new messages </h4></td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left class=textbold> new friend requests</h4> </td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left class=textbold> new comments</td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left ><span class=textbold>status: </span> <span class=textsmall>Summary of stats for $bandname for MySpace</span</td>
+				</tr>
+				<tr>
+						<td colspan=2 align=center>
+                                                <a href=\"$path/mss/chart/?height=570&width=700&id=".$id."\" class=\"thickbox\"><h5 class=blue>Stats</h5></a></td>
+				</tr>
+                                <tr>
+						<td colspan=2 class=center>
+                                                <a href=\"#\" onClick=\"pop();\">Login</a></td>
+				</tr>
+				
+		</table>
+                </div>
+                
+
+		<div class=summary>
+		<table align=center class=color>
+				<tr>
+						<td colspan=2 align=center><h5> Youtube</h5></td>
+				</tr>
+				<tr>
+						<td><span class=textbold>Channel views :</span></td>
+						<td> 35002 </td>
+				</tr>
+				<tr>
+						<td><span class=textbold>friends :</span></td>
+						<td>520</td>
+				</tr>
+				<tr>
+						<td><span class=textbold>Subscribers :</span></td>
+						<td>10</td>
+				</tr>
+				
+				<tr>
+						<td colspan=2 align=left class=textbold> no new messages </h4></td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left class=textbold> new friend requests</h4> </td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left class=textbold> new comments</td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left id=youtube><span class=textbold>status: </span> <span class=textsmall>Summary of stats for $bandname for Youtube</span</td>
+				</tr>
+				<tr>
+						<td colspan=2 align=center>
+                                                <a href=\"#\" ><h5 class=blue>Stats</h5></a></td>
+				</tr>
+				
+		</table>
+                </div>
+                
+                
+                <div class=summary>
+		<table align=center class=color>
+				<tr>
+						<td colspan=2 align=center><h5> Facebook</h5></td>
+				</tr>
+				<tr>
+						<td><span class=textbold>Page Fans :</span></td>
+						<td> 22892 </td>
+				</tr>
+				<tr>
+						<td><span class=textbold>Group Members :</span></td>
+						<td>10</td>
+				</tr>
+				
+				
+				<tr>
+						<td colspan=2 align=left class=textbold> no new messages </h4></td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left class=textbold> new friend requests</h4> </td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left class=textbold> new comments</td>
+				</tr>
+				<tr >
+						<td colspan=2 align=left id=facebook ><span class=textbold>status: </span> <span class=textsmall>Summary of stats for $bandname for Facebook</span</td>
+				</tr>
+				<tr>
+						<td colspan=2 align=center>
+                                                <a href=\"#\" ><h5 class=blue>Stats</h5></a></td>
+				</tr>
+				
+		</table>
+                </div>
+                
+                
+                <div class=summary>
+		<table align=center class=color>
+				<tr>
+						<td colspan=2 align=center><h5> Last.fm</h5></td>
+				</tr>
+				<tr>
+						<td><span class=textbold>Listeners :</span></td>
+						<td> 54009 </td>
+				</tr>
+				
+				
+				<tr>
+						<td colspan=2 align=left class=textbold> no new messages </h4></td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left class=textbold> new friend requests</h4> </td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left class=textbold> new comments</td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left id=lastfm><span class=textbold>status: </span> <span class=textsmall>Summary of stats for $bandname for Last.fm</span</td>
+				</tr>
+				<tr>
+						<td colspan=2 align=center>
+                                                <a href=\"#\" ><h5 class=blue>Stats</h5></a></td>
+				</tr>
+				
+		</table>
+                </div>
+        </div>";
+
+        }
+
+    ?>        
+
+    
+

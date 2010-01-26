@@ -1,0 +1,38 @@
+<? $this->pageTitle = 'Motion Music Manager User Management'; ?>
+<?php
+echo($javascript->link("jquery"));
+$base= $this->base;
+
+echo "<script type=text/javascript>
+	var base = '$base';
+     </script>";
+
+		echo "<div class=\"band-block\">
+			<div class=settings>
+				<div class=\"steps\">Step: 3 / 6</div> 
+				<div class=\"wizardhead\">Facebook Setup</div>
+				<div class=register>";
+					
+				
+					if ($session->check('Message.flash'))
+					{	
+					echo "<div style=\"text-align:center;\">";
+						$session->flash();
+					echo "</div>";
+					}
+							
+					echo "<div style=\"padding:10px;\"></div>";
+							
+					echo "
+						<div style=\"margin: 0px auto; text-align: center;\"> Click Next to link your Facebook account to Motion Music Manager. You will be asked to log in to your Facebook account and to grant us permission for offline access to your account.</div>
+						";
+					
+				echo 	"<div class=\"nextbar\">";
+						echo $html->input('fbs/previous',array('type'=>'button','value'=>'Previous',"onClick"=>"javascript:window.location.href='".$html->url('/band/myspace/')."'",'class'=>'next'));
+						echo "<input type=\"button\" class=\"next\" value=\"Next\" onclick=\"javascript:location.href='$this->base/fbs/index/'\">";
+						echo $html->input('fbs/skip',array('type'=>'button','value'=>'Skip',"onClick"=>"javascript:window.location.href='".$html->url('/band/youtube/')."'",'class'=>'next'));
+					echo 	"</div>
+				</div>
+			</div>
+		</div>";
+?>

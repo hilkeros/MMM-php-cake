@@ -1,0 +1,54 @@
+<? $this->pageTitle = 'Motion Music Manager User Management'; ?>
+<?php
+	
+	echo "<div class=\"band-block\">";
+		echo "<div class=settings>
+				
+			<div class=\"steps\">Step: 1 / 6</div> 
+			<div class=\"wizardhead\">Band Information</div> ";
+			
+			echo "<div class=register>";
+				if ($session->check('Message.flash'))
+				{
+					$session->flash();
+				}
+				echo "<form name=band method=post>
+					<div class=\"socialTabBand\">Name <span class=\"obligatory\"> * </span></div>
+					<div class=\"socialTab\">";
+									echo $html->input('Band/name');
+									echo $html->tagErrorMsg('Band/name', 'Required field.');
+				echo    "</div>
+	
+					<div style=\"clear:both;\"></div>
+					
+					<div class=\"socialTabBand\">Email address</div>
+					<div class=\"socialTab\">";
+									echo $html->input('Band/email');
+				echo 	"</div>
+					<div style=\"clear:both;\"></div>
+					
+					<div class=\"socialTabBand\">Website</div>
+					<div class=\"socialTab\">";
+									echo $html->input('Band/website');
+				echo 	"</div>
+					<div style=\"clear:both;\"></div>
+					
+					<div class=\"socialTabBand\">Music Style</div>
+					<div class=\"socialTab\">";
+									echo $html->selecttag('Band/music_style',$genre,$s,array('class'=>'selectDate'));
+				echo 	"</div>
+									
+					
+					<div style=\"clear:both;\"></div>
+					<div class=\"nextbar\">";
+							echo $html->submit('Next',array('class'=>'next'));
+							echo $html->input('User/exit',array('type'=>'button','value'=>'Close',"onClick"=>"javascript:window.location.href='".$html->url('/dashboard/index/')."'",'class'=>'next'));
+					echo 	"</div>
+					</form>";
+			echo "</div>";
+			
+		
+echo 	"</div>
+	</div>
+	";
+?>

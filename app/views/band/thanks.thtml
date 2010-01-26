@@ -1,0 +1,31 @@
+<? $this->pageTitle = 'Motion Music Manager User Management'; ?>
+<?php
+	
+	echo "<div class=\"band-block\">
+		<div class=settings>
+			<div class=\"steps\">Finish</div> 
+			<div class=\"wizardhead\">Thanks for your Interest</div>
+			<div class=register>";
+			if ($session->check('Message.flash'))
+			{	
+			echo "<div style=\"text-align:center;\">";
+				$session->flash();
+			echo "</div>";
+			}
+			
+		echo 	"<div style=\"padding:10px;\"></div>
+				<div>";
+					echo $finish;
+			echo 	"</div>
+
+					
+					<div class=\"nextbar\">";
+				
+					
+						echo $html->input('mss/next',array('type'=>'button','value'=>'Finish',"onClick"=>"javascript:window.location.href='".$html->url("/dashboard/index/?bandid=$bandid")."'",'class'=>'next'));
+					
+				echo 	"</div>
+			</div>
+		</div>
+	</div>";
+?>

@@ -1,0 +1,44 @@
+<? $this->pageTitle = 'Motion Music Manager'; ?>
+
+	<?php
+	if ($session->check('Message.flash'))
+	{
+		$session->flash();
+	}
+		
+
+	echo "<div class=page>";
+		echo "<form name=login method=post>
+			<table border=0>
+				<tr>
+					<td>Email Address</td>
+					<td>";
+						echo $html->input('Login/email');
+						echo $html->tagErrorMsg('Login/email','Required Field');
+				echo 	"</td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td>";
+						echo $html->password('Login/password');
+						echo $html->tagErrorMsg('Login/password','Required Field');
+				echo 	"</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						".$html->link('Forgot password ?','/users/forgetpassword')."
+					</td>
+				</td>
+				<tr>
+					<td colspan=2 align=center>";
+						echo $html->submit('Login');
+				echo 	"</td>
+				</tr>
+			</table>
+		</form>
+		
+	</div>";
+	?>
+	
+	

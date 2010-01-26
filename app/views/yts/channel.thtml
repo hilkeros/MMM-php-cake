@@ -1,0 +1,19 @@
+<? $this->pageTitle = 'Motion Music Manager Youtube Statistics'; ?>
+<br />
+<?php
+echo "<h2> Youtube Channel Statistics</h2>";
+echo $html->link('Back','/yts/index/');
+echo "<br>";
+echo "<br>";
+$count=1;
+		foreach($result as $key => $ytval)
+		{
+			$id=$ytval['Yt']['yt_id'];
+			$etime=$ytval['Yt']['etime'];
+			echo "<strong>".$count."&nbsp; - &nbsp ".$html->link($ytval['Yt']['user_id'],"/yts/statistics/?id=$id&etime=$etime")."</strong><br><br>"; 				$count ++;
+
+		} // 	foreach($stats as $key => $ytval)
+echo "</table>";
+	
+	
+?>

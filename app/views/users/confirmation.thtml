@@ -1,0 +1,10 @@
+<? $this->pageTitle = 'Motion Music Manager Confirmation'; ?>
+<br />
+<h2>Confirmation</h2>
+
+Your information has been mailed to MMM team.
+<br />
+<br />
+<a onclick="closed();">Close</a>
+
+

@@ -1,0 +1,19 @@
+<? $this->pageTitle = 'Motion Music Manager page not found'; ?>
+<div class="page">
+	<?php
+	if ($session->check('Message.flash'))
+	{	
+		$session->flash();
+	}
+	?>
+    <div id="error-oops"> <p>Oops ! A false note here ! </p></div>
+    <div id="error-text">Sorry for the inconvenience. This problem will be reported to the technical team.</div>
+    <div id="error-form">
+        In the meantime you can try to hit the Back button in your browser.
+        If you think this is a crucial error , you can leave us a note via the
+        <?php
+        echo "<a href=\"$this->base/dashboard/feedback/\" class=\"thickbox\"> form <a/>";
+        ?>
+    </div>
+</div>
+

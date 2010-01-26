@@ -1,0 +1,60 @@
+<? $this->pageTitle = 'Motion Music Manager MySpace Statistics'; ?>
+
+<?php
+$count=1;
+		$id= $results[0]['s']['mss_id'];
+		$path= "http://".$_SERVER['SERVER_NAME'].$this->webroot;
+		echo "
+		<table align=center class=color>
+				<tr>
+						<td colspan=2 align=center><h5> MySpace </h5></td>
+				</tr>
+				<tr>
+						<td><span class=textbold>profile views :</span></td>
+						<td>".$results[0]['s']['views']."</td>
+				</tr>
+				<tr>
+						<td><span class=textbold>friends :</span></td>
+						<td>".$results[0]['s']['friends']."</td>
+				</tr>
+				<tr>
+						<td><span class=textbold>comments :</span></td>
+						<td>".$results[0]['s']['comments']."</td>
+				</tr>
+				<tr>
+						<td><span class=textbold>songs plays :</span></td>
+						<td>".$results[0]['s']['plays']."</td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left class=textbold> no new messages </h4></td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left class=textbold> new friend requests</h4> </td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left class=textbold> new comments</td>
+				</tr>
+				<tr>
+						<td colspan=2 align=left ><span class=textbold>status: </span> <span class=textsmall>is in your extended network</span</td>
+				</tr>
+				<tr>
+						<td colspan=2 align=center> <a href=\"#\"><h5 class=blue>Stats</h5></a></td>
+				</tr>
+				
+		</table>";
+
+
+
+/*
+		
+		echo " <strong>Total Friends :</strong> ".$results[0]['s']['friends']."<br>";
+		echo " <strong>Profile Views :</strong> ".$results[0]['s']['views']."<br>";
+		echo " <strong>Last login Date :</strong> ".$results[0]['s']['lastlogin']."<br>";
+		echo " <strong>Total Plays :</strong> ".$results[0]['s']['plays']."<br>";
+		echo " <strong>Total Downloads :</strong> ".$results[0]['s']['downloads']."<br>";
+		echo " <strong>Total Downloads Today :</strong> ".$results[0]['s']['tdownloads']."<br>";
+		echo " <strong>Total Comments :</strong> ".$results[0]['s']['comments']."<br>";
+		echo "<br><br>";
+*/
+		
+?>

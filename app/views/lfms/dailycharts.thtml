@@ -1,0 +1,61 @@
+<?php
+// Sets height and width
+$flashChart->begin(400, 250 ,'Days','Listerens',false);
+
+// loop to get data for groups & listerners
+foreach($results as $key => $val)
+	{
+	$id=$val['l']['lfm_m_id'];
+	if($diff=='w')
+	{
+		$et=date('D',$val['l']['etime']);
+	} // if($diff=='w')
+	else
+	{
+		$et=date('d-m-Y',$val['l']['etime']);
+	} // if($diff=='w')
+	$time[]= $et;
+	$hits[]=$val['l']['listeners'];
+	$server = $_SERVER['SERVER_NAME'];
+	$path = $this->base;
+	} // foreach($results as $key => $val)
+
+	for($i=0;$i<count($hits)-1;$i++)
+	{
+		$listeners[]= $hits[$i+1]-$hits[$i];
+		$etime[]= $time[$i+1];
+	}	 // for($i=0;$i<count($listeners);$++
+// set chart label , title and x axis heading style 
+
+	$flashChart->labels($etime);
+	$flashChart->title('Date - Listeners');
+	$flashChart->set_x_style( 10, 'gray' , 2 );   // 1=horizental heading , 2= between horizental & vertical heading , 3= vertical heading
+	$min = min($listeners);
+	$max = max($listeners);
+	if($min>5)
+	{
+		$min=$min-5;
+	} // if($min>5)
+	
+	
+		$max=$max+5;
+	
+	$max = (5-($max % 5))+$max;
+	$min = $min-($min % 5);
+
+	$flashChart->set_y_min($min);
+	$flashChart->set_y_max($max);		
+	
+// Register each data set with its information.
+$data = array(
+'Hits' => array('color' => '#a457856',
+'font_size' => 11,
+'data' => $listeners,
+'graph_style' => 'line_dot',
+)
+);
+
+$flashChart->setData($data);
+// Show the graph
+echo $flashChart->render();
+?>

@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<?php
+	echo $_REQUEST['submit'];
+	echo $_REQUEST['txt'];
+?>
+
+
+<script type="text/javascript">
+
+function test() {
+
+iframe = document.getElementById('i');
+iframe.src = 'http://www.myspace.com';
+
+}
+//-->
+</script>
+</head>
+<body>
+dgdfgdfgdfgdfgdfgdf
+<a href="" target="i" onmouseover="test()">buraya gel</a>
+<iframe id="rf" frameborder="0" scrolling="auto" style="width: 80%; height: 80%;" allowtransparency="true" src="http://www.myspace.com/merlijnwolsink"></iframe>
+dgdgdfgdfgfdgdfgdf
+</body>
+
+
+
+</html>

@@ -1,0 +1,108 @@
+<? $this->pageTitle = 'Motion Music Manager Views Analytics'; ?>
+<br />
+<?php
+	$base= $this->base; 
+        $path= "http://".$_SERVER['SERVER_NAME'].$this->webroot;   
+        $baseurl = $this->base."/analytics/views/?height=$cheight&width=$cwidth";
+	
+	// set global baseurl & base
+	echo "<script type=text/javascript>
+		var baseurl = '$baseurl';
+		var base = '$base';
+	      </script>";
+	
+        if(isset($javascript)):
+            echo($javascript->link("viewschart"));
+        endif;
+
+echo"<div class=TabUpdate>";
+
+	$x['w'] = "Last Week";
+	$x['m'] = "Last monthly";
+	$x['y'] = "Last Year";
+
+	echo $html->selecttag('analytic/date',$x,$lastdate);
+	echo "<a id=\"link\" href=\"\" class=\"thickbox link\">Update</a>
+        </div>";
+echo "<br>";
+echo "<strong>Click the links below to enable/disable graphs </strong>";
+
+echo "<div class=playsmenu>
+        <ul>
+                <li> ";
+			if($session->check('msv'))
+			{
+				echo $html->link('MySpace',"/analytics/views/?id=msv&height=$cheight&width=$cwidth", array('class'=>'thickbox active' ,'id'=>'ms', 'style'=>'color:#FF6600;'));
+			}
+			else
+			{
+				echo $html->link('MySpace',"/analytics/views/?id=msv&height=$cheight&width=$cwidth", array('class'=>' thickbox' ,'id'=>'ms', 'style'=>'color:#FF6600;'));			
+			}
+	echo 	"</li>
+		<li>";
+			if($session->check('ytv'))
+			{
+				echo $html->link('Youtube',"/analytics/views/?id=ytv'&height=$cheight&width=$cwidth" , array('class'=>' thickbox active' ,'id'=>'yt' ,'style'=>'color:#688600;'));
+			}
+			else
+			{
+				echo $html->link('Youtube',"/analytics/views/?id=ytv'&height=$cheight&width=$cwidth" , array('class'=>' thickbox' ,'id'=>'yt' ,'style'=>'color:#688600;'));
+			}
+			
+	echo 	"</li>
+		<li>";
+			if($session->check('lfmsv'))
+			{
+			
+				echo $html->link('Last.fm',"/analytics/views/?id=lfmsv&height=$cheight&width=$cwidth" , array('class'=>' thickbox active','id'=>'lfms' , 'style'=>'color:#150005;'));
+			}
+			else
+			{
+				echo $html->link('Last.fm',"/analytics/views/?id=lfmsv&height=$cheight&width=$cwidth" , array('class'=>' thickbox','id'=>'lfms' , 'style'=>'color:#150005;'));
+			}
+	echo 	"</li>
+		<li>
+	</ul>
+</div>";			
+
+			
+$path= "http://".$_SERVER['SERVER_NAME'].$this->webroot;
+echo "<br>";
+
+if(!empty($id))
+{
+open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/analytics/viewschart/?height=$cheight&width=$cwidth&id=$id",false,"$path");
+}
+else
+{
+open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/analytics/viewschart/?height=$cheight&width=$cwidth&",false,"$path");
+}
+?>
+
+<table class="white" align=center "width=90%">>
+	<tr>
+	<th> Statistic </th><th> Total Views </th> <th> Average Views </th>
+	</tr>
+
+<?php
+	if($session->check('msv'))
+	{
+echo 	"
+	<tr>
+	<th> MySpace</th> <td > ".$session->read('msviewscount')."</td><td bgcolor=#a457856>".$session->read('msaverage')."</td> </tr>";
+	}
+	
+	if($session->check('ytv'))
+	{
+echo "
+	<tr> <th> Youtube </th> <td> ".$session->read('ytviewscount')."</td><td>".$session->read('ytaverage')."</td> </tr>";
+	}
+	
+	if($session->check('lfmsv'))
+	{
+echo "
+	<tr> <th> Last.fm </th><td> ".$session->read('lfmviewscount')."</td><td>".$session->read('lfmaverage')."</td>
+	</tr>";
+	}
+?>
+</table>

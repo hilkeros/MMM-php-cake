@@ -1,0 +1,28 @@
+<? $this->pageTitle = 'Music Motion Manager'; ?>
+<h1>Music Motion Manager</h1>
+
+<?php 
+if($session->check('id'))
+{
+echo $html->link('Logout','/users/logout')."&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;";
+}
+else
+{
+echo $html->link('Login','/users/login')."&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;";
+}
+?>
+
+<?php echo $html->link('User Registration','/users/add');?>
+<?php
+if($session->check('id'))
+{
+	echo "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;".$html->link('Change Password','/users/changepass')."&nbsp;";
+	echo "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<strong>".$session->read('user')."&nbsp; Here</strong>";
+}
+?>
+</div>
+
+
+
+
+

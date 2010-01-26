@@ -1,0 +1,61 @@
+<? $this->pageTitle = 'Motion Music Manager User Management'; ?>
+
+<?php
+	echo "<div class=page>";
+	
+		if ($session->check('Message.flash'))
+		{
+			$session->flash();
+		}
+	
+		
+			echo "
+				<table>
+					<form name=band method=post>
+						<tr>
+							<td>
+								Name
+							</td>
+							<td>";
+								echo $html->hidden('Band/band_id',array('value'=>$results['Band']['band_id']));
+								echo $html->input('Band/name',array('value'=>$results['Band']['name']));
+								echo $html->tagErrorMsg('Band/name', 'Band name is required.');
+						echo    "</td>
+
+						</tr>
+						<tr>
+							<td>
+								Email address
+							</td>
+							<td>";
+								echo $html->input('Band/email',array('value'=>$results['Band']['email']));
+								echo $html->tagErrorMsg('Band/email', 'Invalid email address.');
+						echo 	"</td>
+						</tr>
+						<tr>
+							<td>
+								Website
+							</td>
+							<td>";
+								echo $html->input('Band/website',array('value'=>$results['Band']['website']));
+						echo 	"</td>
+						</tr>
+						<tr>
+							<td>
+								Music Style
+							</td>
+							<td>";
+								echo $html->input('Band/music_style',array('value'=>$results['Band']['music_style']));
+						echo 	"</td>
+						</tr>
+						<tr>
+							<td colspan=2 class=center>";
+								echo $html->submit('Save');
+						echo 	"</td>
+						</tr>
+					</form>
+				</table>
+			</div>";
+		
+echo 	"</div>";
+?>

@@ -1,0 +1,44 @@
+<? $this->pageTitle = 'Motion Music Manager User Management'; ?>
+<script type="text/javascript">
+	function hidediv()
+	{
+		document.getElementById('band-welcome').style.display='block';
+		document.getElementById('band-confirmation').style.display='none';
+		return true;
+	}
+</script>
+
+<?php
+		echo "<div id=\"band-welcome\">
+			<div class=settings>
+				<div class=\"steps\">Welcome</div> 
+				<div class=\"wizardhead\">Welcome to Motion Music Manager</div>
+				<div class=register>
+					<div style=\"padding:10px;\"></div>
+					<div>";
+						echo $welcome;
+				echo 	"</div>
+
+					<div class=\"nextbar\">";
+						echo $html->input('mss/next',array('type'=>'button','value'=>'Next',"onClick"=>"javascript:window.location.href='".$html->url('/band/add/')."'",'class'=>'next'));
+				echo 	"</div>
+				</div>
+			</div>
+		</div>";
+		
+		echo "<div id=\"band-confirmation\">
+			<div class=settings>
+				<div class=\"steps\">Welcome</div> 
+				<div class=\"wizardhead\">Welcome to Motion Music Manager</div> 
+				<div class=register>
+					<div style=\"padding:10px;\"></div>
+					<div>
+						A confirmation email was sent to $email We will now guide you through a setup wizard. Be aware that you will not be able to log in a second time before you confirmed your email address.			
+					</div>
+					<div class=\"nextbar\">";
+						echo $html->input('mss/next',array('type'=>'button','value'=>'Next',"onClick"=>"return hidediv();",'class'=>'next'));
+				echo 	"</div>
+				</div>		
+			</div>
+		</div>";
+?>

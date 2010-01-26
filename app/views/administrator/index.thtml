@@ -1,0 +1,15 @@
+<? $this->pageTitle = 'Motion Music Manager'; ?>
+<br />
+<h2>Admin Pannel</h2>
+
+<?php 
+	echo $html->link('User List','/administrator/userlist/');
+	echo "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;".$html->link('CMS Panel','/administrator/cmspanel/');
+	echo "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;".$html->link('Logout','/users/logout/');
+?>
+
+
+
+
+
+

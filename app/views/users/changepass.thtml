@@ -1,0 +1,36 @@
+<? $this->pageTitle = 'Motion Music Manager Password Management'; ?>
+
+
+<?php
+
+echo "<div class=page>";
+	if ($session->check('Message.flash'))
+	{
+		$session->flash();
+	}
+
+	echo "<form name=newpass method=post>";
+		echo "<table align=center border=0 width=60%>";
+		echo "<tr>";	
+		echo "<td><strong>Old Password</strong></td><td>";	
+		echo $html->password('Newpass/password');
+		echo $html->tagErrorMsg('Newpass/password','Required Field');
+		echo "</td></tr>";
+	
+		echo "<tr><td><strong>New Password</strong></td><td>";	
+		echo $html->password('Newpass/npassword');
+		echo $html->tagErrorMsg('Newpass/npassword','Required Field');
+		echo "</td></tr>";
+	
+		echo "<tr><td><strong>Confirm Password</strong></td><td>";	
+		echo $html->password('Newpass/cpassword');
+		echo $html->tagErrorMsg('Newpass/cpassword','Required Field');
+		echo "</td></tr>";
+		echo "<tr><td colspan=2 class=center>";
+		echo $html->submit('Confirm');
+		echo "</td> </tr>";
+		echo "</table>";
+	echo "</form>
+</div>";
+?>
+

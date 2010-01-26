@@ -1,0 +1,35 @@
+<? $this->pageTitle = 'Motion Music Manager User Management'; ?>
+
+<?php
+
+	echo "<div class=\"band-block\">
+		<div class=settings>
+			<div class=\"steps\">Step: 2 / 6</div> 
+			<div class=\"wizardhead\">MySpace Setup</div> 
+			<div class=register>";
+			
+				if ($session->check('Message.flash'))
+				{	
+					echo "<div style=\"text-align:center;\">";
+						$session->flash();
+					echo "</div>";
+				}
+				
+				
+			echo	"<div style=\"padding:10px;\"></div>";
+						       
+			echo	"<div style=\"clear:both;\"></div>
+				
+				<div style=\"margin: 0px auto; text-align: center;\"> Click Next to link your MySpace account to Motion Music Manager. You will be asked to log in to your MySpace account and to grant us permission for offline access to your account.</div>					
+				<div style=\"clear:both;\"></div>
+				<div class=\"nextbar\">";
+					echo $html->input('fbs/previous',array('type'=>'button','value'=>'Previous',"onClick"=>"javascript:window.location.href='".$html->url('/band/add/')."'",'class'=>'next'));
+					echo $html->input('fbs/next',array('type'=>'button','value'=>'next',"onClick"=>"javascript:window.location.href='".$html->url('/mss/login/')."'",'class'=>'next'));
+					echo $html->input('mss/skip',array('type'=>'button','value'=>'Skip',"onClick"=>"javascript:window.location.href='".$html->url('/band/facebook/')."'",'class'=>'next'));
+			echo 	"</div>
+				 <div style=\"clear:both;\"></div>
+
+			</div>
+		</div>
+	</div>";
+?>

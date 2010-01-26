@@ -1,0 +1,46 @@
+<? $this->pageTitle = 'Motion Music Manager'; ?>
+
+<?php
+echo "<div class=page>";
+	
+		if ($session->check('Message.flash'))
+		{
+			$session->flash();
+		}
+
+?>
+
+<table class="box-table" width=100%>
+<thead>
+ 	<tr>
+	      <th scope="col">	Name	</th>
+	      <th scope="col">	E-mail	</th>
+	      <th scope="col">	Website	</th>
+	      <th scope="col">	music_style</th>
+	      <th scope="col">	Status	</th>
+	</tr>
+</thead>
+<tbody>
+
+<?php 
+	foreach ($results as $key => $data)
+	{
+	echo "<tr>
+		<td>".$html->link($data['Band']['name'],'/administrator/editband/?id='.$data['Band']['band_id'])."</td>
+		<td>".$data['Band']['email']."</td>
+		<td>".$data['Band']['website']."</td>
+		<td>".$data['Band']['music_style']."</td>
+		<td>";
+			if($data['Band']['status']==0)
+				echo "Inactive";
+			else
+				echo "Active";
+	echo 	"</td>
+	</tr>";
+	} // 		foreach ($results as $key => $data)
+	
+echo "
+</tbody>
+</table>
+</div>";
+?>

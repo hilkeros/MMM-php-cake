@@ -1,0 +1,10 @@
+<? $this->pageTitle = 'Motion Music Manager'; ?>
+<?php
+    echo "
+    <div id=\"term-of-service\">
+            $agreement
+    </div> ";
+?>
+
+
+

@@ -1,0 +1,23 @@
+<? $this->pageTitle = 'Motion Music Manager Last.fm Statistics'; ?>
+<br />
+<h2>Music Group List</h2>
+<?php
+$count=1;
+	echo "<table>";
+	foreach($results as $key => $val)
+	{
+	$id=$val['Lfm']['lfm_m_id'];
+	$etime=$val['Lfm']['executetime'];
+	$grp=$val['Lfm']['music_group'] ;
+	$groups[]= $val['Lfm']['music_group'];
+	$listeners[]=$val['Lfm']['listeners'];
+
+	echo "<tr><td> <strong> $count &nbsp; : &nbsp;&nbsp;".$html->link($grp,'/lfms/statistics/?id='.$id.'&etime='.$etime)."</td></tr></strong><br><br>";
+/*	echo "<tr><td> <strong> $count &nbsp; : &nbsp;&nbsp; $grp &nbsp;&nbsp;</td> <td> &nbsp;&nbsp; ".$html->link('Comulative hits Weekly Graph','/lfms/statistics/?id='.$id.'&etime='.$etime)." &nbsp;&nbsp; </td><td> &nbsp;&nbsp;".$html->link('Daily hits Weekly Graph','/lfms/statistics/?id='.$id.'&etime='.$etime.'&type=d')."</td></tr></strong><br><br>";
+*/
+		$count ++;
+	} // foreach($results as $key => $val)
+	echo "</table>";
+
+?>
+

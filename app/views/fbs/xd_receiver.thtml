@@ -1,0 +1,8 @@
+<?
+// cache the xd_receiver
+header('Cache-Control: max-age=225065900');
+header('Expires:');
+header('Pragma:');
+echo '<script src="'.get_static_root().'/js/api_lib/v0.4/XdCommReceiver.debug.js" type="text/javascript"></script>';
+?>
+

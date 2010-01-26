@@ -1,0 +1,27 @@
+<? $this->pageTitle = 'Motion Music Manager Facebook authentication'; ?>
+<?php
+echo "
+    <div class=\"fbs-block\">
+        <div id=\"fbs-auth-block\">";
+           
+            echo "
+                <div id=\"fbs_title\">
+                    <div id=\"fbs_closeWindow\">
+                        <input type=\"button\" class=\"update\" value=\"close\" onclick=\"javascript:location.href='$this->base/band/manage/?bandid=$bandid'\">
+                        or
+                        <input type=\"button\" class=\"update\" value=\"cancel\" onclick=\"javascript:location.href='$this->base/band/manage/?bandid=$bandid'\">
+                    </div>
+                </div>
+                <div id=\"iframe-text\">
+                   If you want to post status updates to your Facebook page, you must allow us to publish to your Facebook page. Click on the 'Allow Publishing' button in the Facebook dialog box below.
+                </div>
+                <div id=\"frame\">
+                    <div id=\"iframe\">
+                        <Iframe src=\"$url\" width=\"600\" height=\"400\" frameborder=\"0\"></Iframe>
+                    </div>
+                </div>
+                <div style=\"clear:both;\">&nbsp;</div>";
+    echo "
+        </div>
+    </div>";
+?>

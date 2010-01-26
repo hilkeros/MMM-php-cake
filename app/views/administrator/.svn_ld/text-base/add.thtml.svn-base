@@ -1,0 +1,77 @@
+<h1>User Registration</h1>
+
+<?php
+	
+	echo "<form name=users method=post>";
+	echo "User Name".$html->input('User/username');
+	echo $html->tagErrorMsg('User/username', 'User name is required.');
+	echo "<br>";
+
+	echo "Email address";	
+	echo $html->input('User/email');
+	echo $html->tagErrorMsg('User/email', 'Invalid email address.');
+	echo "<br>";	
+	
+	echo "Password";	
+	echo $html->password('User/password');
+	echo $html->tagErrorMsg('User/password', 'Password is required.');
+	echo "<br>";
+	
+	echo "First Name";	
+	echo $html->input('User/firstname');
+	echo $html->tagErrorMsg('User/firstname', 'first name is required.');
+	echo "<br>";
+
+	echo "Last Name";	
+	echo $html->input('User/lastname');
+	echo $html->tagErrorMsg('User/lastname', 'Last name is required.');
+	echo "<br>";
+
+	$qry = "select country_code ,country from country where country_code is not null order by country";
+	$result = mysql_query($qry);
+	while($row=mysql_fetch_array($result))
+	{
+		$country[$row[0]]=$row[1];
+	}
+
+	echo "Country";	
+	echo "<br>";
+	echo $html->selecttag('User/country',$country);
+	echo "<br>";
+	
+	echo "City";	
+	echo $html->input('User/city');
+	echo "<br>";
+
+	echo "Postal Code";	
+	echo $html->input('User/postalcode');
+	echo "<br>";
+
+	echo "street";	
+	echo $html->input('User/street');
+	echo "<br>";
+
+	echo "Street Number";	
+	echo $html->input('User/streetnumber');
+	echo "<br>";
+
+	echo "Phone Number";	
+	echo $html->input('User/phonenumber');
+	echo "<br />";
+
+	echo "Do you agree?";
+	echo $html->checkboxTag('User/Agreement','Term of Services');
+	echo $html->tagErrorMsg('User/Agreement', 'Please Check Term of Service Agreement');
+	echo "<br />";
+	echo "I have read and agree to the";
+	?>
+	
+	<a onclick="popup();">MMM! Terms of Service</a>
+   	and MMM! Privacy Policy, and to receive important communications from MMM! electronically.";
+	<?php
+	
+	echo "<br />";
+
+	echo $html->submit('Save');
+	echo "</form>";
+?>

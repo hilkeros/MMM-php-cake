@@ -1,0 +1,8 @@
+<? $this->pageTitle = 'Motion Music Manager Facebook authentication'; ?>
+<?php
+echo "
+   
+                <div style=\"margin:0px auto;font-size:large;padding-top:35px;text-align:center;color: #000000;width:100%;\">
+                Thanks for editing your Facebook publish permissions. Click 'close' to continue.
+                </div> ";
+?>

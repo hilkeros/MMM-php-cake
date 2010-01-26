@@ -1,0 +1,4 @@
+<? $this->pageTitle = 'Music Motion Manager'; ?>
+<h1>Music Motion Manager</h1>
+
+html Confirmation

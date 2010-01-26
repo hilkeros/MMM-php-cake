@@ -1,0 +1,124 @@
+<?php
+/**
+* Developed By :  Babar Ali
+* Dated         : Apr. 12 , 2009
+* Project 	: Motion Music Manager
+*
+*/
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+if(isset($javascript)):
+  echo($javascript->link("javascript"));
+endif; 
+?>
+
+<title><?php echo $title_for_layout; ?></title>
+<?php echo $html->charset(); ?>
+<?php echo $html->css('mmm'); ?>
+</head>
+<body>
+<div class="dashboardcontainer">
+	<div class="container">
+		<div class="leftbar">
+			<div class="header">
+				<?php
+				$server= $_SERVER['HTTP_HOST']; 
+				$path= $this->base; 
+				echo "<h1 class=main><a href=http://".$server.$path."/users/index/>Motion Music Manager</a></h1>";
+				?>
+			</div>
+			<div id="content">
+				<?php
+				
+				echo $content_for_layout;
+				?>
+			</div>
+		</div>
+	
+		<div class="rightbar">
+			<div class="menu">
+			<ul>
+			<?php
+			if($band)
+			{	
+				foreach($band as $bandkey => $bandval)
+				{
+				
+				$band_id = $bandval['Band']['band_id'];
+			echo 	"<li class=first>
+					<a href=http://".$server.$path."/mss/index/?bandid=$band_id>".$bandval['Band']['name']."</a>
+				</li>";
+				}
+			}
+			?>
+
+				<li class="first">
+					<?php echo "<a href=http://".$server.$path."/analytics/index/>";?>Settings</a>
+				</li>
+				<li class="first">
+					<?php echo "<a href=http://".$server.$path."/users/index/>";?>Home page</a>
+				</li>
+								
+				<?php
+					if($session->check('id'))
+					{
+				echo "<li>";
+					echo $html->link('Logout','/users/logout/');	
+					}
+				echo "<li>";
+				?>
+
+			</ul>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+</div>
+
+<div class="dashboardcontainer">
+	
+	<div class="container">
+		<div class="leftbar">
+			
+			<div class="content">
+				<div class="board">
+					<h1 class="main">
+						Tools
+					</h1>
+				</div>
+			</div>
+		</div>
+	
+		<div class="rightbar">
+			<div class="menu">
+			<ul>
+				<li class="first" id="tool">
+					Tools
+				</li>
+				<li >
+					<?php echo "<a href=#>";?>Update status</a>
+				</li>
+				<li >
+					<?php echo "<a href=#>";?>Upload new blog</a>
+				</li>
+				<li >
+					<?php echo "<a href=#>";?>Upload new music</a>
+				</li>
+				<li >
+					<?php echo "<a href=#>";?>Upload new photos</a>
+				</li>
+			</ul>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+	
+	
+</div>
+
+	<?php echo $cakeDebug; ?>
+</body>
+</html>

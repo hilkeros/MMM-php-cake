@@ -1,0 +1,39 @@
+<? $this->pageTitle = 'Motion Music Manager'; ?>
+<?php
+echo "<div class=page>";
+		if ($session->check('Message.flash'))
+		{
+			$session->flash();
+		}
+?>
+		<div class="wizard-heading"> Feedback Report </div>
+
+		<table class="box-table">
+		<thead>
+			<tr>
+			      <th scope="col">	name	</th>
+			      <th scope="col">	e-mail	</th>
+			      <th scope="col">	date </th>
+			      <th scope="col">	feedback </th>
+			</tr>
+		</thead>
+		<tbody>
+		
+		<?php 
+			foreach ($feedbackResult as $key => $data)
+			{
+			echo "<tr>
+				<td>".$data['Feedback']['name']."</td>
+				<td>".$data['Feedback']['email']."</td>
+				<td>".date("Y-m-d , g:i a" , $data['Feedback']['tdate'])."</td>
+				<td>".$data['Feedback']['feedback']."</td>
+			      </tr>";
+			} // 	foreach ($feedbackResult as $key => $data)
+			
+		echo "
+		</tbody>
+		</table> 
+		
+
+</div>";
+?>

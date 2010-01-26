@@ -1,0 +1,15 @@
+<? $this->pageTitle = 'Music Motion Manager'; ?>
+<h1>Music Motion Manager</h1>
+
+<h2>Top Album</h2>
+
+<br /><br />
+
+<?php
+
+	
+		foreach($results as $key => $val)
+		{
+			echo "Ranks &nbsp; : &nbsp; ".$val['Lfm']['rank']."<br>Name &nbsp; : &nbsp; ".$val['Lfm']['name']."<br>Play Count &nbsp; : &nbsp; ".$val['Lfm']['playcount']."<br><br>";
+		} // foreach($results as $key => $val)
+?>

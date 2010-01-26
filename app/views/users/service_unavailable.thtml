@@ -1,0 +1,14 @@
+<? $this->pageTitle = 'Motion Music Manager page not found'; ?>
+<div class="page">
+	<?php
+	if ($session->check('Message.flash'))
+	{	
+		$session->flash();
+	}
+	?>
+    <div id="error-oops"> <p>Sorry, the service is temporary unavailable! </p></div>
+    <div id="error-text">
+	We are testing something important or updating the site with some great new features. Come back in a while and everything will be fully functional again.
+    </div>
+
+</div>

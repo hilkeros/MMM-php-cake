@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<body>
+Dear Motion Music Manager user,
+<br />
+Apparently you had problems with logging in into your account because you forgot your password. Please log in with the following password and username:
+<br />
+<?php
+echo $password."&nbsp;".$email;
+?>
+<br />
+You can always change your password in the settings menu.
+<br />
+<br />
+Regards,
+<br />
+Motion Music Manager
+</body>
+</html>

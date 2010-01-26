@@ -1,0 +1,56 @@
+<? $this->pageTitle = 'Motion Music Manager Contact Us'; ?>
+<br />
+<h2>Contact Us</h2>
+
+<?php	
+	echo "<form name=\"contact\" method=\"post\" onsubmit=\"return confirmation()\">";
+	echo "<table align=\"left\">";
+	echo "<tr>";	
+	echo "<td><strong>User &nbsp;:</strong> &nbsp;&nbsp;&nbsp;";
+	echo $session->read('user');
+	echo "</td></tr>";
+	
+	echo "<tr>";	
+	echo "<td><strong>Email Address &nbsp;:</strong> &nbsp;&nbsp;&nbsp;";
+	echo $session->read('email');
+	echo "</td></tr>";
+	
+	echo "<tr>";	
+	echo "<td><strong>First Name &nbsp;:</strong> &nbsp;&nbsp;&nbsp;";
+	echo $fname;
+	echo "</td></tr>";
+
+
+	echo "<tr>";	
+	echo "<td><strong>Last Name &nbsp;:</strong> &nbsp;&nbsp;&nbsp;";
+	echo $lname;
+	echo "</td></tr>";
+	
+
+	echo "<tr>";	
+	echo "<td><strong>Type</strong><br>";
+	$type['Technical Problem']= "Technical Problem";
+	$type['Tip / Idea']= "Tip / Idea";
+	$type['Question']= "Question";
+	echo $html->selecttag('User/type',$type);
+	echo "</td></tr>";
+
+	echo "<tr>";	
+	echo "<td><strong>Topic</strong>";
+	echo $html->input('User/topic',array('size'=>'50'));
+	echo "</td></tr>";
+		
+	
+	echo "<tr>";	
+	echo "<td><strong>Message</strong>";
+	echo $html->areaTag('User/message',150,10);
+	echo "</td></tr>";
+
+	echo "<tr><td>";	
+	echo $html->submit('Submit');
+	echo "</td></tr>";
+
+	echo "</table>";
+	echo "</form>";
+
+?>

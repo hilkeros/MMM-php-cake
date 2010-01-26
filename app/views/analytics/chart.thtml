@@ -1,0 +1,357 @@
+<?php   $this->pageTitle = 'Motion Music Manager Statistics';
+
+	$type= $session->read('type');        		// type ( fans , hits , tracks , comments )
+	$lastdate = $session->read('lastdate');		// lastdate ( Last week , Last month , Last year)
+	
+	$base= $this->base; 
+        $path= "http://".$_SERVER['HTTP_HOST'].$this->webroot;   
+        $baseurl = $this->base."/analytics/chart/?height=$cheight&width=$cwidth";
+	
+	// set global baseurl & base
+echo "	<script type=text/javascript>
+		var baseurl = '$baseurl';
+		var base = '$base'; 
+	</script>";
+	
+        if(isset($javascript)):
+            echo($javascript->link("tab"));
+	    echo($javascript->link("analyticchart"));
+        endif;
+	
+?>
+
+	<script type="text/javascript">
+        <?php
+            if($type=='fans')
+            {
+                echo "TabView.switchTab(0,0);";
+            }
+            elseif($type=='hits')
+            {
+                echo "TabView.switchTab(0,1);";
+            }
+            elseif($type=='tracks')
+            {
+                echo "TabView.switchTab(0,2);";
+            }
+            elseif($type=='comments')
+            {
+                echo "TabView.switchTab(0,3);";
+            }
+            
+        ?>
+	</script>
+    
+<?php
+                /*
+                   Date array
+                */
+                $x['w'] = "Last Week";
+                $x['m'] = "Last Month";
+                $x['y'] = "Last Year";
+?>
+
+
+    <div class="TabView" id="TabView1">
+        <!--Tabs-->
+        <div class="Tabs"><a>Fans</a> <a>Hits</a> <a>Tracks</a><a>Comments</a></div>
+        <!--Pages-->
+        <div class="Pages">
+            <!--Page 1-->
+            <div class="Page">
+                <?php
+                  
+                echo "<div class=TabUpdate>";
+			echo "<div class=\"chart-col\">".$html->selecttag('analytic/date',$x,$lastdate)."</div>";
+			echo "<div class=\"chart-col\"> <a id=\"link\" href=\"\" class=\"thickbox update\">Update</a></div>";
+			echo "<div style=\"clear:both;\"></div>
+			<div class=\"chart-help-text chart-col\">Press the buttons below to enable/disable graphs</div>
+                    </div>";
+                
+    echo "<div class=playsmenu>
+	<ul>
+                                   
+                <li>";
+                        echo "<a id=\"fall\" href=\"".$this->base."/analytics/chart/\" class=\"thickbox\">All</a>";
+           echo "</li>
+                <li>";
+			if($session->read('fnone')==1)
+			{
+			   echo " <a id=\"fnone\" href=\"".$this->base."/analytics/chart/\" class=\"thickbox active\">None</a>";
+			}else
+			{
+			   echo " <a id=\"fnone\" href=\"".$this->base."/mss/chart/?\" class=\"thickbox\">None</a>";
+			}
+	     
+	   echo "</li>
+        </ul>
+	<div style=clear:both;> </div>
+        <ul>
+                <li> ";
+					
+			if($session->check('msh'))
+			{
+				echo $html->link('MySpace',"/analytics/chart/?id=msh&height=$cheight&width=$cwidth", array('class'=>' thickbox active' ,'id'=>'msh'));
+												
+			}
+			
+			else
+			{
+				echo $html->link('MySpace',"/analytics/chart/?id=msh&height=$cheight&width=$cwidth", array('class'=>' thickbox','id'=>'msh'));
+			}
+	echo    "</li>
+		<li>";
+			if($session->check('yth'))
+			{
+				echo $html->link('Youtube',"/analytics/chart/?id=yth&height=$cheight&width=$cwidth" , array('class'=>' thickbox active' ,'id'=>'yth'));
+			}
+			else
+			{
+				echo $html->link('Youtube',"/analytics/chart/?id=yth&height=$cheight&width=$cwidth", array('class'=>' thickbox' ,'id'=>'yth'));
+			}
+	echo 	"</li>
+		<li>";
+			if($session->check('lfmsh'))
+			{
+				echo $html->link('Last.fm',"/analytics/chart/?id=lfmsh&height=$cheight&width=$cwidth" , array('class'=>' thickbox active','id'=>'lfmsh'));
+			}
+			else
+			{
+				echo $html->link('Last.fm',"/analytics/chart/?id=lfmsh&height=$cheight&width=$cwidth", array('class'=>' thickbox' ,'id'=>'lfmsh'));
+			}
+	echo 	"</li>
+		<li>";
+			if($session->check('fbspages'))
+			{
+				echo $html->link('Facebook page',"/analytics/chart/?id=fbspages&height=$cheight&width=$cwidth" , array('class'=>'thickbox active' , 'id'=>'fbspages'));
+			}
+			else
+			{
+				echo $html->link('Facebook page',"/analytics/chart/?id=fbspages&height=$cheight&width=$cwidth", array('class'=>'thickbox' ,'id'=>'fbspages'));
+			}
+	echo 	"</li>
+		<li>";
+			if($session->check('fbsgroups'))
+			{
+				echo $html->link('Facebook group',"/analytics/chart/?id=fbsgroups&height=$cheight&width=$cwidth" , array('class'=>'thickbox active','id'=>'fbsgroups'));
+			}
+			else
+			{
+				echo $html->link('Facebook group',"/analytics/chart/?id=fbsgroups&height=$cheight&width=$cwidth", array('class'=>' thickbox','id'=>'fbsgroups'));
+			}
+	echo 	"</li>
+	</ul>
+        </div>";
+                open_flash_chart_object($width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/analytics/hitschart/",false,"$path");
+                ?>
+            </div>
+            <!--Page 2-->
+            <div class="Page">
+                <?php
+                   
+                echo "<div class=TabUpdate>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/hdate',$x,$lastdate)."</div>";
+                    echo "<div class=\"chart-col\"> <a id=\"hlink\" href=\"\" class=\"thickbox update\">Update</a> </div>";
+		    echo "<div style=\"clear:both;\"></div>
+		    <div class=\"chart-help-text chart-col\">Press the buttons below to enable/disable graphs</div>
+                </div>";
+                
+
+echo "<div class=playsmenu>
+	<ul>
+                                   
+                <li>";
+                        echo "<a id=\"hall\" href=\"".$this->base."/analytics/chart/\" class=\"thickbox\">All</a>";
+           echo "</li>
+                <li>";
+			if($session->read('hnone')==1)
+			{
+			   echo " <a id=\"hnone\" href=\"".$this->base."/analytics/chart/\" class=\"thickbox active\">None</a>";
+			}else
+			{
+			   echo " <a id=\"hnone\" href=\"".$this->base."/mss/chart/?\" class=\"thickbox\">None</a>";                             
+			}
+	     
+	   echo "</li>
+        </ul>
+	<div style=clear:both;> </div>
+	<ul>
+                <li> ";
+			if($session->check('msv'))
+			{
+				echo $html->link('MySpace',"/analytics/chart/?id=msv&height=$cheight&width=$cwidth", array('class'=>'thickbox active' ,'id'=>'msv'));
+			}
+			else
+			{
+				echo $html->link('MySpace',"/analytics/chart/?id=msv&height=$cheight&width=$cwidth", array('class'=>' thickbox' ,'id'=>'msv'));			
+			}
+	echo 	"</li>
+		<li>";
+			if($session->check('ytv'))
+			{
+				echo $html->link('Youtube',"/analytics/chart/?id=ytv'&height=$cheight&width=$cwidth" , array('class'=>' thickbox active' ,'id'=>'ytv'));
+			}
+			else
+			{
+				echo $html->link('Youtube',"/analytics/chart/?id=ytv'&height=$cheight&width=$cwidth" , array('class'=>' thickbox' ,'id'=>'ytv'));
+			}
+			
+	echo 	"</li>
+		<li>";
+			if($session->check('lfmsv'))
+			{
+			
+				echo $html->link('Last.fm',"/analytics/chart/?id=lfmsv&height=$cheight&width=$cwidth" , array('class'=>' thickbox active','id'=>'lfmsv'));
+			}
+			else
+			{
+				echo $html->link('Last.fm',"/analytics/chart/?id=lfmsv&height=$cheight&width=$cwidth" , array('class'=>' thickbox','id'=>'lfmsv'));
+			}
+	echo 	"</li>
+		<li>
+	</ul>
+</div>";			
+                open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/analytics/viewschart/",false,"$path");
+                ?>
+            </div>
+            <div class="Page">
+            <!--Page 3 -->
+             <?php
+                  
+                echo "<div class=TabUpdate>";
+                    echo "<div class=\"chart-col\">".$html->selecttag('analytic/tdate',$x,$lastdate)."</div> <div class=graphTab><a id=\"tlink\" href=\"\" class=\"thickbox update\">Update</a></div>";
+		    echo "<div style=\"clear:both;\"></div>";
+		    echo "<div class=\"chart-col\">".$html->selecttag('analytic/mss',$mss,$mssval)."</div> <div class=\"graphTab graphtext\"> Myspace</div>";
+		    echo "<div style=\"clear:both;\"></div>";
+		    echo "<div class=\"chart-col\">".$html->selecttag('analytic/lfmt',$lfmt,$lfmtval)."</div> <div class=\"graphTab graphtext\"> Last.fm</div>";
+		    echo "<div style=\"clear:both;\"></div>";
+		    echo "<div class=\"chart-col\">".$html->selecttag('analytic/yt',$yt,$ytval)."</div> <div class=\"graphTab graphtext\"> Youtube</div>";
+		    echo "<div style=\"clear:both;\"></div>
+		    <div class=\"chart-help-text chart-col\">Press the buttons below to enable/disable graphs</div>
+                </div>";
+                
+
+echo "<div class=playsmenu>
+	<ul>
+                                   
+                <li>";
+                        echo "<a id=\"tall\" href=\"".$this->base."/analytics/chart/\" class=\"thickbox\">All</a>";
+           echo "</li>
+                <li>";
+			if($session->read('tnone')==1)
+			{
+			   echo " <a id=\"tnone\" href=\"".$this->base."/analytics/chart/\" class=\"thickbox active\">None</a>";
+			}else
+			{
+			   echo " <a id=\"tnone\" href=\"".$this->base."/mss/chart/?\" class=\"thickbox\">None</a>";                             
+			}
+	     
+	   echo "</li>
+        </ul>
+	<div style=clear:both;> </div>
+        <ul>
+                <li> ";
+			
+		if($session->check('msp'))
+			{
+				echo $html->link('MySpace',"/analytics/chart/?id=msp&height=$cheight&width=$cwidth", array('class'=>' thickbox active' ,'id'=>'msp'));
+												
+			}
+			
+			else
+			{
+				echo $html->link('MySpace',"/analytics/chart/?id=msp&height=$cheight&width=$cwidth", array('class'=>' thickbox','id'=>'msp'));
+			}
+	echo    "</li>
+		<li>";
+			if($session->check('ytp'))
+			{
+				echo $html->link('Youtube',"/analytics/chart/?id=ytp&height=$cheight&width=$cwidth" , array('class'=>' thickbox active' ,'id'=>'ytp'));
+			}
+			else
+			{
+				echo $html->link('Youtube',"/analytics/chart/?id=ytp&height=$cheight&width=$cwidth", array('class'=>' thickbox' ,'id'=>'ytp'));
+			}
+	echo 	"</li>
+		<li>";
+			if($session->check('lfmsp'))
+			{
+				echo $html->link('Last.fm',"/analytics/chart/?id=lfmsp&height=$cheight&width=$cwidth" , array('class'=>' thickbox active','id'=>'lfmsp'));
+			}
+			else
+			{
+				echo $html->link('Last.fm',"/analytics/chart/?id=lfmsp&height=$cheight&width=$cwidth", array('class'=>' thickbox' ,'id'=>'lfmsp'));
+			}
+	echo 	"</li>
+		
+	</ul>
+</div>";
+                open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/analytics/playschart/",false,"$path");
+                ?>
+            </div>
+            <div class="Page">
+            <!--Page 4 -->
+             <?php
+                
+                    
+                echo"<div class=TabUpdate>";
+                        echo 	"<div class=\"chart-col\">".$html->selecttag('analytic/cdate',$x,$lastdate)."</div> <div class=graphTab> <a id=\"clink\" href=\"\" class=\"thickbox link\">Update</a> </div>";
+			echo 	"<div style=\"clear:both;\"></div>";
+		        echo 	"<div class=\"chart-col\">".$html->selecttag('analytic/ytc',$yt,$ytval)."</div> <div class=\"graphTab graphtext\"> Youtube </div>";
+			echo 	"<div style=\"clear:both;\"></div>
+				<div class=\"chart-help-text chart-col\">Press the buttons below to enable/disable graphs</div>
+			</div>";
+                    
+
+echo "<div class=playsmenu>
+	<ul>
+                                   
+                <li>";
+                        echo "<a id=\"call\" href=\"".$this->base."/analytics/chart/\" class=\"thickbox\">All</a>";
+           echo "</li>
+                <li>";
+			if($session->read('cnone')==1)
+			{
+			   echo " <a id=\"cnone\" href=\"".$this->base."/analytics/chart/\" class=\"thickbox active\">None</a>";
+			}else
+			{
+			   echo " <a id=\"cnone\" href=\"".$this->base."/mss/chart/?\" class=\"thickbox\">None</a>";                             
+			}
+	     
+	   echo "</li>
+        </ul>
+	<div style=clear:both;> </div>
+        <ul>
+                <li> ";
+					
+			if($session->check('msc'))
+			{
+				echo $html->link('MySpace',"/analytics/chart/", array('class'=>' thickbox active' ,'id'=>'msc'));
+												
+			}
+			
+			else
+			{
+				echo $html->link('MySpace',"/analytics/chart/", array('class'=>' thickbox','id'=>'msc'));
+			}
+	echo    "</li>
+		<li>";
+			if($session->check('ytc'))
+			{
+				echo $html->link('Youtube',"/analytics/chart/" , array('class'=>' thickbox active' ,'id'=>'ytc'));
+			}
+			else
+			{
+				echo $html->link('Youtube',"/analytics/chart/", array('class'=>' thickbox' ,'id'=>'ytc'));
+			}
+	echo 	"</li>
+		
+	</ul>
+</div>";
+                open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/analytics/commentchart/",false,"$path");
+                ?>
+                    
+            </div>
+        
+        </div>
+    </div>

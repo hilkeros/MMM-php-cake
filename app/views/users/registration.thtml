@@ -1,0 +1,10 @@
+<? $this->pageTitle = 'Motion Music Manager Registration'; ?>
+<br/>
+
+<?php echo $html->link('User Login','/users/login')."&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;"?>
+<?php echo $html->link('User Registration','/users/add')."&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;"?>
+<?php echo $html->link('Home','/users/index')?>
+
+
+
+

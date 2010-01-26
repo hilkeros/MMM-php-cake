@@ -1,0 +1,118 @@
+<? $this->pageTitle = 'Motion Music Manager'; ?>
+<?php
+$c=0;
+$pagination->setPaging($paging); // Initialize the pagination variables 
+?>
+<?php
+echo "<div class=page>";
+	
+		if ($session->check('Message.flash'))
+		{
+			$session->flash();
+		}
+
+// Search By User Name
+
+	      echo "<form name=search id=search method=post>
+			    <div class=\"tab-col\">  <b>Search by user name</b> </div>
+			    <div class=\"tab-col\">".$html->input('Search/username')."</div>
+			    <div class=\"tab-col\">".$html->submit('Search',array('class'=>'update'))."</div>
+			    <div class=\"tab-col\"> <a href=\"$this->base/administrator/userlist\" style=\"font-size: 15px;\">Search All</a> </div>
+			    <div style=\"clear:both;\"> </div>			    
+	           </form>";
+
+// End Search By User Name
+
+
+?>
+
+<form name="list" id="list" method="post">
+<table class="box-table" width="100%">
+	      <thead>
+			    <tr>
+					  <th scope="col">User name</th>
+					  <th scope="col"> E-mail</th>
+					  <th scope="col">Registration time</th>
+					  <th scope="col">Status</th>
+					  <th scope="col">User type</th>
+					  <th scope="col">Edit Band</th>
+					  <th scope="col">Select</th>
+			    </tr>
+	      </thead>
+	      <tbody>
+<?php 
+	foreach ($results as $key => $data)
+	{	
+	
+		$hid = "Admin/id$c";
+		$chk =  "Admin/selected$c";
+		echo $html->hidden($hid,array('value'=>$data['Admin']['id']));
+	
+	      echo 	    "<tr>";
+					  echo "<td><a href=$this->base/administrator/user/?id=".$data['Admin']['id'].">".$data['Admin']['username']."</a></td>		
+					  <td><a href=$this->base/administrator/login/?id=".$data['Admin']['id'].">".$data['Admin']['email']."</a></td>
+					  <td>".$data['Admin']['registration_time']."</td>
+					  <td>";
+							if($data['Admin']['status']==0)  
+							echo "Inactive";
+							else
+							echo "Active";
+					  echo "</td>
+					  <td>";
+							switch($data['Admin']['usertype'])
+							{
+								case 'A' : echo "Administrator"; break;
+								case '0' : echo "User";	break;
+								case 'P' : echo "Paying User"; break;
+							}	
+					  echo "</td>
+					  <td>".$html->link('Edit','/administrator/band/?id='.$data['Admin']['id'])."</td>
+					  <td>".$html->checkboxTag($chk)."</td>
+					  ";
+					  $c=$c+1;	
+
+			    echo "</tr>";
+	
+	} // 		foreach ($results as $key => $data)
+	
+echo 	     "</tbody>
+</table>";
+echo "<div class=divCenter>";
+	      echo $this->renderElement('pagination'); // Render the pagination element
+echo "</div>";
+
+echo "<div class=divCenter>";
+echo "<table width=100%>
+	      <tr>
+	      	      <td>
+	      	      	    checked if you want to change user status of selected user".$html->checkboxTag('Admin/chkstatus');
+	      	   echo "</td>
+	      	      	<td>
+	      	      	    checked if you want to promote selected user".$html->checkboxTag('Admin/chkuserstatus');
+			    
+		    echo "</td>
+	      </tr>
+	      <tr>
+			    <td>";
+					 $status = array('1'=>'Active', '0'=>'Inactive');
+			     echo $html->selecttag('Admin/status',$status);
+					 // echo $html->radio('Admin/status', array('1'=>'Active', '0'=>'Inactive'), NULL, array('value'=>'1'));
+			    echo "</td>
+			    	<td>";
+					  $type =  array('0'=>'User', 'P'=>'Paying','A'=>'Administrator');
+					  echo $html->selecttag('Admin/usertype',$type);
+					  //echo $html->radio('Admin/usertype', array('0'=>'User', 'P'=>'Paying'), NULL, array('value'=>'0'));
+			    echo "</td>
+	      </tr>
+	      <tr>
+	      <td colspan=2>";
+	      	      echo $html->hidden('Admin/c',array('value'=>$c));
+		      echo $html->submit('Update');
+	      echo "</td>
+	      </tr>
+</table>
+</div>
+</form>";
+
+echo "</div>";
+?>

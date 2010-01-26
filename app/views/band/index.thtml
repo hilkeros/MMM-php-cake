@@ -1,0 +1,187 @@
+<? $this->pageTitle = 'Motion Music Manager'; ?>
+	
+<script type="text/javascript" language="Javascript">
+	function confirms()
+	{
+		var answer = confirm("Are you sure you want to delete this band from your account?"); 
+		if (answer == true)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+</script>
+
+<div class="page">
+		<?php
+		if ($session->check('Message.flash'))
+		{
+			$session->flash();
+		} // if ($session->check('Message.flash'))
+		
+			echo "<div class=center>
+					<table>";
+						foreach($brecord as $key => $bandval)
+						{
+							echo "<form name=band$key method=post action=".$html->url('/band/manage/').">
+							<tr>
+								<td> <strong> $bandval </strong>
+								
+								</td>
+								<td>";
+									echo $html->hidden('Band/id',array('value'=>$key));
+									echo $html->submit('Edit band settings',array('class'=>'update'));
+									echo "<span style=\"padding-left:10px;\">";
+										echo $html->link($html->image("delete.gif",array('border'=>0,'name'=>'delete')),"/band/delete/?id=$key",array('class'=>'update',"onClick"=>"return confirms();"), false , false);
+									echo "</span>";
+							echo 	"</td>				
+							</tr>
+							</form>";
+						}
+					echo    "<tr>
+							<td>&nbsp;</td>
+							<td>";
+								echo $html->input('Band/add',array('type'=>'button','value'=>'Add band',"onClick"=>"javascript:window.location.href='".$html->url('/band/add/')."'",'class'=>'next'));
+								
+						echo 	"</td>
+						</tr>
+									
+					</table>
+					
+					
+				</div>
+			";
+$base= $this->base;
+		echo "<div id=register>
+		<h4> Psersonal Settings </h4>	
+			
+		<div class=\"socialTab\">
+			<table>
+				<form name=edituser method=post>
+					<tr>
+						<td>
+							User Name
+						</td>
+						<td>";
+							echo $html->input('Admin/username',array('value'=>$results['Admin']['username']));
+							echo $html->tagErrorMsg('Admin/username', 'Admin name is required.');
+					echo    "</td>
+
+					</tr>
+					<tr>
+						<td>
+							Email address
+						</td>
+						<td>";
+							echo $html->input('Admin/email',array('value'=>$results['Admin']['email']));
+							echo $html->tagErrorMsg('Admin/email', 'Invalid email address.');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							First Name
+						</td>
+						<td>";
+							echo $html->input('Admin/firstname',array('value'=>$results['Admin']['firstname']));
+							echo $html->tagErrorMsg('Admin/firstname', 'first name is required.');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Last Name
+						</td>
+						<td>";
+							echo $html->input('Admin/lastname',array('value'=>$results['Admin']['lastname']));
+							echo $html->tagErrorMsg('Admin/lastname', 'Last name is required.');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Country
+						</td>
+						<td>";
+							echo $html->selecttag('Admin/country',$country,$results['Admin']['country']);
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							City
+						</td>
+						<td>";
+							echo $html->input('Admin/city',array('value'=>$results['Admin']['city']));
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Postal Code
+						</td>
+						<td>";
+							echo $html->input('Admin/postalcode',array('value'=>$results['Admin']['postalcode']));
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							street
+						</td>
+						<td>";
+							echo $html->input('Admin/street',array('value'=>$results['Admin']['street']));
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Street Number
+						</td>
+						<td>";
+							echo $html->input('Admin/streetnumber',array('value'=>$results['Admin']['streetnumber']));
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Phone Number
+						</td>
+						<td>";
+							echo $html->input('Admin/phonenumber',array('value'=>$results['Admin']['phonenumber']));
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td colspan=2 class=submit>";
+							echo $html->hidden('Admin/id',array('value'=>$results['Admin']['id']));
+							echo $html->submit('Update',array('class'=>'next'));
+					echo 	"</td>
+					</tr>
+
+				</form>
+			</table>
+			</div>
+			<div class=\"socialTab\">";
+			echo "<form name=newpass method=post action='$this->base/users/changepass/'>";
+			echo "<table align=center border=0>";
+			echo "<tr>";	
+			echo "<td>Old Password</td><td>";	
+			echo $html->password('Newpass/password');
+			echo $html->tagErrorMsg('Newpass/password','Required Field');
+			echo "</td></tr>";
+		
+			echo "<tr><td>New Password</td><td>";	
+			echo $html->password('Newpass/npassword');
+			echo $html->tagErrorMsg('Newpass/npassword','Required Field');
+			echo "</td></tr>";
+		
+			echo "<tr><td>Confirm Password</td><td>";	
+			echo $html->password('Newpass/cpassword');
+			echo $html->tagErrorMsg('Newpass/cpassword','Required Field');
+			echo "</td></tr>";
+			echo "<tr><td colspan=2>";
+			echo $html->submit('Confirm',array('class'=>'next'));
+			echo "</td> </tr>";
+			echo "</table>";
+			echo "</form>
+			</div>
+		</div>";
+		?>
+
+</div>
+<div style="clear:both;"></div>

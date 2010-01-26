@@ -1,0 +1,45 @@
+<? $this->pageTitle = 'Motion Music Manager Facebook authentication'; ?>
+<?php
+echo "
+    <div class=\"fbs-block\">
+        <div id=\"fbs-auth-block\">";
+            if(!empty($inprocess))
+            {
+            echo "
+                <div id=\"fbs_title\">
+                    <div id=\"fbs_closeWindow\">
+                        <input type=\"button\" class=\"update\" value=\"close\" onclick=\"javascript:location.href='$this->base/fbs/process/'\">
+                        or
+                        <input type=\"button\" class=\"update\" value=\"cancel\" onclick=\"javascript:location.href='$url'\">
+                     </div>
+                </div>
+                <div id=\"iframe-text\">
+                    If you want to produce continuous statistics of your Facebook data, you must allow us to get offline access to your Facebook account. Set the right permissions in the Facebook dialog box below.
+                </div>
+                <div id=\"frame\">
+                    <div id=\"iframe\"><Iframe src=\"$purl\" width=\"600\" height=\"400\" frameborder=\"0\"></Iframe> </div>
+                </div>
+                <div style=\"clear:both;\">&nbsp;</div>";
+            }
+            else
+            {
+            echo "
+                <div id=\"fbs_title\">
+                    <div id=\"fbs_closeWindow\">
+                            <input type=\"button\" class=\"update\" value=\"close\" onclick=\"javascript:location.href='$url'\">
+                    </div>
+                </div>
+                <div id=\"fbs-thanks\"> Thanks! </div>
+                <div id=\"fbs-successful\">
+                        
+                        The Facebook data of $name have been processed succesfully.Click the finish button to return to your settings page.
+                </div>
+                <div id=\"fbs-smaltext\"></div>
+                <div id=\"fbs-finish\">
+                    <input type=\"button\" class=\"next\" value=\"Add new\" onclick=\"javascript:location.href='$addnewurl'\">
+                    <input type=\"button\" class=\"next\" value=\"Finish\" onclick=\"javascript:location.href='$url'\">
+                </div>";
+            }
+    echo "
+        </div>
+    </div>";

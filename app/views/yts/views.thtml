@@ -1,0 +1,33 @@
+<? $this->pageTitle = 'Motion Music Manager Views Analytics'; ?>
+<br />
+<h2>Views Analytics</h2>
+
+<br /><br />
+<?php
+if($lastdate!='y')
+{
+?>
+<h3> Video Info: </h3>
+<table border=0>
+<tr><td> <strong>Views </strong> : <?php echo $total; ?> </tr>
+<tr><td> <strong> Gain today </strong> : <?php echo "+".$diff."(".$percentage."%)" ?> </tr>
+<tr><td> <strong> Gain this week </strong> : <?php echo "+".$wdiff."(".$wpercentage."%)" ?> </tr>
+</table>
+<?php
+} // if($lastdate<>'y')
+
+echo "<form name=users method=post>";
+	$x['w'] = "Last Week";
+	$x['m'] = "Last monthly";
+	$x['y'] = "Last Year";
+
+	echo $html->selecttag('analytic/date',$x,$lastdate);
+
+	echo $html->submit('Update Stats');
+	echo "</form>";
+echo "<br>";
+echo "<h3> Video Metrics: </h3>";
+$path= "http://".$_SERVER['SERVER_NAME'].$this->webroot;
+open_flash_chart_object( 800, 300, "http://".$_SERVER['SERVER_NAME'].$this->base."/yts/viewschart/",false,"$path");
+
+

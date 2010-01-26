@@ -1,0 +1,71 @@
+<? $this->pageTitle = 'Motion Music Manager'; ?>
+<?php
+echo "<div class=page>";
+		if ($session->check('Message.flash'))
+		{
+			$session->flash();
+		}
+?>
+		<div class="wizard-heading"> Mail Report </div>
+<?php
+		echo "
+		<table class=\"box-table\" style=\"margin:0px auto 10px auto;\">
+			<tr>
+			      <th>	Total e-mail : $total_email  	</th>
+			      <th>	Total respond : $total_respond	</th>
+			       <th>	Total user : $total_user	</th>
+			      <th>	Total unsubscribe : $total_unsubscribe </th>
+			      <th>	Total return : $total_return </th>
+			      
+			</tr>
+		</table> ";
+?>
+		
+
+		<table class="box-table">
+		<thead>
+			<tr>
+			      <th scope="col">	e-mail	</th>
+			      <th scope="col">	code	</th>
+			      <th scope="col">	invite date </th>
+			      <th scope="col">	response date </th>
+			      <th scope="col">	respond </th>
+			      <th scope="col">	unsubscribe </th>
+			      
+			</tr>
+		</thead>
+		<tbody>
+		
+		<?php 
+			foreach ($reportResult as $key => $data)
+			{
+			echo "<tr>
+				<td>".$data['Invite']['email']."</td>
+				<td>".$data['Invite']['code']."</td>
+				<td>".$data['0']['fdate']."</td>
+				<td>".$data['0']['tdate']."</td>
+				<td>";
+					if($data['Invite']['status']==0)
+						echo "No";
+					elseif($data['Invite']['status']==1)
+						echo "Yes";
+				        else
+						echo "Return";		
+			echo 	"</td>
+				 <td>";
+				
+					if($data['Invite']['subscriber']==0)
+						echo "Unsubscribe";
+					else
+						echo "subscriber";
+			echo 	"</td>
+		         </tr>";
+			} // 		foreach ($results as $key => $data)
+			
+		echo "
+		</tbody>
+		</table> 
+		
+
+</div>";
+?>

@@ -1,0 +1,133 @@
+<? $this->pageTitle = 'Motion Music Manager User Management'; ?>
+<div class="board">
+	<h1 class="main">
+		Update Personal Information
+	</h1>
+</div>
+
+	<?php
+	
+	echo "<div class=page>";
+	
+		if ($session->check('Message.flash'))
+		{
+			$session->flash();
+		}
+	
+		$base= $this->base;
+		echo "<div id=register>
+			<table>
+				<form name=edituser method=post>
+					<tr>
+						<td>
+							User Name
+						</td>
+						<td>";
+							echo $html->input('Admin/username');
+							echo $html->tagErrorMsg('Admin/username', 'Admin name is required.');
+					echo    "</td>
+
+					</tr>
+					<tr>
+						<td>
+							Email address
+						</td>
+						<td>";
+							echo $html->input('Admin/email');
+							echo $html->tagErrorMsg('Admin/email', 'Invalid email address.');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Password
+						</td>
+						<td>";
+							echo $html->input('Admin/password');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Confirm Password
+						</td>
+						<td>";
+							echo $html->input('Admin/cpassword');
+					echo 	"</td>
+					</tr>
+					
+					<tr>
+						<td>
+							First Name
+						</td>
+						<td>";
+							echo $html->input('Admin/firstname');
+							echo $html->tagErrorMsg('Admin/firstname', 'first name is required.');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Last Name
+						</td>
+						<td>";
+							echo $html->input('Admin/lastname');
+							echo $html->tagErrorMsg('Admin/lastname', 'Last name is required.');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Country
+						</td>
+						<td>";
+							echo $html->selecttag('Admin/country',$country);
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							City
+						</td>
+						<td>";
+							echo $html->input('Admin/city');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Postal Code
+						</td>
+						<td>";
+							echo $html->input('Admin/postalcode');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							street
+						</td>
+						<td>";
+							echo $html->input('Admin/street');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Street Number
+						</td>
+						<td>";
+							echo $html->input('Admin/streetnumber');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Phone Number
+						</td>
+						<td>";
+							echo $html->input('Admin/phonenumber');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td colspan=2 class=submit>";
+							echo $html->hidden('Admin/id');
+							echo $html->submit('Update');
+					echo 	"</td>
+					</tr>
+				</form>
+			</table>
+		</div>
+	</div>";
+?>

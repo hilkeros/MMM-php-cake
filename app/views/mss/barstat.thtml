@@ -1,0 +1,54 @@
+<?php
+// Sets height and width
+$flashChart->begin(0,0,'Name','Hits',false);
+
+//print_r($results); exit;
+// loop to get data for groups & listerners
+	$name[]= "Friends";
+	$name[]= "Views";
+	$name[]= "Plays";
+	$name[]= "Today Plays";
+	$name[]= "Downloads";
+	$name[]= "tdownloads";
+	$name[]= "Comments";
+
+	$listeners[] = $results['0']['s']['friends'];
+	$listeners[] = $results['0']['s']['views'];
+	$listeners[] = $results['0']['s']['plays'];
+	$listeners[] = $results['0']['s']['todayplays'];
+	$listeners[] = $results['0']['s']['downloads'];
+	$listeners[] = $results['0']['s']['tdownloads'];
+	$listeners[] = $results['0']['s']['comments'];
+
+	$server = $_SERVER['SERVER_NAME'];
+	$path = $this->base;
+//	$links[] = "javascript:window.location =\"$path/lfms/topalbumtrend/?id=$nm-$id\"";
+//	} // foreach($results as $key => $val)
+
+// set chart label , title and x axis heading style 
+	$flashChart->labels($name);
+	$flashChart->title('Name - Playcount');
+	$flashChart->set_x_style( 10, 'gray' , 2 );   // 1=horizental heading , 2= between horizental & vertical heading , 3= vertical heading
+	
+	
+	$max = max($listeners);
+	$max=$max+5;
+	$flashChart->set_y_max($max);		
+	
+// Register each data set with its information.
+
+$data = array(
+'Hits' => array('color' => '#a457856',
+'font_size' => 11,
+'data' => $listeners,
+//'links' => $links,   // used with bar graph
+'graph_style' => 'bar',
+)
+);
+
+
+$flashChart->setData($data);
+// Show the graph
+echo $flashChart->render();
+?>
+

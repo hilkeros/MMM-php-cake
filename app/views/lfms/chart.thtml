@@ -1,0 +1,210 @@
+<?php   $this->pageTitle = 'Motion Music Manager Statistics';
+
+        
+	$type= $session->read('type');		// type ( channel , friends , sucbscribers , views , comments) ,
+	$lastdate = $session->read('lastdate');	// lastdate ( Last week , Last month , Last year)
+	$opt= $session->read('opt');		// opt (Day by day / cumulative )
+
+	$base= $this->base; 
+        $path= "http://".$_SERVER['SERVER_NAME'].$this->webroot;   
+        $baseurl = $this->base."/lfms/chart/?height=$cheight&width=$cwidth";
+	
+	
+	// set global baseurl & base
+	echo "<script type=text/javascript>
+		var baseurl = '$baseurl';
+		var base = '$base';
+		";
+		
+		if($flag==1)
+		{
+			echo "tb_remove();";
+			echo "var bandid= '$bandid';";
+			
+		?>
+			document.location.href = base+"/dashboard/index/?bandid="+bandid;
+		<?php
+		}
+
+	echo "</script>";
+	
+        if(isset($javascript)):
+            echo($javascript->link("tab"));
+	    echo($javascript->link("lfmschart"));
+        endif;
+	
+?>
+	<script type="text/javascript">
+	
+	 <?php
+		if($type=='listener')
+		{
+		    echo "TabView.switchTab(0,0);";
+		}
+		elseif($type=='plays')
+		{
+		    echo "TabView.switchTab(0,1);";
+		}
+		elseif($type=='tracks')
+		{
+		    echo "TabView.switchTab(0,2);";
+		}
+		elseif($type=='albums' || $type='albumtrend')
+		{
+		    echo "TabView.switchTab(0,3);";
+		}
+		
+	?>
+	</script>
+
+   
+    
+    <?php
+    
+                /*
+                   Date array
+                */
+                $x['w'] = "Last Week";
+                $x['m'] = "Last Month";
+                $x['y'] = "Last Year";
+		
+		$colors=array('#FF6600','#688600','#150005','#505000','#050895','#750031','#550031');
+    ?>
+
+
+    <div class="TabView" id="TabView1">
+        <!--Tabs-->
+        <div class="Tabs"><a>Total Listeners</a> <a>Total Plays</a> <a>Top Songs</a><a>Top Albums</a></div>
+        <!--Pages-->
+        <div class="Pages">
+            <!--Page 1-->
+            <div class="Page">
+                <?php
+                  
+                echo "<div class=TabUpdate>";
+		echo 	"<div class=\"chart-col\">".$html->selecttag('analytic/date',$x,$lastdate,array('class'=>'selectDate'))."</div>";
+		echo 	"<div class=\"chart-col\">".$html->selecttag('analytic/opt',array('d'=>'Day-by-day','c'=>'Cumulative'),$opt,array('class'=>'selectDate'))."</div>";
+		echo 	"<div class=\"chart-col\"> <a id=\"link\" href=\"\" class=\"thickbox update\">Update</a> </div>
+			<div style=\"clear:both;\"> </div>";
+			  
+		    
+		   if($opt=='c')
+		   {
+		   echo "<table class=white>
+				<tr>
+					<td>	<strong> Total Gain </strong> </td>
+					<td>	$ltotal	 </td>
+				
+					<td>
+						<strong> Today Gain </strong> </td>
+					<td>	$ldiff ( $lpercentage %)  </td>
+				
+					<td>   <strong> Weekly Gain </strong> </td>
+					<td>	$lwdiff ( $lwpercentage % )  </td>
+				</tr>
+			</table>";
+		   }
+		    		    		    
+                echo "</div>";
+		open_flash_chart_object($width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/lfms/listenerschart/",false,"$path");
+                ?>
+            </div>
+            <!--Page 2-->
+            <div class="Page">
+                <?php
+            
+		echo "<div class=TabUpdate>";
+                        echo 	"<div class=\"chart-col\">".$html->selecttag('analytic/pdate',$x,$lastdate,array('class'=>'selectDate'))."</div>";
+                        echo 	"<div class=\"chart-col\">".$html->selecttag('analytic/popt',array('d'=>'Day-by-day','c'=>'Cumulative'),$opt,array('class'=>'selectDate'))."</div>";
+                        echo 	"<div class=\"chart-col\"> <a id=\"plink\" href=\"\" class=\"thickbox update\">Update</a> </div>
+				<div style=\"clear:both;\"> </div>
+				<div class=\"chart-help-text chart-col\">Press the buttons below to enable/disable graphs</div>
+			</div>";
+                               
+                     if(@$track_lfm)
+	                {
+                        
+                            
+                            $i=0;
+	                echo "<div class=playsmenu>
+				<div id=plays>
+                                <ul>
+                                   
+                                    <li>";
+                                         echo "<a id=\"all\" href=\"".$this->base."/lfms/chart/?height=$cheight&width=$cwidth&color=330031\" class=\"thickbox\">All</a>";
+                                        
+                              
+                                echo "</li>
+                                    <li>";
+                                        if($lfm_id=='none')
+                                        {
+                                           echo " <a id=\"none\" href=\"".$this->base."/lfms/chart/?height=$cheight&width=$cwidth&color=none\" class=\"thickbox active\">None</a>";
+                                        }else
+                                        {
+                                           echo " <a id=\"none\" href=\"".$this->base."/lfms/chart/?height=$cheight&width=$cwidth&color=none\" class=\"thickbox\">None</a>";                             
+                                        }
+                             
+                                echo "</li>
+                                </ul>
+				<div style=clear:both;> </div>
+                                <ul>
+                                    <li>";
+                                           if($session->read('tplay')==1)
+                                           {
+                                                      echo "<a id=\"tplay\" href=\"".$this->base."/lfms/chart/?height=$cheight&width=$cwidth&color=800000\" class=\"thickbox active\">Total Plays</a>";
+                                           }else
+                                           {
+                                                      echo "<a id=\"tplay\" href=\"".$this->base."/lfms/chart/?height=$cheight&width=$cwidth&color=800000\" class=\"thickbox\">Total Plays</a>";
+                                           }
+                                 
+                                echo "</li>";
+                                    foreach($track_lfm as $key => $val)
+                                    {
+					if($key < 5 )
+					{
+						$ids =  $val['l']['toptrack_id'];
+						$color = str_replace('#','',$colors[$i]);
+						$title = $val['l']['name'];
+						
+						echo "<li>";
+						if($session->read($title)==1)
+						{
+						    echo " <a id=\"$ids\" href=\"".$this->base."/lfms/chart/?height=$cheight&width=$cwidth&color=$color\" class=\"thickbox active\">".$val['l']['name']."</a>";
+						}else
+						{
+						    echo " <a id=\"$ids\" href=\"".$this->base."/lfms/chart/?height=$cheight&width=$cwidth&color=$color\" class=\"thickbox\">".$val['l']['name']."</a>";
+						}
+						
+						echo "</li>";
+						$i++;
+					}
+                                    } //      foreach($video_yt as $key => $val)
+                                
+                                    
+                            echo "</ul>";
+                        echo "</div>
+			</div>";
+	                
+                        open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/lfms/playschart/",false,"$path");
+	                } //            if($stats)
+                ?>
+            </div>
+            <div class="Page">
+            <!--Page 3 -->
+             <?php
+                  
+                echo "<br><br>";   
+                open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/lfms/trackchart/",false,"$path");
+                ?>
+            </div>
+            <div class="Page">
+            <!--Page 4 -->
+		<?php
+		
+                echo "<br><br>";   
+		open_flash_chart_object( $width, $height, "http://".$_SERVER['SERVER_NAME'].$this->base."/lfms/albumchart/",false,"$path");
+                ?>
+            </div>
+	 
+        </div>
+    </div>

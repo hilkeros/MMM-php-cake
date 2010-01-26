@@ -1,0 +1,9 @@
+<? $this->pageTitle = 'Motion Music Manager Last.fm Statistics'; ?>
+<br />
+<h2>Youtube Content Management System</h2>
+<br /><br />
+
+<?php
+echo $html->link('Registration',$url)."&nbsp;&nbsp; | &nbsp;&nbsp;";
+echo $html->link('Channel List','/yts/channel/')."&nbsp;&nbsp;";
+?>

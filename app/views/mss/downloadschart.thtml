@@ -1,0 +1,145 @@
+<?php
+// Sets height and width
+
+$i=0;
+$flashChart->begin(1000, 500 ,'Date','No. of downloads',false);
+
+
+	if($session->read('lastdate')=='w')
+	{	
+		foreach($dt as $key => $val)
+		{
+			$ds= strtotime($val);
+			$et[]=date('D',$ds);
+		}
+	}
+	else
+	{
+		$et = $dt;
+	}
+
+
+	// set chart label , title and x axis heading style 
+	$flashChart->labels($et);
+	$flashChart->title('Date -Downloads');
+	$flashChart->set_x_style( 10, 'gray' , 2 );   // 1=horizental heading , 2= between horizental & vertical heading , 3= vertical heading
+
+			$colors=array('#FF6600','#688600','#150005','#505000','#050895','#750031','#550031','#55CC31','#CCFF31','#55FF00','#FF0031');
+			
+			if($msdownloads)
+			{
+					
+				$premin=0;
+				$premax=0;
+				$i=0;
+				$ii=0;
+				print_r($msdownloads);
+				
+				foreach($msdownloads as $key => $msval)
+					{
+				
+						if($_SESSION["d".$key]=='1')
+						{
+							$min = min($msval);
+							$max = max($msval);
+							
+	
+							if($i==0)
+							{		
+								$premin = $min;
+								$premax = $max;
+								$i=1;
+							}
+	
+							if($premin<$min)
+							{	
+								$min=$premin;
+							}
+							else	
+							{
+								$premin = $min;
+							}
+	
+							if($premax>$max)
+							{
+								$max=$premax;
+								
+							}
+							else { $premax= $max; }
+						
+							echo "<br> $key";
+							if($key=='tdownloads')
+							{
+							echo "sdfsdfsdfsdfsdsd";
+							
+								$v["Total downloads"] = array('color' => '#800000',
+									'font_size' => 10,
+									'width' => 2,
+									'data' => $msval,
+									'graph_style' => 'line_hollow',
+									);
+							}
+							else
+							{
+								$v["$key"] = array('color' => $colors[$ii],
+									'font_size' => 10,
+									'width' => 2,
+									'data' => $msval,
+									'graph_style' => 'line_hollow',
+									);
+							
+							}
+							
+						 }
+						$ii++;	
+						
+	
+					}
+	
+	
+				if($min>5)	
+				{
+					$min=$min-5;
+				} // 	if($min>5)	
+		
+				if($max<5)
+				{	
+					$max=$max+5;
+				} // if($max<5)
+	
+		
+				$max = (5-($max % 5))+$max;
+				$min = $min-($min % 5);
+	
+				if(($min % 5)<0)
+				{
+					$min = $min+($min % 5);
+				}
+				else
+				{
+					$min = $min-($min % 5);
+				}
+		
+				$flashChart->set_y_min($min);
+				$flashChart->set_y_max($max);	
+	
+	
+
+				
+			}
+				
+				foreach($v as $key => $val)
+				{
+					$data[$key] = $val;
+				}
+			
+		
+				$flashChart->setData($data);
+				// Show the graph
+				echo $flashChart->render();
+
+			
+	?>
+	
+
+

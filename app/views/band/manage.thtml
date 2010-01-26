@@ -1,0 +1,482 @@
+<? $this->pageTitle = 'Motion Music Manager User Management'; ?>
+<?php
+
+	$base= $this->base;
+echo "	<script type=text/javascript>
+		var base = '$base';
+	</script>";
+      
+	if(isset($javascript)):
+             echo($javascript->link("settings"));
+	endif;
+
+	
+	
+echo "	<div class=page>";
+
+	if ($session->check('Message.flash'))
+	{
+		$session->flash();
+	}
+
+
+
+echo 	"
+	<div>
+	<div style=\"float:left\" class=\"managetitle\">settings: $bandname</div>
+	<div style=\"float:right; width:500px;margin-right:5px;\"> ";
+		if($tip)
+		{
+		echo "
+		<div id=\"setting-tip\" style=\"float:right;display:block;\">
+			<div class=\"tip-roundcont\">
+				<div class=\"tip-roundtop\">";
+					echo $html->image("ytl.png",array('class'=>'corner','style'=>'display:none','height'=>15,'width'=>15));
+			 
+		echo 	"</div>
+				<div style=\"padding-left:10px;padding-right:10px;background-color:#FDFDB5;\">
+				<b>Tip:</b> To add a new band to your account, you must go to your personal settings by clicking on your profile name in the right upper corner of this screen.
+					<div style=\"text-align:right\">
+						<input type=\"button\" class=\"update\" value=\"Don't show me this again\" onclick=\"javascript:location.href='#'\">
+					</div>
+				</div>
+			<div class=\"tip-roundbottom\">
+				".$html->image('ybl.png',array('class'=>'corner','style'=>'display:none','height'=>'15','width'=>'15'))."
+				 
+				</div>
+			</div>	
+		</div>
+		<div style=\"clear:both;\"></div> ";
+		}
+echo "	</div>
+	</div>
+	<div style=\"clear:both;\"> </div>
+	
+		<div id=manage> ";
+			echo "
+			<div class=\"socialTab managehead\">MySpace</div>
+			<div style=\"clear:both;\"></div>
+			
+			
+			<div class=\"roundcont\">
+				<div class=\"roundtop\">";
+					echo $html->image("tl.png",array('class'=>'corner','style'=>'display:none','height'=>15,'width'=>15));
+			 
+		echo 	"</div>
+			
+			<div class=\"manage-box\">
+		
+					<form name=mssUpdate method=post action=".$html->url('/mss/updateprofile/')."> 
+				
+					<div class=\"socialTab\"><h4>Select the MySpace profile that should be shown on your dashboard:</h4></div>
+					<div style=\"clear: both;\"> </div>
+					<div class=\"socialTab\"> ";
+					if(!empty($mssdata))
+					{
+						foreach($mssdata as $mssKey => $mssVal)
+						{
+							echo "	<div style=\"clear:both;\"> </div>
+								<div class=\"socialTab\" style=\"margin-left:0px;width:350px;\">
+									<div class=\"socialTab\" style=\"margin-left:0px;\">";
+										
+										if($mssactive==$mssKey)
+										{
+										echo "<input id=\"Mssloginprofile_$mssKey\" type=\"radio\" value=\"$mssKey\" checked name=\"data[Msslogin][profile]\"/>";
+										}
+										else
+										{
+										echo "<input id=\"Mssloginprofile_$mssKey\" type=\"radio\" value=\"$mssKey\" name=\"data[Msslogin][profile]\"/>";
+										}
+							
+								echo	"</div>
+									<div class=\"socialTab\">
+										$mssVal ".$html->link($html->image("delete.gif",array('border'=>0,'name'=>'delete')),"/band/inactive/?id=$mssKey&type=mss",array('class'=>'update',"onClick"=>"return confirms();"), false , false)."
+									</div>
+								</div>";
+						}
+					}
+						echo "	<div style=\"clear:both;\"> </div>
+							<div class=\"socialTab\" style=\"margin-left:0px;width:350px;\">
+								<div class=\"socialTab\" style=\"margin-left:0px;\">";
+										if(empty($mssdata) || empty($mssactive))
+										{
+										echo "<input id=\"Mssloginprofile_none\" type=\"radio\" value=\"none\" checked name=\"data[Msslogin][profile]\"/>";
+										}else
+										{
+										echo "<input id=\"Mssloginprofile_none\" type=\"radio\" value=\"none\" name=\"data[Msslogin][profile]\"/>";
+										}
+				
+								echo	"</div>
+									<div class=\"socialTab\">
+										none
+									</div>
+							</div>";
+				echo "  </div>
+					
+				
+				<div style=\"clear:both;\"></div>
+				<div class=\"socialTab\" style=\"margin-left: 10px; width: 350px;\"><input type=button class=\"addnew\" value=\"Add new MySpace profile\" onclick=\"javascript:location.href='$this->base/mss/login/'\"></div>
+				<div class=\"socialTab\"> ".$html->submit('Update',array('class'=>'update'))."</div>
+				</form>
+				<div style=\"clear:both;\"></div>
+			
+			</div>
+			
+				<div class=\"roundbottom\">
+				".$html->image('bl.png',array('class'=>'corner','style'=>'display:none','height'=>'15','width'=>'15'))."
+				 
+				</div>
+			</div>	
+			
+					
+			<div class=\"socialTab managehead\">Facebook</div>
+			<div style=\"clear:both;\"></div>
+			
+			
+			<div class=\"roundcont\">
+				<div class=\"roundtop\">";
+					echo $html->image("tl.png",array('class'=>'corner','style'=>'display:none','height'=>15,'width'=>15));
+			 
+		echo 	"</div>
+			
+				<div class=\"manage-box\">
+				
+				
+						<form name=fbs method=post action=".$html->url('/fbs/updateuser/').">
+							<div class=\"socialTab\"><h4>Select the Facebook user, group and page that should be shown on your dashboard:</h4></div>
+							<div style=\"clear: both;\"> </div>
+							
+								<div class=\"socialTab\"><h4>Active User</h4></div>
+								<div class=\"socialTab\">";
+								
+								if(!empty($fbsdata))
+								{
+									foreach($fbsdata as $fbsKey => $fbsVal)
+									{
+									echo "	<div style=\"clear:both;\"> </div>
+										<div class=\"socialTab\" style=\"margin-left:0px;width:270px;\">
+											<div class=\"socialTab\" style=\"margin-left:0px;\">";
+												
+												if($fbsactive==$fbsKey)
+												{
+												echo "<input id=\"Fbuser\" type=\"radio\" value=\"$fbsKey\" checked=\"checked\" name=\"data[Fb][user]\"/>";
+												}
+												else
+												{
+												echo "<input id=\"Fbuser\" type=\"radio\" value=\"$fbsKey\" name=\"data[Fb][user]\"/>";
+												}
+										echo	"</div>
+											<div class=\"socialTab\">
+												$fbsVal ".$html->link($html->image("delete.gif",array('border'=>0,'name'=>'delete')),"/band/inactive/?id=$fbsKey&type=fbs",array('class'=>'update',"onClick"=>"return confirms();"), false , false)."
+											</div>
+										</div>";
+									} // foreach($fbsdata as $fbsKey => $fbsVal)
+								} //  if(!empty($fbsdata))
+							echo "
+							
+							<div style=\"clear:both;\"> </div>
+							<div class=\"socialTab\" style=\"margin-left:0px;width:270px;\">
+								<div class=\"socialTab\" style=\"margin-left:0px;\">";
+										if(empty($fbsdata) || ($none))
+										{
+										echo "<input id=\"Fbuser_none\" type=\"radio\" value=\"none\" checked name=\"data[Fb][user]\"/>";
+										}else
+										{
+										echo "<input id=\"Fbuser_none\" type=\"radio\" value=\"none\" name=\"data[Fb][user]\"/>";
+										}
+				
+								echo	"</div>
+							
+									<div class=\"socialTab\">
+										none
+									</div>
+							</div>
+						 	</div>
+					
+							
+					
+						<div style=\"clear:both;\"></div>";
+						echo"	<div class=\"socialTab\"><input type=button class=\"addnew\" value=\"Add new Facebook user\" onclick=\"javascript:location.href='$this->base/fbs/fbswelcome/'\"></div>
+						<div style=\"clear:both;\"></div>
+						<div class=\"socialTab\"><input type=button class=\"addnew\" value=\"Edit publish permissions\" onclick=\"javascript:location.href='$this->base/fbs/permission/'\"></div>
+						<div style=\"clear:both;\"></div>";
+						
+						
+					if($fbs_flag)
+					{
+						echo"	<div class=\"socialTab\" style=\"width:40px;\"><h4>Page</h4>".$html->hidden('Fb/hfbpage',array('value'=>$pageactive))."</div> 
+							<div class=\"socialTab\"><select name=data[Fb][page] id=FbPage style=\"width: 200px;\"></select></div>
+							<div style=\"clear:both;\"></div>
+							<div  class=\"socialTab\" style=\"width: 360px; margin:0px;\" >
+							<div class=\"socialTab\" style=\"width:40px;\"><h4>Group</h4>".$html->hidden('Fb/hfbgroup',array('value'=>$groupactive))."</div> 
+							<div class=\"socialTab\"><select name=data[Fb][group] id=FbGroup style=\"width: 200px;\"></select> </div>
+							</div>
+							<div class=\"socialTab\"> ".$html->submit('Update',array('class'=>'update'))."</div> 
+							<div style=\"clear:both;\"></div>
+						</form>";
+					
+					
+					
+						if($pgflag) // if no page or group define
+						{
+						echo	"<div class=\"socialTab\"><strong> Please select page and group </strong></div>
+							<div style=\"clear:both;\"></div>";
+						}
+																	
+					} // if($fbs_flag)
+					
+				echo "</div>
+				<div class=\"roundbottom\">
+				".$html->image('bl.png',array('class'=>'corner','style'=>'display:none','height'=>'15','width'=>'15'))."
+				 
+				</div>
+			</div>	
+			";
+			
+		echo	"<div class=\"socialTab managehead\">Youtube</div>
+			<div style=\"clear:both;\"></div>
+			
+			<div class=\"roundcont\">
+				<div class=\"roundtop\">";
+					echo $html->image("tl.png",array('class'=>'corner','style'=>'display:none','height'=>15,'width'=>15));
+			 
+		echo 	"</div>
+		
+				<div class=\"manage-box\">
+			
+				
+				       <form name=ytsUpdate method=post action=".$html->url('/yts/updatechannel/').">
+				       <div class=\"socialTab\"><h4>Select the YouTube channel that should be shown on your dashboard:</h4></div>
+					<div style=\"clear: both;\"> </div>
+					<div class=\"socialTab\">";
+					
+					if(!empty($ytsdata))
+						{
+							foreach($ytsdata as $ytsKey => $ytsVal)
+							{
+							echo "	<div style=\"clear:both;\"> </div>
+								<div class=\"socialTab\" style=\"margin-left:0px;width:350px;\">
+									<div class=\"socialTab\" style=\"margin-left:0px;\">";
+										
+										if($ytsactive==$ytsKey)
+										{
+										echo "<input id=\"Ytchannel_$ytsKey\" type=\"radio\" value=\"$ytsKey\" checked name=\"data[Yt][channel]\"/>";
+										}
+										else
+										{
+										echo "<input id=\"Ytchannel_$ytsKey\" type=\"radio\" value=\"$ytsKey\" name=\"data[Yt][channel]\"/>";
+										}
+								echo	"</div>
+									<div class=\"socialTab\">
+										$ytsVal ".$html->link($html->image("delete.gif",array('border'=>0,'name'=>'delete')),"/band/inactive/?id=$ytsKey&type=yts",array('class'=>'update',"onClick"=>"return confirms();"), false , false)."
+									</div>
+								</div>";
+							} // foreach($ytsdata as $ytsKey => $ytsVal)
+						} //  if(!empty($ytsdata))
+						
+						echo "	<div style=\"clear:both;\"> </div>
+							<div class=\"socialTab\" style=\"margin-left:0px;\">
+								<div class=\"socialTab\" style=\"margin:0px;\">";
+										if(empty($ytsdata) || empty($ytsactive))
+										{
+										echo "<input id=\"Ytchannel_none\" type=\"radio\" value=\"none\" checked name=\"data[Yt][channel]\"/>";
+										}else
+										{
+										echo "<input id=\"Ytchannel_none\" type=\"radio\" value=\"none\" name=\"data[Yt][channel]\"/>";
+										}
+				
+								echo	"</div>
+									<div class=\"socialTab\">
+										none
+									</div>
+							</div>
+					
+					</div>
+					
+				     
+					<div style=\"clear:both;\"></div>";
+				
+			
+				echo 	"<div class=\"socialTab\" style=\"margin-left:10px;width:350px;\">
+						<input type=button class=\"addnew\" value=\"Add new Youtube channel\" onclick=\"javascript:location.href='$this->base/yts/ytswelcome/'\">
+				</div>
+				 <div class=\"socialTab\"> ".$html->submit('Update',array('class'=>'update'))."</div>
+				</form>
+				<div style=\"clear:both;\"></div>
+				</div>
+				<div class=\"roundbottom\">
+				".$html->image('bl.png',array('class'=>'corner','style'=>'display:none','height'=>'15','width'=>'15'))."
+				 
+				</div>
+			</div>	";
+				
+				
+				
+				
+		echo 	"<div class=\"socialTab managehead\">Last.fm</div>
+			 <div style=\"clear:both;\"></div>
+			 <div class=\"roundcont\">
+				<div class=\"roundtop\">";
+					echo $html->image("tl.png",array('class'=>'corner','style'=>'display:none','height'=>15,'width'=>15));
+			 
+		echo 	"</div>
+				<div class=\"manage-box\">";
+			
+				  echo	"
+					<form name=lfmUpdate method=post action=".$html->url('/lfms/updategroup/').">
+					<div class=\"socialTab\"><h4>Select the Last.fm artist that should be shown on your dashboard:</h4></div>
+					<div style=\"clear: both;\"> </div>
+						<div class=\"socialTab\">";
+						
+						if(!empty($lfmdata))
+						{
+						
+							
+							foreach($lfmdata as $lfmKey => $lfmVal)
+							{
+							echo "	<div style=\"clear:both;\"> </div>
+								<div class=\"socialTab\" style=\"margin-left:0px;width:350px;\">
+									<div class=\"socialTab\" style=\"margin-left:0px;\">";
+										
+										
+										if($lfmactive==$lfmKey)
+										{
+											echo "<input id=\"Lfmgroup_$lfmKey\" type=\"radio\" value=\"$lfmKey\" checked=\"checked\" name=\"data[Lfm][group]\"/>";
+										}
+										else
+										{
+											echo "<input id=\"Lfmgroup_$lfmKey\" type=\"radio\" value=\"$lfmKey\" name=\"data[Lfm][group]\"/>";
+										}
+								echo	"</div>
+									<div class=\"socialTab\">
+										$lfmVal ".$html->link($html->image("delete.gif",array('border'=>0,'name'=>'delete')),"/band/inactive/?id=$lfmKey&type=lfm",array('class'=>'update',"onClick"=>"return confirms();"), false , false)."
+									</div>
+								</div>";
+							} // foreach($lfmdata as $lfmKey => $lfmVal)
+						} //  if(!empty($lfmdata))
+						echo "	<div style=\"clear:both;\"> </div>
+							
+								<div class=\"socialTab\" style=\"margin-left:0px;\">";
+										if(empty($lfmdata) || empty($lfmactive))
+										{
+										echo "<input id=\"Lfmgroup_none\" type=\"radio\" value=\"none\" checked name=\"data[Lfm][group]\"/>";
+										}else
+										{
+										echo "<input id=\"Lfmgroup_none\" type=\"radio\" value=\"none\" name=\"data[Lfm][group]\"/>";
+										}
+				
+								echo	"</div>
+									<div class=\"socialTab\">
+										none
+									</div>
+							
+						
+						</div>
+						
+					</form>
+					<div style=\"clear:both;\"></div>";
+			
+		echo 	"
+					<form name=lfmsAddnew method=post action=".$html->url('/lfms/addgroup/').">
+						<div class=\"socialTab\"><h4>Change the Last.fm profile for this artist. Enter the artist's name:</h4></div>
+						<div style=\"clear: both;\"> </div>
+						<div class=\"socialTab\" style=\"margin-left:10px;width:350px;\">
+							<div class=\"socialTab\"> ".$html->input('Lfm/music_group')."</div>
+						</div>
+						<div class=\"socialTab\"> ".$html->input('lfm/submit',array('type'=>'button','value'=>'Update','class'=>'update','id'=>'lfmSubmit'))."</div>
+										
+						<div style=\"clear:both;\"></div>
+					</form>
+			</div>
+			<div class=\"roundbottom\">
+				".$html->image('bl.png',array('class'=>'corner','style'=>'display:none','height'=>'15','width'=>'15'))."
+				 
+				</div>
+			</div>
+			
+			
+			<div class=\"socialTab managehead\">Twitter</div>
+			<div style=\"clear:both;\"></div>
+			
+			<div class=\"roundcont\">
+				<div class=\"roundtop\">";
+					echo $html->image("tl.png",array('class'=>'corner','style'=>'display:none','height'=>15,'width'=>15));
+			echo 	"</div>
+		
+				<div class=\"manage-box\">
+			
+				
+				       <form name=mss method=post action=".$html->url('/twitter/update/').">
+				       <div class=\"socialTab\"><h4>Select the Twitter user that should be shown on your dashboard:</h4></div>
+					<div style=\"clear: both;\"> </div>
+					<div class=\"socialTab\">";
+					
+					if(!empty($twtdata))
+						{
+							foreach($twtdata as $twtKey => $twtVal)
+							{
+							echo "	<div style=\"clear:both;\"> </div>
+								<div class=\"socialTab\" style=\"margin-left:0px;width:350px;\">
+									<div class=\"socialTab\" style=\"margin-left:0px;\">";
+										
+										if($twtactive==$twtKey)
+										{
+										echo "<input id=\"Twtuser_$twtKey\" type=\"radio\" value=\"$twtKey\" checked name=\"data[twitter][user_id]\"/>";
+										}
+										else
+										{
+										echo "<input id=\"Twtuser_$twtKey\" type=\"radio\" value=\"$twtKey\" name=\"data[twitter][user_id]\"/>";
+										}
+								echo	"</div>
+									<div class=\"socialTab\">
+										$twtVal ".$html->link($html->image("delete.gif",array('border'=>0,'name'=>'delete')),"/band/inactive/?id=$twtKey&type=twt",array('class'=>'update',"onClick"=>"return confirms();"), false , false)."
+									</div>
+								</div>";
+							} // foreach($twtdata as $twtKey => $twtVal)
+						} //  if(!empty($twtdata))
+						echo "	<div style=\"clear:both;\"> </div>
+							<div class=\"socialTab\" style=\"margin-left:0px;width:350px;\">
+								<div class=\"socialTab\" style=\"margin-left:0px;\">";
+										if(empty($twtdata) || empty($twtactive))
+										{
+										echo "<input id=\"twtuser_none\" type=\"radio\" value=\"none\" checked name=\"data[twitter][user_id]\"/>";
+										}else
+										{
+										echo "<input id=\"twtuser_none\" type=\"radio\" value=\"none\" name=\"data[twitter][user_id]\"/>";
+										}
+				
+								echo	"</div>
+									<div class=\"socialTab\">
+										none
+									</div>
+							</div>
+					
+					</div>
+					<div class=\"socialTab\"> ".$html->submit('Update',array('class'=>'update'))."</div>
+				       </form>
+					<div style=\"clear:both;\"></div>";
+				
+			
+				echo 	"<div class=\"socialTab\">
+						<input type=button class=\"addnew\" value=\"Add new Twitter user\" onclick=\"javascript:location.href='$this->base/twitter/welcome/'\">
+				</div>
+					
+				<div style=\"clear:both;\"></div>
+				</div>
+				<div class=\"roundbottom\">
+				".$html->image('bl.png',array('class'=>'corner','style'=>'display:none','height'=>'15','width'=>'15'))."
+				 
+				</div>
+			</div>
+			
+	</div>
+	
+	
+	</div>
+	
+	<div style=\"clear:both;\">&nbsp;</div>
+	
+	
+	
+</div>";
+?>

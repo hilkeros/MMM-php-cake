@@ -1,0 +1,167 @@
+<? $this->pageTitle = 'Motion Music Manager User Management'; ?>
+
+<script type="text/javascript">
+ $(document).ready(function(){
+    var width= Math.round(screen.width/1.75);
+    var height = Math.round(screen.height/1.75);
+    $("#term-of-service").attr("href",$("#term-of-service").attr("href")+'?width='+width+'&height='+height);
+});
+</script>
+
+	<?php
+	
+	echo "<div class=page>";
+	
+		if ($session->check('Message.flash'))
+		{
+			$session->flash();
+		}
+	
+		$base= $this->base;
+		echo "<div id=register>
+						<div id=\"registration-tip\" style=\"float:left;display:block;width:795px;margin-left:0px;\">
+							<div class=\"tip-roundcont\">
+								<div class=\"tip-roundtop\">";
+									echo $html->image("rytl.png",array('class'=>'corner','style'=>'display:none','height'=>15,'width'=>15));
+							 
+						echo 	"</div>
+								<div style=\"padding-left:10px;padding-right:10px;background-color:#FDFDB5;\">
+								<b>Tip:</b> Your user name is something personal. It is not the name of your band, because you can have different bands under one account.
+								</div>
+							<div class=\"tip-roundbottom\">
+								".$html->image('rybl.png',array('class'=>'corner','style'=>'display:none','height'=>'15','width'=>'15'))."
+								 
+								</div>
+							</div>	
+						</div>
+						<div style=\"clear:both;\">&nbsp;</div> 
+			<table>
+				<form name=users method=post>
+					<tr>
+						<td style=\"vertical-align:top;\">
+							User Name <span class=\"obligatory\"> *</span>
+						</td>
+						<td>";
+							echo $html->input('User/username');
+							echo $html->tagErrorMsg('User/username', 'User name is required.');
+					echo    "</td>
+
+					</tr>
+					<tr>
+						<td style=\"vertical-align:top;\">
+							Email address <span class=\"obligatory\"> *</span>
+						</td>
+						<td>";
+							echo $html->input('User/email');
+							echo $html->tagErrorMsg('User/email', 'Invalid email address.');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td style=\"vertical-align:top;\">
+							Password <span class=\"obligatory\"> *</span> 
+						</td>
+						<td>";
+							echo $html->password('User/password');
+							echo $html->tagErrorMsg('User/password', 'Password is required.');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td style=\"vertical-align:top;\">
+							Confirm Password <span class=\"obligatory\">* </span>
+						</td>
+						<td>";
+							echo $html->password('Admin/cpassword');
+							echo $html->tagErrorMsg('Admin/cpassword', 'Password is required.');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td style=\"vertical-align:top;\">
+							First Name <span class=\"obligatory\"> *</span>
+						</td>
+						<td>";
+							echo $html->input('User/firstname');
+							echo $html->tagErrorMsg('User/firstname', 'first name is required.');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td style=\"vertical-align:top;\">
+							Last Name <span class=\"obligatory\">* </span>
+						</td>
+						<td>";
+							echo $html->input('User/lastname');
+							echo $html->tagErrorMsg('User/lastname', 'Last name is required.');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Country
+						</td>
+						<td>";
+							echo $html->selecttag('User/country',$country);
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							City
+						</td>
+						<td>";
+							echo $html->input('User/city');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Postal Code
+						</td>
+						<td>";
+							echo $html->input('User/postalcode');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Street
+						</td>
+						<td>";
+							echo $html->input('User/street');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Street Number
+						</td>
+						<td>";
+							echo $html->input('User/streetnumber');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td>
+							Phone Number
+						</td>
+						<td>";
+							echo $html->input('User/phonenumber');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td colspan=2>
+						 I have read and agree with the Motion Music Manager <a href=\"$base/users/agreement/\" id=\"term-of-service\"  class=\"thickbox \"> Terms of Service </a> and <a href=\"$base/users/privacy/\" id=\"privacy\" class=\"thickbox \"> Privacy Policy </a>.
+						</td>
+					</tr>
+					<tr>
+						<td style=\"vertical-align:top;\">
+							Do you agree? <span class=\"obligatory\"> *</span>
+						</td>
+						<td>";
+							echo $html->checkboxTag('User/Agreement','Term of Services');
+							echo $html->tagErrorMsg('User/Agreement', 'Please check the Terms of Service Agreement.');
+					echo 	"</td>
+					</tr>
+					<tr>
+						<td colspan=2>";
+							echo $html->submit('register',array('class'=>'next'));
+					echo 	"</td>
+					</tr>
+				</form>
+			</table>
+		</div>
+	</div>";
+?>
+<div style="clear:both;"></div>	

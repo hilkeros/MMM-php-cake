@@ -1,0 +1,83 @@
+<? $this->pageTitle = 'Motion Music Manager'; ?>
+
+<?php
+echo "<div class=page>";
+	
+		if ($session->check('Message.flash'))
+		{
+			$session->flash();
+		}
+
+
+echo "Click here to add new content : ";
+echo $html->link('Add New Page','/administrator/cms');
+?>
+
+<table class="box-table" width=50%>
+<thead>
+ 	<tr>
+	      <th scope="col">	Title	</th>
+	      <th scope="col">	Status	</th>
+	      <th scope="col">	Action	</th>
+	</tr>
+</thead>
+<tbody>
+
+<?php 
+	foreach ($results as $key => $data)
+	{
+	echo "<tr>
+		<td>".$data['Cms']['title']."</td>
+		<td>";
+			if($data['Cms']['status']==0)
+				echo "Inactive";
+			else
+				echo "Active";
+	echo 	"</td>
+		<td>";
+				echo $html->link('Edit / Modify','/administrator/cmsedit/?id='.$data['Cms']['id'])."&nbsp;&nbsp; | &nbsp;&nbsp;";
+				echo $html->link('Delete','/administrator/cmsdelete/?id='.$data['Cms']['id']);
+	echo 	"</td>
+	</tr>";
+	} // 		foreach ($results as $key => $data)
+	
+echo "
+</tbody>
+</table> ";
+
+?>
+
+<div style=""> Admin pages </div>
+<table class="box-table" width=50%>
+<thead>
+ 	<tr>
+	      <th scope="col">	Title	</th>
+	      <th scope="col">	Status	</th>
+	      <th scope="col">	Action	</th>
+	</tr>
+</thead>
+<tbody>
+
+<?php 
+	foreach ($pageResults as $key => $data)
+	{
+	echo "<tr>
+		<td>".$data['Page']['title']."</td>
+		<td>";
+			if($data['Page']['status']==0)
+				echo "Inactive";
+			else
+				echo "Active";
+	echo 	"</td>
+		<td>";
+				echo $html->link('Edit / Modify','/administrator/pages/?id='.$data['Page']['id']);
+
+	echo 	"</td>
+	</tr>";
+	} // 		foreach ($results as $key => $data)
+	
+echo "
+</tbody>
+</table>
+</div>";
+?>

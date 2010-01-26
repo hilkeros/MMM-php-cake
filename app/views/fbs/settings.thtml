@@ -1,0 +1,81 @@
+<? $this->pageTitle = 'Motion Music Manager Facebook authentication'; ?>
+<?php
+echo "
+       <div class=\"fbs-block\">";
+       echo "inprocess=".$inprocess;
+	            if($inprocess==0)
+	            {
+		     echo "
+		     <div class=\"fbs-light-block\">
+			    <form name=\"settings\" method=\"post\">
+				   <div class=\"wizard-title\" style=\"margin:0px;\">
+					  <div class=\"wizard-closeWindow\">
+					     <input type=\"submit\" class=\"update\" value=\"close\">
+					  </div>
+				   </div>
+				   <div class=\"wizard-heading\"> $name's profile</div>
+				   <div class=\"wizard-text\"> Below you find the pages and groups which are linked to $name Facebook profile. Please select which page and group is related to this band.</div>
+				   <div style=\"clear:both;\"> </div>
+				   <div style=\"margin:0px auto;width:600px;\">
+					  <div class=\"socialTab\" style=\"width:40px;\"> Page </div> <div class=\"socialTab\"> ".$html->selecttag('Fb/page',$page,0,array('style'=>'width: 200px;'))."</div>
+					  <div style=\"clear:both;\"> </div>
+					  <div class=\"socialTab\" style=\"width:40px;\"> Group </div> <div class=\"socialTab\"> ".$html->selecttag('Fb/group',$group,0,array('style'=>'width: 200px;'))."</div>
+					  <div style=\"clear:both;\"> </div>
+				   </div>
+				   <div class=\"wizard-finish\">
+					 <input type=\"submit\" class=\"next\" value=\"Update\">
+				   </div>
+			    </form>
+			    <div style=\"clear:both;\">&nbsp;</div>
+		     </div>";
+		     }
+		     elseif($inprocess==1)
+		     {
+			    echo "
+			    	   <div id=\"fbs-auth-block\">
+				      	   <div id=\"fbs_title\">
+					       <div id=\"fbs_closeWindow\">
+						   <input type=\"button\" class=\"update\" value=\"close\" onclick=\"javascript:location.href='$this->base/fbs/settings/?type=finish'\">
+						   or
+						   <input type=\"button\" class=\"update\" value=\"cancel\" onclick=\"javascript:location.href='$this->base/fbs/settings/?type=finish'\">
+					       </div>
+					   </div>
+					   <div id=\"iframe-text\">
+					      If you want to post status updates to your Facebook page, you must allow us to publish to your Facebook page. Click on the 'Allow Publishing' button in the Facebook dialog box below.
+					   <div id=\"frame\">
+					       <div id=\"iframe\">
+						   <Iframe src=\"$url\" width=\"600\" height=\"400\" frameborder=\"0\"></Iframe>
+					       </div>
+					   </div>
+					   <div style=\"clear:both;\">&nbsp;</div>
+			       	   </div>
+			   ";
+		     }
+		    elseif(!empty($inprocess)=='2')
+		     {
+		      echo "
+			    <div class=\"fbs-light-block\">
+				   <div class=\"wizard-title\">
+					  <div class=\"wizard-closeWindow\">
+						 <input type=\"button\" class=\"update\" value=\"close\" onclick=\"javascript:location.href='$url'\">
+					  </div>
+				   </div>
+				   <div class=\"wizard-heading\"> Thanks! </div>
+				   <div class=\"wizard-text\"> ";
+					  if($flag=='b')
+					  {
+						 echo "The Facebook data of $name have been processed succesfully. Click the Finish button to continue the setup wizard.";
+					  }
+					  else
+					  {		  
+						 echo "The Facebook data of $name have been processed succesfully. Click the finish button to return to your settings page.";
+					  }
+			    echo " </div>
+				   <div id=\"wizard-finish\">
+				       <input type=\"button\" class=\"next\" value=\"Add new\" onclick=\"javascript:location.href='$addnewurl'\">
+				       <input type=\"button\" class=\"next\" value=\"Finish\" onclick=\"javascript:location.href='$url'\">
+				   </div>
+			    </div>";
+		     }
+ echo "</div>";
+?>
