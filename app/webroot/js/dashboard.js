@@ -7,6 +7,15 @@ $(function() {
 		
 		return false;
 	})
+	
+	$('.actions .dm').live('click', function() {
+		var $this = $(this);
+		
+		$('#DashboardStatus').val('d @' + $this.attr('rel') + " ").focus()
+		limiter();
+		
+		return false;
+	})
 })
 
 // End sane code
@@ -152,7 +161,7 @@ $(function() {
 			   flag 	= j[i].optionFlag;
 			   DmsCount	= j[i].optionCount;
 			   
-			   DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=dm-text > "+message+"</div> <div class=dms-desc><a href=http://twitter.com/"+name+" target=_blank>"+name+"</a></div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a></div></div><div class=twt-line></div>";
+			   DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=dm-text > "+message+"</div> <div class=dms-desc><a href=http://twitter.com/"+name+" target=_blank>"+name+"</a></div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a><a href='#' rel='"+name+"' class='dm'>dm</a></div></div><div class=twt-line></div>";
 			   
    
 		  }
@@ -187,7 +196,7 @@ $(function() {
 			   flag 	= j[i].optionFlag;
 			   MentionsCount = j[i].optionCount;
 			   
-			   DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=mentions-text > "+message+"</div> <div class=dms-desc><a href=http://twitter.com/"+name+" target=_blank>"+name+"</a></div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a></div></div><div class=twt-line></div>";
+			   DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=mentions-text > "+message+"</div> <div class=dms-desc><a href=http://twitter.com/"+name+" target=_blank>"+name+"</a></div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a><a href='#' rel='"+name+"' class='dm'>dm</a></div></div><div class=twt-line></div>";
 			    
 		
 		  }
@@ -256,7 +265,7 @@ $(function() {
 			flag 	= j[i].optionFlag;
 			$tweetsCount = j[i].optionCount; 
 			   
-			DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=statuses-text ><a href='http://twitter.com/"+name+"' target='_blank'>"+name+"</a> &nbsp; "+message+"</div> <div class=dms-desc>&nbsp;</div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a></div></div><div class=twt-line></div>";
+			DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=statuses-text ><a href='http://twitter.com/"+name+"' target='_blank'>"+name+"</a> &nbsp; "+message+"</div> <div class=dms-desc>&nbsp;</div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a><a href='#' rel='"+name+"' class='dm'>dm</a></div></div><div class=twt-line></div>";
 		  }
 		
 
@@ -301,7 +310,7 @@ $(function() {
 			flag 	= j[i].optionFlag;
 			DmsCount= j[i].optionCount;
 			   
-			   DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=dm-text > "+message+"</div> <div class=dms-desc><a href=http://twitter.com/"+name+" target=_blank>"+name+"</a></div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a></div></div><div class=twt-line></div>";
+			   DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=dm-text > "+message+"</div> <div class=dms-desc><a href=http://twitter.com/"+name+" target=_blank>"+name+"</a></div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a><a href='#' rel='"+name+"' class='dm'>dm</a></div></div><div class=twt-line></div>";
 			   
    
 		  }
@@ -338,7 +347,7 @@ $(function() {
 			flag 	= j[i].optionFlag;
 			MentionsCount = j[i].optionCount;
 			   
-			   DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=mentions-text > "+message+"</div> <div class=dms-desc><a href=http://twitter.com/"+name+" target=_blank>"+name+"</a></div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a></div></div><div class=twt-line></div>";
+			   DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=mentions-text > "+message+"</div> <div class=dms-desc><a href=http://twitter.com/"+name+" target=_blank>"+name+"</a></div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a><a href='#' rel='"+name+"' class='dm'>dm</a></div></div><div class=twt-line></div>";
 		}
 		  
 		 
@@ -373,7 +382,7 @@ $(function() {
 			flag 		= j[i].optionFlag;
 			$tweetsCount 	= j[i].optionCount; 
 			   
-			      DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=statuses-text ><a href='http://twitter.com/"+name+"' target='_blank'>"+name+"</a> &nbsp; "+message+"</div> <div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a></div></div><div class=twt-line></div>";
+			      DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=statuses-text ><a href='http://twitter.com/"+name+"' target='_blank'>"+name+"</a> &nbsp; "+message+"</div> <div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a><a href='#' rel='"+name+"' class='dm'>dm</a></div></div><div class=twt-line></div>";
 		}
 		  
 	
