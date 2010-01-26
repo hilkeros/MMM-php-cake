@@ -4,7 +4,7 @@
 
 	echo "<div class=\"band-block\">
 		<div class=settings>
-			<div class=\"steps\">Step: 2 / 6</div> 
+			<div class=\"steps\">Step: 2 / 5</div> 
 			<div class=\"wizardhead\">MySpace Setup</div> 
 			<div class=register>";
 			

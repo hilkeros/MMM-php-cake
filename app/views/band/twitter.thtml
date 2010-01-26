@@ -3,7 +3,7 @@
 <?php
 	echo "  <div class=\"band-block\">
 			<div class=settings>
-				<div class=\"steps\">Step: 6 / 6</div> 
+				<div class=\"steps\">Step: 5 / 5</div> 
 				<div class=\"wizardhead\">Twitter Setup</div> 
 				<div class=register>";
 					
@@ -20,7 +20,7 @@
 					<div style=\"clear:both;\"></div>
 					
 					<div class=\"nextbar\">";
-						echo $html->input('Twitter/previous',array('type'=>'button','value'=>'Previous',"onClick"=>"javascript:window.location.href='".$html->url('/band/lastfm/')."'",'class'=>'next'));
+				echo $html->input('fbs/previous',array('type'=>'button','value'=>'Previous',"onClick"=>"javascript:window.location.href='".$html->url('/band/youtube/')."'",'class'=>'next'));
 						echo "<input type=button value=\"Next\" class=\"next\" onclick=\"javascript:location.href='$this->base/twitter/welcome/'\">";
 						echo $html->input('mss/skip',array('type'=>'button','value'=>'Skip',"onClick"=>"javascript:window.location.href='".$html->url('/band/thanks/')."'",'class'=>'next'));
 				echo 	"</div>

@@ -4,8 +4,9 @@
 	echo "<div class=\"band-block\">";
 		echo "<div class=settings>
 				
-			<div class=\"steps\">Step: 1 / 6</div> 
-			<div class=\"wizardhead\">Band Information</div> ";
+			<div class=\"steps\">Step: 1 / 5</div> 
+			<div class=\"wizardhead\">Tribe Information</div>
+			<div>please enter the name of your brand, organization,...</div>";
 			
 			echo "<div class=register>";
 				if ($session->check('Message.flash'))
@@ -32,12 +33,7 @@
 									echo $html->input('Band/website');
 				echo 	"</div>
 					<div style=\"clear:both;\"></div>
-					
-					<div class=\"socialTabBand\">Music Style</div>
-					<div class=\"socialTab\">";
-									echo $html->selecttag('Band/music_style',$genre,$s,array('class'=>'selectDate'));
-				echo 	"</div>
-									
+													
 					
 					<div style=\"clear:both;\"></div>
 					<div class=\"nextbar\">";
