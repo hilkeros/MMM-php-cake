@@ -1,4 +1,4 @@
-<? $this->pageTitle = 'Music Motion Manager'; ?>
+<?php $this->pageTitle = 'Music Motion Manager'; ?>
 <h1>Music Motion Manager</h1>
 
 default html 

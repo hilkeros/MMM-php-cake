@@ -1,4 +1,4 @@
-<? $this->pageTitle = 'Motion Music Manager Registration'; ?>
+<?php $this->pageTitle = 'Motion Music Manager Registration'; ?>
 <br/>
 
 <?php echo $html->link('User Login','/users/login')."&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;"?>
