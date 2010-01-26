@@ -838,11 +838,14 @@ img.corner {
 }
 
 .dms-created_at {
-
+	float: left;
 	color:#757575;
 	font-size : 10px;
 	padding-left : 3px;
 	text-align:left;
+}
+#twt-summary-box .actions {
+	float: right;
 }
 .twitter-empty-summary{
 	width:190px;

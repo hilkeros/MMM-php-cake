@@ -435,10 +435,10 @@ class TwitterController extends AppController
 								
 								
 								$name	= trim(stripslashes($tval['Twtstatus']['twt_screen_name']));
-								if($name)
-								{
-								$name = "<a href=http://twitter.com/$name target=_blank> $name </a>";
-								}
+								// if($name)
+								// {
+								// $name = "<a href=http://twitter.com/$name target=_blank> $name </a>";
+								// }
 								
 								$cdate	= $tval['Twtstatus']['created_at'];
 								
