@@ -1,4 +1,4 @@
-<? $this->pageTitle = 'Motion Music Manager'; ?>
+<?php $this->pageTitle = 'Motion Music Manager'; ?>
 <br />
 <h2>Admin Pannel</h2>
 

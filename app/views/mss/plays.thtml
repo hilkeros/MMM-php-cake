@@ -1,4 +1,4 @@
-<? $this->pageTitle = 'Motion Music Manager Views Analytics'; ?>
+<?php $this->pageTitle = 'Motion Music Manager Views Analytics'; ?>
 <br />
 <h2>Plays Analytics</h2>
 

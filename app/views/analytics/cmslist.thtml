@@ -1,4 +1,4 @@
-<? $this->pageTitle = 'Motion Music Manager Last.fm Statistics'; ?>
+<?php $this->pageTitle = 'Motion Music Manager Last.fm Statistics'; ?>
 
 <?php
     echo $html->css('thickbox');

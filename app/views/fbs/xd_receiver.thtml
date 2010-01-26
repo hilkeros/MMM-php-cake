@@ -1,4 +1,4 @@
-<?
+<?php
 // cache the xd_receiver
 header('Cache-Control: max-age=225065900');
 header('Expires:');

@@ -1,4 +1,4 @@
-<? $this->pageTitle = 'Motion Music Manager Facebook Statistics'; ?>
+<?php $this->pageTitle = 'Motion Music Manager Facebook Statistics'; ?>
 <?php
 echo "<h2> Facebook Band Statistics</h2>";
 echo $html->link('Back','/fbs/fbgroup/');

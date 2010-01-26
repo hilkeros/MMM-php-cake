@@ -1,4 +1,4 @@
-<? $this->pageTitle = 'Motion Music Manager Plays Analytics'; ?>
+<?php $this->pageTitle = 'Motion Music Manager Plays Analytics'; ?>
 <br />
 <?php
 	$base= $this->base; 

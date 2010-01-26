@@ -1,4 +1,4 @@
-<? $this->pageTitle = 'Motion Music Manager Contact Us'; ?>
+<?php $this->pageTitle = 'Motion Music Manager Contact Us'; ?>
 <br />
 <h2>Contact Us</h2>
 

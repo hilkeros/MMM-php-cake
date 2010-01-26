@@ -1,4 +1,4 @@
-<? $this->pageTitle = 'Motion Music Manager MySpace Statistics'; ?>
+<?php $this->pageTitle = 'Motion Music Manager MySpace Statistics'; ?>
 
 <?php
 $count=1;

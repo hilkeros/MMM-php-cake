@@ -1,4 +1,4 @@
-<? $this->pageTitle = 'Motion Music Manager User Management'; ?>
+<?php $this->pageTitle = 'Motion Music Manager User Management'; ?>
 <?php
 	
 	echo "<div class=\"band-block\">";

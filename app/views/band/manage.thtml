@@ -1,4 +1,4 @@
-<? $this->pageTitle = 'Motion Music Manager User Management'; ?>
+<?php $this->pageTitle = 'Motion Music Manager User Management'; ?>
 <?php
 
 	$base= $this->base;
@@ -478,5 +478,7 @@ echo "	</div>
 	
 	
 	
-</div>";
-?>
+</div>";
+
+?>
+

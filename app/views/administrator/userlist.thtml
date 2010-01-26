@@ -1,4 +1,4 @@
-<? $this->pageTitle = 'Motion Music Manager'; ?>
+<?php $this->pageTitle = 'Motion Music Manager'; ?>
 <?php
 $c=0;
 $pagination->setPaging($paging); // Initialize the pagination variables 
