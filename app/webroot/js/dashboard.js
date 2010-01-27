@@ -16,6 +16,16 @@ $(function() {
 		
 		return false;
 	})
+	
+	$('.actions .rt').live('click', function() {
+		var $this = $(this)
+		var tweet = 'RT @' + $this.attr('rel') + ": " + $this.parents('div.twt-message-block').find('.dms-text').text()
+		
+		$('#DashboardStatus').val(tweet).focus();
+		limiter();
+		
+		return false
+	})
 })
 
 var Tweet = {
@@ -26,10 +36,10 @@ var Tweet = {
 				$('<a>').attr('href', "http://twitter.com/" + name).text(name)
 			))
 			.append($('<div />').attr('class', 'dms-created_at').text(date))
-			.append($('<div />').attr('class', 'actions').append(
-					$('<a href="#" />').attr({rel: name, class: 'reply'}).text('reply')
-				).append(
-					$('<a href="#" />').attr({rel: name, class: 'dm'}).text('dm')
+			.append($('<div />').attr('class', 'actions')
+				.append($('<a href="#" />').attr({rel: name, class: 'reply'}).text('reply'))
+				.append($('<a href="#" />').attr({rel: name, class: 'dm'}).text('dm')
+				.append($('<a href="#" />').attr({rel: name, class: 'rt'}).text('rt'))
 				)
 			).after(
 				$('<div class=twt-line />')
