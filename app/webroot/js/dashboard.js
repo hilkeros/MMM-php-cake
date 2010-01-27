@@ -18,6 +18,68 @@ $(function() {
 	})
 })
 
+var Tweet = {
+	new: function(name, message, date) {
+		return $('<div class="twt-message-block"></div>')
+			.append($('<div />').attr('class', 'dms-text').attr('id', 'dm-text').html(message))
+			.append($('<div />').attr('class', 'dms-desc').html(
+				$('<a>').attr('href', "http://twitter.com/" + name).text(name)
+			))
+			.append($('<div />').attr('class', 'dms-created_at').text(date))
+			.append($('<div />').attr('class', 'actions').append(
+					$('<a href="#" />').attr({rel: name, class: 'reply'}).text('reply')
+				).append(
+					$('<a href="#" />').attr({rel: name, class: 'dm'}).text('dm')
+				)
+			).after(
+				$('<div class=twt-line />')
+			)
+	},
+	
+	get: function(amount, settings) {
+		request_params = {
+			id: $("input[name='twitterid']").val(),
+			bandid: $("input[name='data[Twitter][bandid]']").val(),
+			ajax: true
+		}
+		
+		if (amount) { request_params.count = amount }
+		
+		$.getJSON(base+"/twitter/" + settings.action, request_params, function(data){
+		  var flag = '';
+		  var count = 0 ;
+		
+			// Empty twt_dm_message
+			settings.container.html('')
+		
+		  $.each(data, function(i, tweet) {
+			   flag 	= tweet.optionFlag;
+			   count	= tweet.optionCount;
+			   
+				settings.container.append(Tweet.new(tweet.optionName, tweet.optionText, tweet.optionDate))
+		  })
+		  
+		  settings.counter.html(count);
+		  
+		  if(flag==0) {
+		    settings.container.siblings('.more').css("display","none");
+			}
+		})
+	},
+	
+	getDM: function(amount) {
+		Tweet.get(amount, {action: 'getDms', container: $("div#twt_dm_message"), counter: $("span#dms_number")})    
+	},
+	
+	getMentions: function(amount) {
+		Tweet.get(amount, {action: 'getMentions', container: $("div#twt_mentions_message"), counter: $("span#mentions_number")})    
+	},
+	
+	getTweets: function(amount) {
+		Tweet.get(amount, {action: 'getTweets', container: $("div#twt_tweets_message"), counter: $("span#tweets_number")})    
+	}
+}
+
 // End sane code
 // Begin code Pakistani inc.
 
@@ -143,78 +205,11 @@ $(function() {
     $.getJSON(base+"/twitter/updateTwitter/",{ bandid: $("input[name='data[Twitter][bandid]']").val() , ajax: 'true'} , function(j){
 		  	  
 		})
-    
-    // get & set direct messages data
-    $.getJSON(base+"/twitter/getDms/",{id: $("input[name='twitterid']").val(),bandid: $("input[name='data[Twitter][bandid]']").val() , count:10 , ajax: 'true'}, function(j){
-		  var message = '';
-		  var name = '';
-		  var vdate = '';
-		  var flag = '';
-		  var DmsData = '';
-		  var DmsCount = 0 ;
 		
-		  for (var i = 0; i < j.length; i++) {
-		 
-			   message 	= j[i].optionText; 
-			   name 	= j[i].optionName;
-			   vdate 	= j[i].optionDate;
-			   flag 	= j[i].optionFlag;
-			   DmsCount	= j[i].optionCount;
-			   
-			   DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=dm-text > "+message+"</div> <div class=dms-desc><a href=http://twitter.com/"+name+" target=_blank>"+name+"</a></div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a><a href='#' rel='"+name+"' class='dm'>dm</a></div></div><div class=twt-line></div>";
-			   
-   
-		  }
-		  
-		  
-		  $("div#twt_dm_message").html(DmsData);
-		  $("span#dms_number").html(DmsCount);
-		  
-		  if(flag==0)
-		  {
-		    $("#dms-more").css("display","none");
-		    $("#dm-text").css("text-align","center");
-		  
-		   //  $("#dms-messages").css("overflow-x","hidden");
-		  }
-		  
-		})
+		Tweet.getDM(10)
+		Tweet.getMentions(10)
+		Tweet.getTweets(10)
     
-    // get & set mentions data
-    $.getJSON(base+"/twitter/getMentions/",{id: $("input[name='twitterid']").val(),bandid: $("input[name='data[Twitter][bandid]']").val(),count:10 , ajax: 'true'}, function(j){
-		  var message = '';
-		  var name = '';
-		  var vdate = '';
-		  var flag = '';
-		  var DmsData = '';
-		  var MentionsCount = 0; 
-		  for (var i = 0; i < j.length; i++) {
-		 
-			   message 	= j[i].optionText; 
-			   name 	= j[i].optionName;
-			   vdate 	= j[i].optionDate;
-			   flag 	= j[i].optionFlag;
-			   MentionsCount = j[i].optionCount;
-			   
-			   DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=mentions-text > "+message+"</div> <div class=dms-desc><a href=http://twitter.com/"+name+" target=_blank>"+name+"</a></div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a><a href='#' rel='"+name+"' class='dm'>dm</a></div></div><div class=twt-line></div>";
-			    
-		
-		  }
-		  
-		  $("div#twt_mentions_message").html(DmsData);
-		  $("span#mentions_number").html(MentionsCount);
-		  
-		  if(flag==0)
-		  {
-		    $("#mentions-more").css("display","none");
-		    $("#mentions-text").css("text-align","center");
-		 //   $("#mentions-messages").css("overflow-x","hidden");
-		  }
-		  
-		})
-    
-    
-    // get & set statuses data
     $.getJSON(base+"/twitter/getStatuses/",{id: $("input[name='twitterid']").val(),bandid: $("input[name='data[Twitter][bandid]']").val(), ajax: 'true'}, function(j){
 		  var message = '';
 		  var name = '';
@@ -245,43 +240,6 @@ $(function() {
 		
 				  
 		})
-    
-    // get & set tweets data
-    $.getJSON(base+"/twitter/getTweets/",{id: $("input[name='twitterid']").val(),bandid: $("input[name='data[Twitter][bandid]']").val(),count:10 , ajax: 'true'}, function(j){
-	
-	  
-		  var message = '';
-		  var name = '';
-		  var vdate = '';
-		  var flag = '';
-		  var DmsData = '';
-		  var tweetsCount = 0;
-	
-		  for (var i = 0; i < j.length; i++) {
-			message 	= j[i].optionText;
-			name  	= j[i].optionName;
-			vdate 	= j[i].optionDate;
-			vdate 	= j[i].optionDate;
-			flag 	= j[i].optionFlag;
-			$tweetsCount = j[i].optionCount; 
-			   
-			DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=statuses-text ><a href='http://twitter.com/"+name+"' target='_blank'>"+name+"</a> &nbsp; "+message+"</div> <div class=dms-desc>&nbsp;</div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a><a href='#' rel='"+name+"' class='dm'>dm</a></div></div><div class=twt-line></div>";
-		  }
-		
-
-		$("div#twt_tweets_message").html(DmsData);
-		$("span#tweets_number").html($tweetsCount);
-		
-		
-		if(flag==0)
-		{
-		   $("#statuses-text").css("text-align","center");
-		   $("#tweets-more").css("display","none");
-		}
-		  
-		})
-    
-    
 });
   
   
@@ -291,113 +249,9 @@ $(function() {
     $(function(){
 	
     // on click direct message more link
-    $("#dms-more").click(function(){
-                  
-		$.getJSON(base+"/twitter/getDms/",{id: $("input[name='twitterid']").val(),bandid: $("input[name='data[Twitter][bandid]']").val(), ajax: 'true'}, function(j){
-		var message = '';
-		var name = '';
-		var vdate = '';
-		var flag = '';
-		var DmsData = '';
-		var DmsCount = 0;
-		  
-		  
-		  for (var i = 0; i < j.length; i++) {
-		 
-			message 	= j[i].optionText; 
-			name 	= j[i].optionName;
-			vdate 	= j[i].optionDate;
-			flag 	= j[i].optionFlag;
-			DmsCount= j[i].optionCount;
-			   
-			   DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=dm-text > "+message+"</div> <div class=dms-desc><a href=http://twitter.com/"+name+" target=_blank>"+name+"</a></div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a><a href='#' rel='"+name+"' class='dm'>dm</a></div></div><div class=twt-line></div>";
-			   
-   
-		  }
-		  
-		  
-		   $("div#twt_dm_message").html(DmsData);
-		  
-		  if(flag==0)
-		  {
-		    $("#dms-more").css("display","none");
-		  }
-		  
-		})
-                    
-          })
-
-    // on click mentions more link
-     $("#mentions-more").click(function(){
-                  
-		$.getJSON(base+"/twitter/getMentions/",{id: $("input[name='twitterid']").val(),bandid: $("input[name='data[Twitter][bandid]']").val(), ajax: 'true'}, function(j){
-		var message = '';
-		var name = '';
-		var vdate = '';
-		var flag = '';
-		var DmsData = '';
-		var MentionsCount= 0;
-		  
-		  
-		  for (var i = 0; i < j.length; i++) {
-		 
-			message	= j[i].optionText; 
-			name 	= j[i].optionName;
-			vdate 	= j[i].optionDate;
-			flag 	= j[i].optionFlag;
-			MentionsCount = j[i].optionCount;
-			   
-			   DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=mentions-text > "+message+"</div> <div class=dms-desc><a href=http://twitter.com/"+name+" target=_blank>"+name+"</a></div><div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a><a href='#' rel='"+name+"' class='dm'>dm</a></div></div><div class=twt-line></div>";
-		}
-		  
-		 
-		   $("div#twt_mentions_message").html(DmsData);
-		  
-		  if(flag==0)
-		  {
-		    $("#mentions-more").css("display","none");
-		  }
-		  
-		})
-                    
-          })
-     
-     // on click mentions more link
-     $("#tweets-more").click(function(){
-                  $.getJSON(base+"/twitter/getTweets/",{id: $("input[name='twitterid']").val(),bandid: $("input[name='data[Twitter][bandid]']").val(), ajax: 'true'}, function(j){  
-		
-				
-		var message 	= '';
-		var name 	= '';
-		var vdate 	= '';
-		var flag 	= '';
-		var DmsData 	= '';
-		var tweetsCount = 0;
-		  
-		for (var i = 0; i < j.length; i++) {
-		 
-			message 	= j[i].optionText; 
-			name 		= j[i].optionName;
-			vdate 		= j[i].optionDate;
-			flag 		= j[i].optionFlag;
-			$tweetsCount 	= j[i].optionCount; 
-			   
-			      DmsData += "<div class=\"twt-message-block\"><div class=dms-text id=statuses-text ><a href='http://twitter.com/"+name+"' target='_blank'>"+name+"</a> &nbsp; "+message+"</div> <div class=dms-created_at>"+vdate+"</div><div class=actions><a href='#' rel='"+name+"' class='reply'>reply</a><a href='#' rel='"+name+"' class='dm'>dm</a></div></div><div class=twt-line></div>";
-		}
-		  
-	
-		$("div#twt_tweets_message").html(DmsData);
-		$("span#tweets_number").html($tweetsCount);
-		
-		if(flag==0)
-		{
-		    $("#tweets-text").css("text-align","center");
-		    $("#tweets-more").css("display","none");
-		}
-		  
-		})
-                    
-          })
+    $("#dms-more").click(function() { Tweet.getDM() });
+		$("#mentions-more").click(function() { Tweet.getMentions() });
+		$("#tweets-more").click(function() { Tweet.getTweets() });
      
      $("#UsersSubmit").submit(function(){
 				$.post($(this).attr('action'), function(html) { 

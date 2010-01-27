@@ -698,7 +698,7 @@ endif;
 							<div id=\"twt_tweets_message\">
 								 
 							</div>
-							<div id=\"tweets-more\">
+							<div id=\"tweets-more\" class=\"more\">
 								 more 
 							</div>
 						</div>
@@ -735,7 +735,7 @@ endif;
 							<div id=\"twt_mentions_message\">
 								 
 							</div>					
-							<div id=\"mentions-more\">
+							<div id=\"mentions-more\" class=\"more\">
 								 more 
 							</div>
 						</div>
@@ -771,7 +771,7 @@ endif;
 							<div id=\"twt_dm_message\">
 								 
 							</div>					
-							<div id=\"dms-more\">
+							<div id=\"dms-more\" class=\"more\">
 								 more 
 							</div>
 						</div>
