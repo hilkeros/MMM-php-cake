@@ -29,7 +29,7 @@ $(function() {
 })
 
 var Tweet = {
-	new: function(name, message, date) {
+	create: function(name, message, date) {
 		return $('<div class="twt-message-block"></div>')
 			.append($('<div />').attr('class', 'dms-text').attr('id', 'dm-text').html(message))
 			.append($('<div />').attr('class', 'dms-desc').html(
@@ -37,9 +37,9 @@ var Tweet = {
 			))
 			.append($('<div />').attr('class', 'dms-created_at').text(date))
 			.append($('<div />').attr('class', 'actions')
-				.append($('<a href="#" />').attr({rel: name, class: 'reply'}).text('reply'))
-				.append($('<a href="#" />').attr({rel: name, class: 'dm'}).text('dm'))
-				.append($('<a href="#" />').attr({rel: name, class: 'rt'}).text('rt'))
+				.append($('<a href="#" />').attr({rel: name, 'class': 'reply'}).text('reply'))
+				.append($('<a href="#" />').attr({rel: name, 'class': 'dm'}).text('dm'))
+				.append($('<a href="#" />').attr({rel: name, 'class': 'rt'}).text('rt'))
 			)
 	},
 	
@@ -63,7 +63,7 @@ var Tweet = {
 			   flag 	= tweet.optionFlag;
 			   count	= tweet.optionCount;
 			   
-				settings.container.append(Tweet.new(tweet.optionName, tweet.optionText, tweet.optionDate)).append(
+				settings.container.append(Tweet.create(tweet.optionName, tweet.optionText, tweet.optionDate)).append(
 					$('<div class="twt-line" />')
 				)
 		  })
@@ -74,6 +74,20 @@ var Tweet = {
 		    settings.container.siblings('.more').css("display","none");
 			}
 		})
+	},
+	
+	shorten: function() {
+		var tweet = $('#DashboardStatus').val();
+		var urls = tweet.match(/(f|ht)tps?:\/\/\S+/g)
+		
+		$.each($.unique(urls), function(i, url) {
+			$.getJSON('http://api.bit.ly/shorten?callback=?', {login: 'mmmotion', version: '2.0.1', apiKey: 'R_1f211e60c59bb1ebb2693443887e4e93', longUrl: url}, function(bitly) {
+				var shortened = bitly.results[url].shortUrl
+				tweet = $('#DashboardStatus').val().replace(url, shortened)
+				if (shortened)
+					$('#DashboardStatus').val(tweet)
+			})
+		})		
 	},
 	
 	getDM: function(amount) {
