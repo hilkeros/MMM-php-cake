@@ -936,19 +936,14 @@ img.corner {
 	height: 130px;
 }
 
-#mentions-more{
+.more {
 	 color :#25AAE1;
 	 cursor:pointer;
 }
 
-#dms-more{
-	color :#25AAE1;
-	cursor:pointer;
-}
-
-#tweets-more{
-	color :#25AAE1;
-	cursor:pointer;
+.actions a {
+	font-size: 11px;
+	margin: 0px 2px 0px 2px;
 }
 
 #tweets-text {

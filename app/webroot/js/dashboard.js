@@ -38,11 +38,8 @@ var Tweet = {
 			.append($('<div />').attr('class', 'dms-created_at').text(date))
 			.append($('<div />').attr('class', 'actions')
 				.append($('<a href="#" />').attr({rel: name, class: 'reply'}).text('reply'))
-				.append($('<a href="#" />').attr({rel: name, class: 'dm'}).text('dm')
+				.append($('<a href="#" />').attr({rel: name, class: 'dm'}).text('dm'))
 				.append($('<a href="#" />').attr({rel: name, class: 'rt'}).text('rt'))
-				)
-			).after(
-				$('<div class=twt-line />')
 			)
 	},
 	
@@ -66,7 +63,9 @@ var Tweet = {
 			   flag 	= tweet.optionFlag;
 			   count	= tweet.optionCount;
 			   
-				settings.container.append(Tweet.new(tweet.optionName, tweet.optionText, tweet.optionDate))
+				settings.container.append(Tweet.new(tweet.optionName, tweet.optionText, tweet.optionDate)).append(
+					$('<div class="twt-line" />')
+				)
 		  })
 		  
 		  settings.counter.html(count);
