@@ -14,7 +14,7 @@ body{
 
 /* General Style Info */
 a {
-	color:#25AAE1;
+	color:#ed4e00;
 	text-decoration : none;
 }
 
@@ -24,7 +24,7 @@ a.graylink {
 }
 
 a.graylink:hover {
-	color : #757575;
+	color : #989898;
 	text-decoration : none;
 }
 
@@ -80,14 +80,14 @@ h5{
 	width: 1000px;
 	min-height: 750px;
 	border: 0px solid #000000;
-	background:url(../img/logo.png) no-repeat;
-	background-color:#E2E2E2;
+	background:url(../img/logo.png) no-repeat 115px 15px;
+	background-color:#f5f5f5;
 	margin:0px auto;
 }
 
 .footer{
 	clear:both;
-	background-color:#E2E2E2;
+	background-color:#f5f5f5;
 	width: 1000px;
 	margin:0px auto;
 	padding-bottom : 5px;
@@ -172,7 +172,7 @@ h5{
 .login-btn{
 	
 	color:#FFFFFF;
-	background:#25aae1;
+	background:#ed4e00;
 	font-size:12px;
 	font-family : arial;
 	letter-spacing : 1px;
@@ -640,7 +640,7 @@ img.corner {
 
 .summary-bottom a:hover{
 	text-align:center;
-	color:#25AAE1;
+	color:#ed4e00;
 }
 
 .statslogin{
@@ -719,7 +719,7 @@ img.corner {
 }
 
 #status-number {
-	color:#25AAE1;
+	color:#ed4e00;
 	margin : 0px;
 	padding-left:0px;
 	width:5px;
@@ -784,7 +784,7 @@ img.corner {
 
 .twitter-stats {
 	font-size: 14px;
-	color : #25AAE1;
+	color : #ed4e00;
 	margin-top : 10px;
 	float : left;
 	margin-left: 60px;
@@ -831,7 +831,7 @@ img.corner {
 
 .dms-desc {
 
-	color:#25AAE1;
+	color:#ed4e00;
 	font-size : 10px;
 	padding: 0px 5px 0px 3px;
 	text-align:left;
@@ -934,17 +934,17 @@ img.corner {
 }
 
 #mentions-more{
-	 color :#25AAE1;
+	 color :#ed4e00;
 	 cursor:pointer;
 }
 
 #dms-more{
-	color :#25AAE1;
+	color :#ed4e00;
 	cursor:pointer;
 }
 
 #tweets-more{
-	color :#25AAE1;
+	color :#ed4e00;
 	cursor:pointer;
 }
 
@@ -1063,7 +1063,7 @@ img.corner {
 
 #limitcount {
 	background-color:#E2E2E2;
-	color:#25AAE1;
+	color:#ed4e00;
 	font-size:18px;
 	font-style:italic;
 	font-weight:normal;
@@ -1172,7 +1172,7 @@ img.corner {
 #imageDivLinkimg{
 	font-size:10px;
 	font-family : arial;
-	color : #25AAE1;
+	color : #ed4e00;
 	padding-top:10px;
 }
 /* end expand line*/
@@ -1239,15 +1239,14 @@ img.corner {
 
 /* top band menu */
 .top {
-	float : right;
+	float: right;
+	margin-right:90px;
 	padding:5px 5px 5px 0px;
 }
 
 .topmenu {
-	background: #E2E2E2;
+	background: #f5f5f5;
 	border: 0px solid #000000;
-	
-	
 	}
 
 .topmenu ul {
@@ -1272,21 +1271,21 @@ img.corner {
 
 
 .line {
-	color: #48B5E0;
+	color: #ed4e00;
 	padding-right:2px;
 	padding-left:4px;
 }
 
 .logout {
-	color: #25aae1;
+	color: #ed4e00;
 }
 
 .unselected{
-	color: #25aae1;
+	color: #ed4e00;
 }
 
 .selected{
-	color: #000000;
+	color: #989898;
 }
 /* end top band menu */
 
@@ -1300,7 +1299,7 @@ img.corner {
 	font-family:arial;
 	font-size:14px;
 	color: #000000;
-	margin-top:0px;
+	margin-top:30px;
 	height : 40px;
 	width:805px;
 	/*
@@ -1402,7 +1401,7 @@ img.corner {
 	letter-spacing : 1px;
 }
 .TabView .Tabs a.ActiveTab{
-	background:#25aae1;
+	background:#ed4e00;
 	border:0px #666 solid;
 	border-bottom:1px #FFF solid;
 	color:#FFFFFF;
@@ -1727,7 +1726,7 @@ input[type=checkbox] {
 .next {
 	
 	color:#FFFFFF;
-	background:#25aae1;
+	background:#ed4e00;
 	margin: 2px 6px 7px 2px;
 	font-size:12px;
 	font-family : arial;
@@ -1743,7 +1742,7 @@ input[type=checkbox] {
 	vertical-align: bottom;
 	background-color : transparent;
 	border:0px;
-	color:#25aae1;
+	color:#ed4e00;
 	font-size:12px;
 	font-family : arial;
 	text-decoration:none;
@@ -1757,7 +1756,7 @@ input[type=checkbox] {
 	vertical-align: bottom;
 	background-color : transparent;
 	border:0px;
-	color:#25aae1;
+	color:#ed4e00;
 	font-size:12px;
 	font-family : arial;
 	text-decoration:none;
@@ -1884,7 +1883,7 @@ div.submit {
 
 /* page error */
 #error-oops{
-	color : #25AAE1;
+	color : #ed4e00;
 	font-size : 18px;
 	font-stretch : expanded;
 	font-family: arial;
