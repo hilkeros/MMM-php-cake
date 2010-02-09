@@ -1330,20 +1330,20 @@ img.corner {
 
 .menu a:hover {
 	text-decoration: none;
-	color: #3FB5DB;
+	color: #ED4E00;
 }
 
 .menu .first {
-	color: #3FB5DB;
+	color: #ED4E00;
 	border: 0px solid #000000;
 }
 
 .menu a:active {
-	color: #3FB5DB;
+	color: #ED4E00;
 }
 
 .menu a:focus {
-	color: #3FB5DB;
+	color: #ED4E00;
 }
 
 .search {
