@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Motion Music Manager Youtube Statistics'; ?>
+<?php $this->pageTitle = 'Your Tribe Youtube Statistics'; ?>
 <br />
 <?php
 echo "<h2> Youtube Signin</h2>";

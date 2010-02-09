@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Motion Music Manager'; ?>
+<?php $this->pageTitle = 'Your Tribe'; ?>
 
 	<?php
 	if ($session->check('Message.flash'))

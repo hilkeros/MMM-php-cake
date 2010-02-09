@@ -8,7 +8,7 @@ echo $user;
 ?>
 <br>
 <br>
-We only need one final step to make your registration at Motion Music Manager complete. Please 
+We only need one final step to make your registration at Your Tribe complete. Please 
 <?php
 $base = $this->base ;
 echo "<a href=http://".$_SERVER['HTTP_HOST'].$base."/users/authentication/?sid=$ids&email=$email>click here to confirm</a>";
@@ -19,6 +19,6 @@ echo "<a href=http://".$_SERVER['HTTP_HOST'].$base."/users/authentication/?sid=$
 Enjoy our service !
 <br>
 <br>
-Motion Music Manager
+Your Tribe
 </body>
 </html>

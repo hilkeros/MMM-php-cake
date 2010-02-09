@@ -2,7 +2,7 @@
 /**
 * Developed By :  Babar Ali
 * Dated         : May. 8, 2009
-* Project 	: Motion Music Manager
+* Project 	: Your Tribe
 *
 */
 ?>
@@ -27,7 +27,7 @@ endif;
 				<?php
 				$server= $_SERVER['HTTP_HOST']; 
 				$path= $this->base; 
-				echo "<h1 class=main><a href=http://".$server.$path."/users/index/>Motion Music Manager</a></h1>";
+				echo "<h1 class=main><a href=http://".$server.$path."/users/index/>Your Tribe</a></h1>";
 				?>
 			</div>
 			<div id="content">

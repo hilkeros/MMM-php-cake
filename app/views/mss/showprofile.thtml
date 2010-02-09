@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Motion Music Manager MySpace Statistics'; ?>
+<?php $this->pageTitle = 'Your Tribe MySpace Statistics'; ?>
 <br />
 <h2>Band Profile List</h2>
 

@@ -4,7 +4,7 @@
 * Dated   : Apr. 8 , 2009
 * modify  : Jul. 17th , 2009
 * modify  : Oct. 2nd , 2009
-* Project 	: Motion Music Manager
+* Project 	: Your Tribe
 */
 ?>
 
@@ -24,8 +24,8 @@
 	<?php 	echo $html->css('mmm');
 		echo $html->css('thickbox');?>
 	<meta name="google-site-verification" content="Uzr-00WOS539WDVWa9jaHCz2hMV2oV8C23LIXQgDtmA" />
-	<meta name="description" content="Motion Music Manager is the online dashboard for the self-promoting musician. It tries to solve the problem of the defragmentation of an artist’s online identity. On the dashboard of Motion Music Manager you can publish new content to all your social network profiles and you can measure the impact of your actions via statistics.Manage all your social networks in one palce">
-	<meta name="keywords" content="motion music manager , mmm , self promoting musician , musician , artist online identity , artist , social network site , music manager , facebook , myspace , twitter , last.fm , ping.fm , statistics , charts , update status , mmmotion.com , beta , social site status updates , Manage all your social networks in one palce">
+	<meta name="description" content="Your Tribe is the online dashboard for the self-promoting musician. It tries to solve the problem of the defragmentation of an artist’s online identity. On the dashboard of Your Tribe you can publish new content to all your social network profiles and you can measure the impact of your actions via statistics.Manage all your social networks in one palce">
+	<meta name="keywords" content="motion music manager , mmm , self promoting musician , musician , artist online identity , artist , social network site , music manager , facebook , myspace , twitter , last.fm , ping.fm , statistics , charts , update status , yourtri.be , beta , social site status updates , Manage all your social networks in one palce">
 </head>
 <body>
 	<div class="container">
@@ -88,7 +88,7 @@
 					} // foreach ($results as $key => $data)
 					
 				echo 	"<li>";
-						echo $html->link($html->image('blog.png',array('border'=>0,'name'=>'blog','alt'=>'blog')),"http://www.mmmotion.com/", array("onmouseover"=>"document.blog.src='".$this->webroot."img/blogOver.png'","onmouseout"=>"document.blog.src='".$this->webroot."img/blog.png'") , false , false);
+						echo $html->link($html->image('blog.png',array('border'=>0,'name'=>'blog','alt'=>'blog')),"http://www.yourtri.be/", array("onmouseover"=>"document.blog.src='".$this->webroot."img/blogOver.png'","onmouseout"=>"document.blog.src='".$this->webroot."img/blog.png'") , false , false);
 				echo 	"</li>";
 					?>
 					

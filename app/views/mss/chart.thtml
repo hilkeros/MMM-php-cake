@@ -1,4 +1,4 @@
-<?php   $this->pageTitle = 'Motion Music Manager Statistics';
+<?php   $this->pageTitle = 'Your Tribe Statistics';
         
 	$type= $session->read('type');              // type ( channel , friends , sucbscribers , views , comments) ,
 	$lastdate = $session->read('lastdate');     // lastdate ( Last week , Last month , Last year)

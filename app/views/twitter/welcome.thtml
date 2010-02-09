@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Motion Music Manager Facebook authentication'; ?>
+<?php $this->pageTitle = 'Your Tribe Facebook authentication'; ?>
 <?php
 echo " <div  class=\"fbs-block\">
 	      <div class=\"fbs-light-block\">
@@ -15,7 +15,7 @@ echo " <div  class=\"fbs-block\">
 	      	     echo "
 			    </div>
                      </div>
-		     <div class=\"wizard-heading\"> You're about to connect your Twitter account with Motion Music Manager.</div>
+		     <div class=\"wizard-heading\"> You're about to connect your Twitter account with Your Tribe.</div>
 		     <div class=\"wizard-text\">
 			<ul>
 				<li> 
@@ -26,7 +26,7 @@ echo " <div  class=\"fbs-block\">
 					  if you are logged in to Twitter, you will be asked to set the right permissions.
 				</li>	
 				<li>			
-					  If you want to connect another Twitter account to Motion Music Manager than the one you are currently logged in with, click continue and sign out from your current account.
+					  If you want to connect another Twitter account to Your Tribe than the one you are currently logged in with, click continue and sign out from your current account.
 			        </li>
 			</ul>
 		     </div>

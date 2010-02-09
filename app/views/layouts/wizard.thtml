@@ -2,7 +2,7 @@
 /**
 * Developed By :  Babar Ali
 * Dated         : Jun 15 , 2009
-* Project 	: Motion Music Manager
+* Project 	: Your Tribe
 *
 */
 ?>
@@ -26,7 +26,7 @@ endif;
 	
 	<div id="feed-back">
 		<?php
-		echo " <a href=\"mailto:bug@mmmotion.com?subject=bug report\" onmouseover=\"document.reportBug.src='".$this->webroot."img/reportBugOver.png'\" onmouseout=\"document.reportBug.src='".$this->webroot."img/reportBug.png'\">";
+		echo " <a href=\"mailto:bug@yourtri.be?subject=bug report\" onmouseover=\"document.reportBug.src='".$this->webroot."img/reportBugOver.png'\" onmouseout=\"document.reportBug.src='".$this->webroot."img/reportBug.png'\">";
 		 echo $html->image('reportBug.png',array('border'=>0,'name'=>'reportBug')); 
 		echo "</a>";
 		?>
@@ -123,7 +123,7 @@ endif;
 					
 					
 				echo 	"<li>";
-						echo $html->link($html->image('blog.png',array('border'=>0,'name'=>'blog')),"http://www.mmmotion.com/", array("onmouseover"=>"document.blog.src='".$this->webroot."img/blogOver.png'","onmouseout"=>"document.blog.src='".$this->webroot."img/blog.png'") , false , false);
+						echo $html->link($html->image('blog.png',array('border'=>0,'name'=>'blog')),"http://www.yourtri.be/", array("onmouseover"=>"document.blog.src='".$this->webroot."img/blogOver.png'","onmouseout"=>"document.blog.src='".$this->webroot."img/blog.png'") , false , false);
 				echo 	"</li>";
 					?>
 					
