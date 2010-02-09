@@ -6,9 +6,9 @@
 
 <p> Het is alweer ontzettend lang geleden dat ik nog eens van mij heb laten horen. Meer dan een jaar terug stuurde ik je een online enquête waarin in een aantal vragen stelde over hoe je je online promotie aanpakt. Ik had namelijk een aantal ideeën om bands te helpen bij het beheer van hun online profielen en wilde aftoetsen of de problemen die ik zelf als muzikant ondervond, ook bij jullie leefden.
 
-Ondertussen zijn die ideeën een beetje werkelijkheid geworden. Motion Music Manager wordt een dashboard van waaruit je al je online profielen (MySpace, Facebook, YouTube en Last.fm) centraal beheert. Je kan al statistieken bekijken over je vorderingen op die netwerken en binnenkort kan je ook status updates, nieuws, foto's of video's uploaden naar meerdere platformen tegelijk.
+Ondertussen zijn die ideeën een beetje werkelijkheid geworden. Your Tribe wordt een dashboard van waaruit je al je online profielen (MySpace, Facebook, YouTube en Last.fm) centraal beheert. Je kan al statistieken bekijken over je vorderingen op die netwerken en binnenkort kan je ook status updates, nieuws, foto's of video's uploaden naar meerdere platformen tegelijk.
 
-De testversie van Motion Music Manager staat ondertussen online en we zijn nu klaar om een eerste groep gebruikers op het platform toe te laten.  </p>
+De testversie van Your Tribe staat ondertussen online en we zijn nu klaar om een eerste groep gebruikers op het platform toe te laten.  </p>
 
 <p> Ik nodig je dan ook graag uit om zo'n testgebruiker te worden. Je moet je er wel van bewust zijn dat alles zich nog in een testfase bevindt ('private beta' heet dat dan in softwareontwikkelingtermen). Het aantal features is nog wat beperkt en zal in de komende weken gevoelig uitgebreid worden. Hoewel wij hard ons best doen om dit te vermijden, is het ook altijd mogelijk dat er fouten optreden, bugs ontdekt worden of dat er informatie verloren gaat. Gelieve ons hiervoor te verontschuldigen. In geval van problemen of opmerkingen, horen wij het graag. Hoe meer feedback we krijgen, hoe beter we de service kunnen maken.
 
@@ -24,7 +24,7 @@ Je kunt een account opzetten via <?php echo "<a href=http://".$_SERVER['HTTP_HOS
 
 <p> Hilke </p>
 
-<p> Check ook mijn blog op http://mmmotion.com, waar je allerlei tips en nieuws vindt over muziek en internet.</p>
+<p> Check ook mijn blog op http://yourtri.be, waar je allerlei tips en nieuws vindt over muziek en internet.</p>
 
 <p> P.S. Sorry als je deze mail liever niet wilde ontvangen. Als je geen mail meer wenst te ontvangen, kun je hier <?php echo "<a href=http://".$_SERVER['HTTP_HOST'].$this->base."/users/unsubscribe/?code=$code>uitschrijven</a>"; ?>.</p>
 </body>

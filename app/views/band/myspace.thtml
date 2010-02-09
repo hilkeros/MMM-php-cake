@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Motion Music Manager User Management'; ?>
+<?php $this->pageTitle = 'Your Tribe User Management'; ?>
 
 <?php
 
@@ -20,7 +20,7 @@
 						       
 			echo	"<div style=\"clear:both;\"></div>
 				
-				<div style=\"margin: 0px auto; text-align: center;\"> Click Next to link your MySpace account to Motion Music Manager. You will be asked to log in to your MySpace account and to grant us permission for offline access to your account.</div>					
+				<div style=\"margin: 0px auto; text-align: center;\"> Click Next to link your MySpace account to Your Tribe. You will be asked to log in to your MySpace account and to grant us permission for offline access to your account.</div>					
 				<div style=\"clear:both;\"></div>
 				<div class=\"nextbar\">";
 					echo $html->input('fbs/previous',array('type'=>'button','value'=>'Previous',"onClick"=>"javascript:window.location.href='".$html->url('/band/add/')."'",'class'=>'next'));

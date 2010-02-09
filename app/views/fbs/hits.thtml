@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Motion Music Manager Views Analytics'; ?>
+<?php $this->pageTitle = 'Your Tribe Views Analytics'; ?>
 <br />
 <h2>Facebook Analytics</h2>
 

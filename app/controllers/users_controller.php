@@ -351,7 +351,7 @@ class UsersController extends AppController {
 							$this->Session->write('email', $email );
 							
 							
-							$this->send($this->data['User']['email'],'register@mmmotion.com');
+							$this->send($this->data['User']['email'],'register@yourtri.be');
 		
 							$this->Session->write('id', $id);
 							$this->Session->write('user', $this->data['User']['username']);
@@ -414,7 +414,7 @@ class UsersController extends AppController {
 		else
 		{
 		
-			$this->Session->setFlash('Invalid invite code. We are currently in private beta. If you want to receive an invite code, mail to hilke@mmmotion.com ');
+			$this->Session->setFlash('Invalid invite code. We are currently in private beta. If you want to receive an invite code, mail to hilke@yourtri.be ');
 			$this->redirect('/users/index/');
 			exit;			
 		}
@@ -620,7 +620,7 @@ class UsersController extends AppController {
 					$this->Forget->save($results);
 					$this->set('password',$password);
 					$this->set('email',$this->data['Forget']['email']);
-					$this->sendmail($this->data['Forget']['email'],'forget','your new password','register@mmmotion.com');
+					$this->sendmail($this->data['Forget']['email'],'forget','your new password','register@yourtri.be');
 					$this->Session->setFlash('A new password has been sent to your mailbox.');
 					$this->redirect('/users/index/');
 				} //
@@ -728,7 +728,7 @@ class UsersController extends AppController {
 			$this->set('topic',$this->data['User']['topic']);
 			$this->set('message',$this->data['User']['message']);
 			$subject = "Contact Us  ".$this->data['User']['type'];
-			$this->sendmail(ADMIN_EMAIL,'contactus',$subject,'register@mmmotion.com');
+			$this->sendmail(ADMIN_EMAIL,'contactus',$subject,'register@yourtri.be');
 			$this->redirect('/users/index/');
 
 		} // 		if($this->data)

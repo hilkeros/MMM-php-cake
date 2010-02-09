@@ -889,7 +889,7 @@ img.corner {
 }
 
 #tweets_number {
-	color: rgb(37, 170, 225);
+	color :#ed4e00;
 	font-size: 14px;
 	margin-bottom: 0px;
 	vertical-align: top;
@@ -905,7 +905,7 @@ img.corner {
 }
 
 #mentions_number {
-	color: rgb(37, 170, 225);
+	color :#ed4e00;
 	font-size: 14px;
 	margin-bottom: 0px;
 	vertical-align: top;
@@ -921,7 +921,7 @@ img.corner {
 }
 
 #dms_number {
-	color: rgb(37, 170, 225);
+	color :#ed4e00;
 	font-size: 14px;
 	margin-bottom: 0px;
 	vertical-align: top;

@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Motion Music Manager User Management'; ?>
+<?php $this->pageTitle = 'Your Tribe User Management'; ?>
 <div class="board">
 	<h1 class="main">
 		Update Personal Information

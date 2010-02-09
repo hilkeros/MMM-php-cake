@@ -1,7 +1,7 @@
-<?php $this->pageTitle = 'Motion Music Manager MySpace Statistics'; ?>
+<?php $this->pageTitle = 'Your Tribe MySpace Statistics'; ?>
 <br />
 <?php
-echo "<h2> Last Fm Motion Music Manager Statistics <h2><br>";
+echo "<h2> Last Fm Your Tribe Statistics <h2><br>";
 			echo "<h2> $music </h2>";
 			echo "<strong> Listeners &nbsp; : &nbsp;&nbsp; </strong>".$listners."<br>";
 		//      echo "<strong> Play Count &nbsp; : &nbsp;&nbsp; </strong>".$count."<br>";

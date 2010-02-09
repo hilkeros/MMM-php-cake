@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Motion Music Manager User Management'; ?>
+<?php $this->pageTitle = 'Your Tribe User Management'; ?>
 <?php
 echo($javascript->link("jquery"));
 $base= $this->base;
@@ -24,7 +24,7 @@ echo "<script type=text/javascript>
 					echo "<div style=\"padding:10px;\"></div>";
 							
 					echo "
-						<div style=\"margin: 0px auto; text-align: center;\"> Click Next to link your Facebook account to Motion Music Manager. You will be asked to log in to your Facebook account and to grant us permission for offline access to your account.</div>
+						<div style=\"margin: 0px auto; text-align: center;\"> Click Next to link your Facebook account to Your Tribe. You will be asked to log in to your Facebook account and to grant us permission for offline access to your account.</div>
 						";
 					
 				echo 	"<div class=\"nextbar\">";

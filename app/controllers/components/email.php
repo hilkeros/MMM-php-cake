@@ -6,7 +6,7 @@ class EmailComponent
    * Send email using SMTP Auth by default.
    */
     var $from         = '';
-    var $fromName     = "Motion Music Manager";
+    var $fromName     = "Your Tribe";
     var $smtpUserName = '';  // SMTP username
     var $smtpPassword = ''; // SMTP password
     var $smtpHostNames= "mail.zeropoint.it";  // specify main and backup server

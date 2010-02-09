@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Motion Music Manager Facebook authentication'; ?>
+<?php $this->pageTitle = 'Your Tribe Facebook authentication'; ?>
 <?php
 echo " <div  class=\"fbs-block\">
 	      <div class=\"fbs-light-block\">
@@ -15,7 +15,7 @@ echo " <div  class=\"fbs-block\">
 	      	     echo "
 			    </div>
                      </div>
-		     <div class=\"wizard-heading\"> You're about to connect your Facebook account with Motion Music Manager.</div>
+		     <div class=\"wizard-heading\"> You're about to connect your Facebook account with Your Tribe.</div>
 		     <div class=\"wizard-text\">
 			<ul>
 				<li> 
@@ -25,7 +25,7 @@ echo " <div  class=\"fbs-block\">
 					if you are logged in to Facebook , you will be asked to set the right permissions.
 				</li>	
 			        <li>
-			If you want to connect another Facebook account to Motion Music Manager than the one you are currently logged in with, <a target=\"_blank\" href=\"http://www.facebook.com\">click here</a> to sign out from your current account in a different browser tab. When you signed out, close the tab to return to the setup procedure.
+			If you want to connect another Facebook account to Your Tribe than the one you are currently logged in with, <a target=\"_blank\" href=\"http://www.facebook.com\">click here</a> to sign out from your current account in a different browser tab. When you signed out, close the tab to return to the setup procedure.
 			        </li>
 			</ul>
 		     </div>

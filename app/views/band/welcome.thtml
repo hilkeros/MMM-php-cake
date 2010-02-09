@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Motion Music Manager User Management'; ?>
+<?php $this->pageTitle = 'Your Tribe User Management'; ?>
 <script type="text/javascript">
 	function hidediv()
 	{
@@ -12,7 +12,7 @@
 		echo "<div id=\"band-welcome\">
 			<div class=settings>
 				<div class=\"steps\">Welcome</div> 
-				<div class=\"wizardhead\">Welcome to Motion Music Manager</div>
+				<div class=\"wizardhead\">Welcome to Your Tribe</div>
 				<div class=register>
 					<div style=\"padding:10px;\"></div>
 					<div>";
@@ -29,7 +29,7 @@
 		echo "<div id=\"band-confirmation\">
 			<div class=settings>
 				<div class=\"steps\">Welcome</div> 
-				<div class=\"wizardhead\">Welcome to Motion Music Manager</div> 
+				<div class=\"wizardhead\">Welcome to Your Tribe</div> 
 				<div class=register>
 					<div style=\"padding:10px;\"></div>
 					<div>

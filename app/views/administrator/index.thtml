@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Motion Music Manager'; ?>
+<?php $this->pageTitle = 'Your Tribe'; ?>
 <br />
 <h2>Admin Pannel</h2>
 

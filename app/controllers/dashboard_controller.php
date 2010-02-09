@@ -867,7 +867,7 @@ class DashboardController extends AppController {
 			$this->set('data', $data);
 			$this->Email->to = 'hilkeros@gmail.com';
 			$this->Email->subject = 'Feedback';
-			$result = $this->Email->send('feedback','feedback@mmmotion.com');
+			$result = $this->Email->send('feedback','feedback@yourtri.be');
 			$this->Feedback->save($feedback); // save feedback in database.
 			$this->Session->setFlash('Thank you very much for your feedback. We will read it with the greatest care.');
 			header("Location:".$_SERVER['HTTP_REFERER']);

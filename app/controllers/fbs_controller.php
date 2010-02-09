@@ -81,7 +81,7 @@ class FbsController extends AppController {
 				{
 					if($this->facebook->api_client->users_isAppUser($result['Fb']['user_id'])==0)  // if not application user & revoke extended permission and delete application
 					{
-						echo "Your Facebook account is not yet linked to Motion Music Manager. Go to the settings page and add your Facebook profile.";
+						echo "Your Facebook account is not yet linked to Your Tribe. Go to the settings page and add your Facebook profile.";
 						exit;
 					}
 				}

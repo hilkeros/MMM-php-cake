@@ -481,7 +481,7 @@ class AdministratorController extends AppController {
 						$description.= "<br>".$unsubscribe;
 									
 						 $this->set('description',$description);				
-						 $this->sendmail($mail,'invite','MMM Invitation','register@mmmotion.com');
+						 $this->sendmail($mail,'invite','MMM Invitation','register@yourtri.be');
 					       
 						 $result['Invite']['email'] = $mail;
 						 $result['Invite']['code'] = $code;
@@ -515,7 +515,7 @@ class AdministratorController extends AppController {
 		       
 				       $code = $this->generateCode();
 				       $this->set('code',$code);
-				       $this->sendmail($val['Invite']['email'],'invitation','MMM Invitation','register@mmmotion.com');
+				       $this->sendmail($val['Invite']['email'],'invitation','MMM Invitation','register@yourtri.be');
 				       
 				       $record['Invite']['email'] = $val['Invite']['email'];
 				       $record['Invite']['code'] = $code;

@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Motion Music Manager User Management'; ?>
+<?php $this->pageTitle = 'Your Tribe User Management'; ?>
 
 <script type="text/javascript">
  $(document).ready(function(){
@@ -142,7 +142,7 @@
 					</tr>
 					<tr>
 						<td colspan=2>
-						 I have read and agree with the Motion Music Manager <a href=\"$base/users/agreement/\" id=\"term-of-service\"  class=\"thickbox \"> Terms of Service </a> and <a href=\"$base/users/privacy/\" id=\"privacy\" class=\"thickbox \"> Privacy Policy </a>.
+						 I have read and agree with the Your Tribe <a href=\"$base/users/agreement/\" id=\"term-of-service\"  class=\"thickbox \"> Terms of Service </a> and <a href=\"$base/users/privacy/\" id=\"privacy\" class=\"thickbox \"> Privacy Policy </a>.
 						</td>
 					</tr>
 					<tr>
