@@ -1,9 +1,9 @@
 <?php $this->pageTitle = 'Your Tribe Youtube Statistics'; ?>
 <br />
 <?php
-echo "<h2> Youtube Signin</h2>";
+echo "<h2> Youtube Sign in</h2>";
 
-echo "<br> Please click below login link<br>";
+echo "<br> Please click the login link below<br>";
 echo "<h3><strong>";
 echo $html->link('Login',$url);
 echo "</strong></h3>";

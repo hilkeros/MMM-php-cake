@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Your Tribe Facebook authentication'; ?>
+<?php $this->pageTitle = 'Your Tribe Twitter authentication'; ?>
 <?php
 echo " <div  class=\"fbs-block\">
 	      <div class=\"fbs-light-block\">

@@ -89,7 +89,7 @@
 					<td>	$frtotal </td>
 				
 					<td>
-						<strong> Today Gain </strong> </td>
+						<strong> Today's Gain </strong> </td>
 					<td>	$frdiff ( $frpercentage %)  </td>
 				
 					<td>   <strong> Weekly Gain </strong> </td>
@@ -176,7 +176,7 @@
 					<td>	$ftotal	 </td>
 				
 					<td>
-						<strong> Today Gain </strong> </td>
+						<strong> Today's Gain </strong> </td>
 					<td>	$fdiff ( $fpercentage %)  </td>
 				
 					<td>   <strong> Weekly Gain </strong> </td>

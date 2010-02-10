@@ -32,7 +32,7 @@ echo "
                 <div id=\"fbs-thanks\"> Thanks! </div>
                 <div id=\"fbs-successful\">
                         
-                        The Facebook data of $name have been processed succesfully.Click the finish button to return to your settings page.
+                        The Facebook data of $name have been processed succesfully. Click the finish button to return to your settings page.
                 </div>
                 <div id=\"fbs-smaltext\"></div>
                 <div id=\"fbs-finish\">

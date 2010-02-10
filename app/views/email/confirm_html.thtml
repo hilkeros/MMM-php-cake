@@ -1,5 +1,5 @@
-<?php $this->pageTitle = 'Music Motion Manager'; ?>
-<h1>Music Motion Manager</h1>
+<?php $this->pageTitle = 'Your Tribe'; ?>
+<h1>Your Tribe</h1>
 
 <h2>Term of Services</h2>
 

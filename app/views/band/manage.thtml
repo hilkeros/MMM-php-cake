@@ -35,7 +35,7 @@ echo 	"
 			 
 		echo 	"</div>
 				<div style=\"padding-left:10px;padding-right:10px;background-color:#FDFDB5;\">
-				<b>Tip:</b> To add a new band to your account, you must go to your personal settings by clicking on your profile name in the right upper corner of this screen.
+				<b>Tip:</b> To add a new brand to your account, you must go to your personal settings by clicking on your profile name in the right upper corner of this screen.
 					<div style=\"text-align:right\">
 						<input type=\"button\" class=\"update\" value=\"Don't show me this again\" onclick=\"javascript:location.href='#'\">
 					</div>

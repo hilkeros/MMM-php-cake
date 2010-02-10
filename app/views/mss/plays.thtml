@@ -7,7 +7,7 @@
 
 echo "<form name=users method=post>";
 	$x['w'] = "Last Week";
-	$x['m'] = "Last monthly";
+	$x['m'] = "Last Month";
 	$x['y'] = "Last Year";
 
 	echo $html->selecttag('analytic/date',$x,$lastdate);

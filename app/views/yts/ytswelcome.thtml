@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Your Tribe Facebook authentication'; ?>
+<?php $this->pageTitle = 'Your Tribe YouTubd authentication'; ?>
 <?php
 echo "
        <div class=\"fbs-block\">
@@ -19,10 +19,10 @@ echo "
 		     <div class=\"wizard-text\">
 			<ul>
 				<li> 
-					if you are not logged in to YouTube , you will first be asked to provide your login data.
+					if you are not logged in to YouTube, you will first be asked to provide your login data.
 				</li>
 				<li>
-					if you are logged in to YouTube , you will be asked to set the right permissions.
+					if you are logged in to YouTube, you will be asked to set the right permissions.
 				</li>
 				<li>
 			

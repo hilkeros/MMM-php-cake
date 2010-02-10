@@ -60,7 +60,7 @@
 						</td>
 						<td>";
 							echo $html->input('Admin/firstname');
-							echo $html->tagErrorMsg('Admin/firstname', 'first name is required.');
+							echo $html->tagErrorMsg('Admin/firstname', 'First name is required.');
 					echo 	"</td>
 					</tr>
 					<tr>
