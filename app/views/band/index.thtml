@@ -3,7 +3,7 @@
 <script type="text/javascript" language="Javascript">
 	function confirms()
 	{
-		var answer = confirm("Are you sure you want to delete this band from your account?"); 
+		var answer = confirm("Are you sure you want to delete this brand from your account?"); 
 		if (answer == true)
 		{
 			return true;
@@ -33,7 +33,7 @@
 								</td>
 								<td>";
 									echo $html->hidden('Band/id',array('value'=>$key));
-									echo $html->submit('Edit band settings',array('class'=>'update'));
+									echo $html->submit('Edit brand settings',array('class'=>'update'));
 									echo "<span style=\"padding-left:10px;\">";
 										echo $html->link($html->image("delete.gif",array('border'=>0,'name'=>'delete')),"/band/delete/?id=$key",array('class'=>'update',"onClick"=>"return confirms();"), false , false);
 									echo "</span>";
@@ -44,7 +44,7 @@
 					echo    "<tr>
 							<td>&nbsp;</td>
 							<td>";
-								echo $html->input('Band/add',array('type'=>'button','value'=>'Add band',"onClick"=>"javascript:window.location.href='".$html->url('/band/add/')."'",'class'=>'next'));
+								echo $html->input('Band/add',array('type'=>'button','value'=>'Add brand',"onClick"=>"javascript:window.location.href='".$html->url('/band/add/')."'",'class'=>'next'));
 								
 						echo 	"</td>
 						</tr>

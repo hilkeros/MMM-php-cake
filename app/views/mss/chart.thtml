@@ -92,7 +92,7 @@
 					<td>	$vtotal	 </td>
 				
 					<td>
-						<strong> Today Gain </strong> </td>
+						<strong> Today's Gain </strong> </td>
 					<td>	$vdiff ( $vpercentage %)  </td>
 				
 					<td>   <strong> Weekly Gain </strong> </td>

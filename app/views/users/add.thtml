@@ -26,7 +26,7 @@
 							 
 						echo 	"</div>
 								<div style=\"padding-left:10px;padding-right:10px;background-color:#FDFDB5;\">
-								<b>Tip:</b> Your user name is something personal. It is not the name of your band, because you can have different bands under one account.
+								<b>Tip:</b> Your user name is something personal. It is not the name of your brand, because you can have different brands under one account.
 								</div>
 							<div class=\"tip-roundbottom\">
 								".$html->image('rybl.png',array('class'=>'corner','style'=>'display:none','height'=>'15','width'=>'15'))."

@@ -21,7 +21,7 @@ $base= $this->base;
 echo"<div class=TabUpdate>";
 
 	$x['w'] = "Last Week";
-	$x['m'] = "Last monthly";
+	$x['m'] = "Last Month";
 	$x['y'] = "Last Year";
 
 	echo $html->selecttag('analytic/date',$x,$lastdate);

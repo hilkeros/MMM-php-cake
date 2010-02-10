@@ -24,8 +24,8 @@
 	<?php 	echo $html->css('mmm');
 		echo $html->css('thickbox');?>
 	<meta name="google-site-verification" content="Uzr-00WOS539WDVWa9jaHCz2hMV2oV8C23LIXQgDtmA" />
-	<meta name="description" content="Your Tribe is the online dashboard for the self-promoting musician. It tries to solve the problem of the defragmentation of an artist’s online identity. On the dashboard of Your Tribe you can publish new content to all your social network profiles and you can measure the impact of your actions via statistics.Manage all your social networks in one palce">
-	<meta name="keywords" content="motion music manager , mmm , self promoting musician , musician , artist online identity , artist , social network site , music manager , facebook , myspace , twitter , last.fm , ping.fm , statistics , charts , update status , yourtri.be , beta , social site status updates , Manage all your social networks in one palce">
+	<meta name="description" content="Your Tribe is the online dashboard for promoting and managing 'tribes'. It tries to solve the problem of the defragmentation of your online identity. On the dashboard of Your Tribe you can publish new content to all your social network profiles and you can measure the impact of your actions via statistics. Manage all your social networks in one place.">
+	<meta name="keywords" content="your tribe , yourtri.be , online identity, social network site , tribe , facebook , myspace , twitter , last.fm , ping.fm , statistics , charts , update status , beta , social site status updates , Manage all your social networks in one place">
 </head>
 <body>
 	<div class="container">

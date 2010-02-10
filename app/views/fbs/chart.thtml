@@ -82,7 +82,7 @@
 					<td>	$ptotal	 </td>
 				
 					<td>
-						<strong> Today Gain </strong> </td>
+						<strong> Today's Gain </strong> </td>
 					<td>	$pdiff ( $ppercentage %)  </td>
 				
 					<td>   <strong> Weekly Gain </strong> </td>
@@ -114,7 +114,7 @@
 					<td>	$gtotal	 </td>
 				
 					<td>
-						<strong> Today Gain </strong> </td>
+						<strong> Today's Gain </strong> </td>
 					<td>	$gdiff ( $gpercentage %)  </td>
 				
 					<td>   <strong> Weekly Gain </strong> </td>

@@ -19,10 +19,10 @@ echo " <div  class=\"fbs-block\">
 		     <div class=\"wizard-text\">
 			<ul>
 				<li> 
-					if you are not logged in to Facebook , you will first be asked to provide your login data.
+					if you are not logged in to Facebook, you will first be asked to provide your login data.
 				</li>
 				<li>
-					if you are logged in to Facebook , you will be asked to set the right permissions.
+					if you are logged in to Facebook, you will be asked to set the right permissions.
 				</li>	
 			        <li>
 			If you want to connect another Facebook account to Your Tribe than the one you are currently logged in with, <a target=\"_blank\" href=\"http://www.facebook.com\">click here</a> to sign out from your current account in a different browser tab. When you signed out, close the tab to return to the setup procedure.

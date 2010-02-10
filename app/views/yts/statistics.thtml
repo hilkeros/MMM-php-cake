@@ -6,7 +6,7 @@ echo $html->link('Back','/yts/channel/');
 echo "<br>";
 
 		echo "<strong> Channel Views  &nbsp; :  &nbsp;&nbsp; </strong>".$result['0']['s']['views']."<br>";
-		echo "<strong> Total Subscriber  &nbsp;  : &nbsp;&nbsp; </strong>".$result['0']['s']['subscriber']."<br>";
+		echo "<strong> Total Subscribers  &nbsp;  : &nbsp;&nbsp; </strong>".$result['0']['s']['subscriber']."<br>";
 		echo "<strong> Friends  &nbsp;  : &nbsp;&nbsp; </strong>".$result['0']['s']['friends']."<br><br>";
 	
 	
