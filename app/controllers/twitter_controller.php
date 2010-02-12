@@ -1,7 +1,11 @@
-<?php
-/*
-Developed by : Babar Ali
-Project	     : MMM
+<?php
+
+/*
+
+Developed by : Babar Ali
+
+Project	     : MMM
+
 */
 
 vendor('twitter/twitterOAuth');
@@ -11,8 +15,8 @@ class TwitterController extends AppController
 	var $uses = array('Cms','Twitter','Twtuser','Twtstats','Twtdm','Twtmentions','User','Twtstatus','Dashboard');
 	var $helpers = array('Html', 'Error', 'Javascript', 'Ajax','FlashChart');
 	var $components = array('Cookie'); //  use component email
-	var $consumer_key = '6gd1IvNlyO9YQPox4GLeg';
-	var $consumer_secret = 'HjTW5UVDCtwetGX93JVNGjkPN882UvLWwEACCpAaA';
+	var $consumer_key = 'jOxQsCJf5scYiRGRLmoBQ';
+	var $consumer_secret = 'tZUt2b5CuNWPGpJqfNexKrAgOPI1mhOVJIA1kCTYtk';
 	
 	function beforefilter()
 	{
