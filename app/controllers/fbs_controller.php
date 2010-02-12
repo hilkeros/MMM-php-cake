@@ -12,8 +12,8 @@ class FbsController extends AppController {
 	var $helpers = array('Html', 'Error','FlashChart','Javascript');
 	var $components = array('Cookie'); //  use component email
 	var $facebook;
-	var $__fbApiKey = 'f83446549e7fc01a7240acb7d6e8b938';
-	var $__fbSecret = 'de4d3704ad7db145f66589e649498688';
+	var $__fbApiKey = '44ff3356af58e933da2adb962bd431e0';
+	var $__fbSecret = '991dd74f42c7c81244a3b673581de188';
 	
 	/**
 	 * Name: beforeFilter
