@@ -4,10 +4,10 @@ set :user, 'mmm'
 set :scm, :git
 
 set :repository, 'git@github.com:hilkeros/MMM-php-cake.git'
-set :branch, 'master'
+set :branch, 'unbranded'
 set :deploy_via, :remote_cache
 set :use_sudo, false
-set :application, 'mmm'
+set :application, 'yourtribe'
 set :deploy_to, "/home/#{user}/apps/#{application}/"
 
 role :web, 'pro-004.openminds.be'
