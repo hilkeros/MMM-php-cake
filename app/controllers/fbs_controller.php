@@ -204,8 +204,8 @@ class FbsController extends AppController {
 							$this->layout="wizard";	
 							
 							
-							$rurl = "http://www.facebook.com/logout.php?app_key=f83446549e7fc01a7240acb7d6e8b938&session_key=$fkey&next=$url";
-							$purl="http://www.facebook.com/connect/prompt_permissions.php?api_key=f83446549e7fc01a7240acb7d6e8b938&v=1.0&next=http://$host$base/fbs/permission_success/&display=popup&ext_perm=offline_access,publish_stream";
+							$rurl = "http://www.facebook.com/logout.php?app_key=44ff3356af58e933da2adb962bd431e0&session_key=$fkey&next=$url";
+							$purl="http://www.facebook.com/connect/prompt_permissions.php?api_key=44ff3356af58e933da2adb962bd431e0&v=1.0&next=http://$host$base/fbs/permission_success/&display=popup&ext_perm=offline_access,publish_stream";
 							$this->set('purl',$purl); // prompt authorization offline acess and publish stream.
 							$this->set('rurl',$rurl);
 							$this->set('inprocess',true);	
