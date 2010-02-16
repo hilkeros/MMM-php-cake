@@ -46,14 +46,7 @@
             {
                 echo "TabView.switchTab(0,2);";
             }
-            elseif($type=='plays')
-            {
-                echo "TabView.switchTab(0,3);";
-            }
-            elseif($type=='downloads')
-            {
-                echo "TabView.switchTab(0,4);";
-            }
+            
         ?>
     </script>
     
@@ -72,7 +65,7 @@
 
     <div class="TabView" id="TabView1">
         <!--Tabs-->
-        <div class="Tabs"><a>Profile Views</a> <a>Friends</a> <a>Comments</a><a>Plays</a><a>Downloads</a></div>
+        <div class="Tabs"><a>Profile Views</a> <a>Friends</a> <a>Comments</a></div>
         <!--Pages-->
         <div class="Pages">
             <!--Page 1-->

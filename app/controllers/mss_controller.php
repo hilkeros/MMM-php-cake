@@ -396,7 +396,7 @@ class MssController extends AppController {
 							and band_id  = $band_id ";
 					 
 					$this->Msslogin->query($qry);
-					
+										
 					$MssResult= $this->getStat($record , $band_id);
 					if($MssResult)
 					{
@@ -1927,7 +1927,7 @@ class MssController extends AppController {
 
 	function getStat($data,$band_id)
 	{
-		
+					
 			//$url="http://profile.myspace.com/index.cfm?fuseaction=user.viewprofile&friendid=".$data['Msslogin']['user_id'];
 			$id = str_replace(" ","",$data['Msslogin']['user_id']);
 			$url="http://www.myspace.com/".$id;
@@ -1937,9 +1937,7 @@ class MssController extends AppController {
 			
 			
 			if($myspace->data)
-			{
-	
-	
+			{	
 				// Getting Total Number of Friends
 				$frds = $myspace->get_friends();
 	
@@ -1950,21 +1948,13 @@ class MssController extends AppController {
 				@$lastlg = explode(":",@$vw[9]);
 				@$views = str_replace("&nbsp;","",trim($pfview[1]));
 				@$lastlogin = date("Y-m-d",strtotime(str_replace("&nbsp;","",(string)trim($lastlg[1]))));
-	
-				if(!empty($view))
+			
+				if(true)
 				{
-					// Getting Player Statistics
-					$play = $myspace->get_player();
-		
-		
-					$artid = $play['artid'];
-					$plid = $play['plid'];
-					$profid = $play['profid'];
-		
 						
 						$name=$myspace->get_name();
 						$name = str_replace("<br />"," ",$name);
-						
+												
 						$this->time = time();
 						$data['Msslogin']['name']= $name;
 						$data['Msslogin']['etime']= $this->time;
@@ -1972,9 +1962,8 @@ class MssController extends AppController {
 						$this->Msslogin->save($data);
 						$id=$this->Msslogin->getLastInsertId();
 		
-		
 						$tmp = explode("<u:break>", $myspace->get_comments());
-		
+				
 						for($i=0;$i<count($tmp);$i++)
 						{
 							$text[$i][] = $myspace->strip($tmp[$i], "<u:name>", "</u:name>");
