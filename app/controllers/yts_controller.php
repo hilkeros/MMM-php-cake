@@ -23,9 +23,9 @@ class YtsController extends AppController {
 		Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
 		Zend_Loader::loadClass('Zend_Gdata_YouTube');
 		Zend_Loader::loadClass('Zend_Gdata_AuthSub');
-		$this->developerKey = 'AI39si5MyhaS4jQ_d_fRrhf-cJ4YdTt7NYV0o1lJiE_NZx7etGitrhaGQOiIJURlLh8cyr3PZpLNVroVFWdYF5zyPyhVvZkTFA';
-		$this->applicationId = 'Music Motion';
-		$this->clientId = 'ytapi-BabarAli-musicmotion-mlg50gjd-0';
+		$this->developerKey = 'AI39si6A9KK-TPm6AZG6nOP-EPLjAhKlQM3QZdQhYyEbM-4FF2TwFdBg_Pw-G3tYdMNwrVUCvqL433R1RPKonK2iYDSGD0kQ7w';
+		$this->applicationId = 'Yourtri.be';
+		// $this->clientId = 'ytapi-BabarAli-musicmotion-mlg50gjd-0';
 
 	
 	} // function beforeFilter() {
