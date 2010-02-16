@@ -32,6 +32,7 @@ namespace :deploy do
     run "rm -rf #{latest_release}/app/config; ln -s #{shared_path}/app/config #{latest_release}/app/config"
     run "rm -rf #{latest_release}/app/tmp/models/*"
     run "rm -rf #{latest_release}/app/tmp/persistent/*"
+    run "ln -sf #{latest_release} #{latest_release}/public"
   end
   
   desc <<-DESC
