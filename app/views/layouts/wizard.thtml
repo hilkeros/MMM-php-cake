@@ -50,7 +50,7 @@ endif;
 		<div style="clear:both;"></div>
 		<div class="header">
 				<span class="google-position">
-				<form action="http://mmm.zeropoint.it/index.php/dashboard/search/" id="cse-search-box" class="google-form">
+				<form action="http://yourtri.be/index.php/dashboard/search/" id="cse-search-box" class="google-form">
 				  <div>
 				    <input type="hidden" name="cx" value="005780817609840085455:p1i-pbftduc" />
 				    <input type="hidden" name="cof" value="FORID:9" />
