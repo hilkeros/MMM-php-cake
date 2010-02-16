@@ -210,10 +210,10 @@ class UsersController extends AppController {
 		
 		
 
-		setcookie('f83446549e7fc01a7240acb7d6e8b938_user', '', time()-1, "$base/fbs/index");
-		setcookie('f83446549e7fc01a7240acb7d6e8b938_session_key', '', time()-1, "$base/fbs/index");
-		setcookie('f83446549e7fc01a7240acb7d6e8b938_expires', '', time()-1, "$base/fbs/index");
-		setcookie('f83446549e7fc01a7240acb7d6e8b938', '', time()-1, "$base/fbs/index");
+		setcookie('44ff3356af58e933da2adb962bd431e0_user', '', time()-1, "$base/fbs/index");
+		setcookie('44ff3356af58e933da2adb962bd431e0_session_key', '', time()-1, "$base/fbs/index");
+		setcookie('44ff3356af58e933da2adb962bd431e0_expires', '', time()-1, "$base/fbs/index");
+		setcookie('44ff3356af58e933da2adb962bd431e0', '', time()-1, "$base/fbs/index");
 
 		$this->Session->setFlash(' You have successfully logged out.');
 		$this->redirect('/users/index/');
@@ -234,17 +234,17 @@ class UsersController extends AppController {
 		 $useragent = $_SERVER['HTTP_USER_AGENT'];
 		 if(preg_match('|Firefox/([0-9\.]+)|',$useragent,$matched))
 		 {
-			setcookie('f83446549e7fc01a7240acb7d6e8b938_user', '', time()-1, "$base/fbs/index/");
-			setcookie('f83446549e7fc01a7240acb7d6e8b938_session_key', '', time()-1, "$base/fbs/index/");
-			setcookie('f83446549e7fc01a7240acb7d6e8b938_expires', '', time()-1, "$base/fbs/index/");
-			setcookie('f83446549e7fc01a7240acb7d6e8b938', '', time()-1, "$base/fbs/index/");	
+			setcookie('44ff3356af58e933da2adb962bd431e0_user', '', time()-1, "$base/fbs/index/");
+			setcookie('44ff3356af58e933da2adb962bd431e0_session_key', '', time()-1, "$base/fbs/index/");
+			setcookie('44ff3356af58e933da2adb962bd431e0_expires', '', time()-1, "$base/fbs/index/");
+			setcookie('44ff3356af58e933da2adb962bd431e0', '', time()-1, "$base/fbs/index/");	
 		 }
 		 else
 		 {
-			setcookie('f83446549e7fc01a7240acb7d6e8b938_user', '', time()-1, "$base/fbs/index");
-			setcookie('f83446549e7fc01a7240acb7d6e8b938_session_key', '', time()-1, "$base/fbs/index");
-			setcookie('f83446549e7fc01a7240acb7d6e8b938_expires', '', time()-1, "$base/fbs/index");
-			setcookie('f83446549e7fc01a7240acb7d6e8b938', '', time()-1, "$base/fbs/index");	
+			setcookie('44ff3356af58e933da2adb962bd431e0_user', '', time()-1, "$base/fbs/index");
+			setcookie('44ff3356af58e933da2adb962bd431e0_session_key', '', time()-1, "$base/fbs/index");
+			setcookie('44ff3356af58e933da2adb962bd431e0_expires', '', time()-1, "$base/fbs/index");
+			setcookie('44ff3356af58e933da2adb962bd431e0', '', time()-1, "$base/fbs/index");	
 		 }
 			
 			

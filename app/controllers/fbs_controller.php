@@ -355,8 +355,8 @@ class FbsController extends AppController {
 							$this->layout="wizard";	
 							
 							
-							$rurl = "http://www.facebook.com/logout.php?app_key=f83446549e7fc01a7240acb7d6e8b938&session_key=$fkey&next=$url";
-							$purl="http://www.facebook.com/connect/prompt_permissions.php?api_key=f83446549e7fc01a7240acb7d6e8b938&v=1.0&next=http://$host$base/fbs/permission_success/&display=popup&ext_perm=offline_access,publish_stream";
+							$rurl = "http://www.facebook.com/logout.php?app_key=44ff3356af58e933da2adb962bd431e0&session_key=$fkey&next=$url";
+							$purl="http://www.facebook.com/connect/prompt_permissions.php?api_key=44ff3356af58e933da2adb962bd431e0&v=1.0&next=http://$host$base/fbs/permission_success/&display=popup&ext_perm=offline_access,publish_stream";
 							$this->set('purl',$purl); // prompt authorization offline acess and publish stream.
 							$this->set('rurl',$rurl);
 							$this->set('inprocess',true);
@@ -382,8 +382,8 @@ class FbsController extends AppController {
 				$this->layout="wizard";	
 				
 				
-				$rurl = "http://www.facebook.com/logout.php?app_key=f83446549e7fc01a7240acb7d6e8b938&session_key=$fkey&next=$url";
-				$purl="http://www.facebook.com/connect/prompt_permissions.php?api_key=f83446549e7fc01a7240acb7d6e8b938&v=1.0&next=http://$host$base/fbs/permission_success/&display=popup&ext_perm=offline_access,publish_stream";
+				$rurl = "http://www.facebook.com/logout.php?app_key=44ff3356af58e933da2adb962bd431e0&session_key=$fkey&next=$url";
+				$purl="http://www.facebook.com/connect/prompt_permissions.php?api_key=44ff3356af58e933da2adb962bd431e0&v=1.0&next=http://$host$base/fbs/permission_success/&display=popup&ext_perm=offline_access,publish_stream";
 				$this->set('purl',$purl); // prompt authorization offline acess and publish stream.
 				$this->set('rurl',$rurl);
 				$this->set('inprocess',true);
@@ -420,7 +420,7 @@ class FbsController extends AppController {
 			$uid = $result['0']['f']['user_id'];
 			$key = $result['0']['f']['session_key'];
 			$p_id = $result['0']['p']['p_id'];
-			$fburl = "http://www.facebook.com/connect/prompt_permissions.php?api_key=f83446549e7fc01a7240acb7d6e8b938&v=1.0&next=http://$host/fbs/permission_success/&display=popup&ext_perm=read_stream,publish_stream&enable_profile_selector=1&profile_selector_ids=$p_id";
+			$fburl = "http://www.facebook.com/connect/prompt_permissions.php?api_key=44ff3356af58e933da2adb962bd431e0&v=1.0&next=http://$host/fbs/permission_success/&display=popup&ext_perm=read_stream,publish_stream&enable_profile_selector=1&profile_selector_ids=$p_id";
 			$this->redirect($fburl);
 			exit;
 		}
@@ -455,7 +455,7 @@ class FbsController extends AppController {
 			$uid = $result['0']['f']['user_id'];
 			$key = $result['0']['f']['session_key'];
 			$p_id = $result['0']['p']['p_id'];
-			$url = "http://www.facebook.com/login.php?api_key=f83446549e7fc01a7240acb7d6e8b938&connect_display=popup&v=1.0&next=http://$host/fbs/login_success/&cancel_url=http://www.facebook.com/connect/login_failure.html&fbconnect=true&return_session=true";
+			$url = "http://www.facebook.com/login.php?api_key=44ff3356af58e933da2adb962bd431e0&connect_display=popup&v=1.0&next=http://$host/fbs/login_success/&cancel_url=http://www.facebook.com/connect/login_failure.html&fbconnect=true&return_session=true";
 		
 			$this->layout="wizard";
 			$this->set('bandid',$band_id);
@@ -528,7 +528,7 @@ class FbsController extends AppController {
 						
 						$host = $_SERVER['HTTP_HOST'].$this->base;
 						$p_id = $result['0']['p']['p_id'];
-						$url = "http://www.facebook.com/connect/prompt_permissions.php?api_key=f83446549e7fc01a7240acb7d6e8b938&v=1.0&next=http://$host/fbs/permission_success/&display=popup&ext_perm=read_stream,publish_stream&enable_profile_selector=1&profile_selector_ids=$p_id";
+						$url = "http://www.facebook.com/connect/prompt_permissions.php?api_key=44ff3356af58e933da2adb962bd431e0&v=1.0&next=http://$host/fbs/permission_success/&display=popup&ext_perm=read_stream,publish_stream&enable_profile_selector=1&profile_selector_ids=$p_id";
 						$this->layout="wizard";
 						$this->set('bandid',$band_id);
 						$this->set('url',$url);
@@ -562,11 +562,11 @@ class FbsController extends AppController {
 						$host = $_SERVER['HTTP_HOST'];
 						
 						$url = "http://$host$base/users/logoutfbs/";
-						$furl = "http://www.facebook.com/logout.php?app_key=f83446549e7fc01a7240acb7d6e8b938&session_key=$fkey&next=$url";
+						$furl = "http://www.facebook.com/logout.php?app_key=44ff3356af58e933da2adb962bd431e0&session_key=$fkey&next=$url";
 						$this->set('url',$furl);
 						
 						$addurl="http://$host$base/fbs/process/";
-						$addnewurl = "http://www.facebook.com/logout.php?app_key=f83446549e7fc01a7240acb7d6e8b938&session_key=$fkey&next=$addurl";
+						$addnewurl = "http://www.facebook.com/logout.php?app_key=44ff3356af58e933da2adb962bd431e0&session_key=$fkey&next=$addurl";
 						$this->set('addnewurl',$addnewurl);
 											
 						$band  =$this->Cookie->read('flag'); // myspace called from wizard or setting manage
@@ -666,7 +666,7 @@ class FbsController extends AppController {
 			$host = $_SERVER['HTTP_HOST'];
 			
 			$url = "http://$host$base/users/logoutfbs/";
-			$furl = "http://www.facebook.com/logout.php?app_key=f83446549e7fc01a7240acb7d6e8b938&session_key=$fkey&next=$url";
+			$furl = "http://www.facebook.com/logout.php?app_key=44ff3356af58e933da2adb962bd431e0&session_key=$fkey&next=$url";
 			$this->redirect($furl);
 			exit;
 		}
@@ -686,17 +686,17 @@ class FbsController extends AppController {
 		$useragent = $_SERVER['HTTP_USER_AGENT'];
 		if(preg_match('|Firefox/([0-9\.]+)|',$useragent,$matched))
 		{
-			setcookie('f83446549e7fc01a7240acb7d6e8b938_user', '', time()-1, "$base/fbs/index/");
-			setcookie('f83446549e7fc01a7240acb7d6e8b938_session_key', '', time()-1, "$base/fbs/index/");
-			setcookie('f83446549e7fc01a7240acb7d6e8b938_expires', '', time()-1, "$base/fbs/index/");
-			setcookie('f83446549e7fc01a7240acb7d6e8b938', '', time()-1, "$base/fbs/index/");	
+			setcookie('44ff3356af58e933da2adb962bd431e0_user', '', time()-1, "$base/fbs/index/");
+			setcookie('44ff3356af58e933da2adb962bd431e0_session_key', '', time()-1, "$base/fbs/index/");
+			setcookie('44ff3356af58e933da2adb962bd431e0_expires', '', time()-1, "$base/fbs/index/");
+			setcookie('44ff3356af58e933da2adb962bd431e0', '', time()-1, "$base/fbs/index/");	
 		}
 		else
 		{
-			setcookie('f83446549e7fc01a7240acb7d6e8b938_user', '', time()-1, "$base/fbs/index");
-			setcookie('f83446549e7fc01a7240acb7d6e8b938_session_key', '', time()-1, "$base/fbs/index");
-			setcookie('f83446549e7fc01a7240acb7d6e8b938_expires', '', time()-1, "$base/fbs/index");
-			setcookie('f83446549e7fc01a7240acb7d6e8b938', '', time()-1, "$base/fbs/index");	
+			setcookie('44ff3356af58e933da2adb962bd431e0_user', '', time()-1, "$base/fbs/index");
+			setcookie('44ff3356af58e933da2adb962bd431e0_session_key', '', time()-1, "$base/fbs/index");
+			setcookie('44ff3356af58e933da2adb962bd431e0_expires', '', time()-1, "$base/fbs/index");
+			setcookie('44ff3356af58e933da2adb962bd431e0', '', time()-1, "$base/fbs/index");	
 		}
 			
 		$this->redirect('/fbs/index/');

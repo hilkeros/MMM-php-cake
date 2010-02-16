@@ -21,7 +21,7 @@ $username=$_REQUEST['name'];
 	}
 	else
 	{
-	echo "<a href=http://www.facebook.com/login.php?api_key=f83446549e7fc01a7240acb7d6e8b938&v=1.0>Facebook Login </a>";
+	echo "<a href=http://www.facebook.com/login.php?api_key=44ff3356af58e933da2adb962bd431e0&v=1.0>Facebook Login </a>";
 	}
 ?>
 
