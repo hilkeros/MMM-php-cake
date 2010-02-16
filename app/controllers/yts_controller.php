@@ -51,7 +51,7 @@ class YtsController extends AppController {
 	 */
 	
 	function ytswelcome()
-	{
+	{		
 		$this->layout = "wizard";
 		$band  =$this->Cookie->read('flag'); // called from wizard or setting manage
 		$flag= $band["flag"];

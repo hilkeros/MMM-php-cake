@@ -41,7 +41,7 @@
 
 	define ('ADMIN_EMAIL','joren@openminds.be');
 
-	ini_set('include_path',ini_get('include_path') . PATH_SEPARATOR . '/home/mmm/apps/yourtribe/current/vendors'); 
+	ini_set('include_path',ini_get('include_path') . PATH_SEPARATOR . '/home/mmm/apps/yourtribe/current/app/vendors'); 
 //	define ('BASE_URL', env('SCRIPT_NAME'));
 /**
  * Set debug level here:
