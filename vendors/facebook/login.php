@@ -16,7 +16,7 @@ $username=$_REQUEST['name'];
 	$result = mysql_query($qry);
 	if($row=mysql_fetch_row($result))
 	{
-	echo "<a href=http://users.zeropoint.it/~babar/facebook/?auth_token=".$row[0].">Facebook Login </a>";
+	echo "<a href=http://yourtri.be/~babar/facebook/?auth_token=".$row[0].">Facebook Login </a>";
 	// http://users.zeropoint.it/~babar/facebook/?auth_token=6a1dfe7aa38da97a2517d2b0b46df5d9
 	}
 	else

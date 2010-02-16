@@ -39,9 +39,9 @@
  */
 	define ('BASE_URL', env('SCRIPT_NAME'));
 
-	define ('ADMIN_EMAIL','babar@zeropoint.it');
+	define ('ADMIN_EMAIL','joren@openminds.be');
 
-	ini_set('include_path',ini_get('include_path') . PATH_SEPARATOR . '/var/www/Projects/mmm.zeropoint.it/app/vendors'); 
+	ini_set('include_path',ini_get('include_path') . PATH_SEPARATOR . '/home/mmm/apps/yourtribe/current/vendors'); 
 //	define ('BASE_URL', env('SCRIPT_NAME'));
 /**
  * Set debug level here:
@@ -86,7 +86,7 @@
  * DO NOT INCLUDE PREFIX IF YOU HAVE SET ONE IN database.php
  *
  */
-	define('CAKE_SESSION_TABLE', 'mmm_sessions');
+	define('CAKE_SESSION_TABLE', 'yourtribe_sessions');
 /**
  * Set a random string of used in session.
  *

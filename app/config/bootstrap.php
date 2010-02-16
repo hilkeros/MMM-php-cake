@@ -43,4 +43,6 @@
  *
  */
 //EOF
+	// ¨Set cookier for all subdomains
+	ini_set('session.cookie_domain', '.yourtri.be'); 
 ?>
