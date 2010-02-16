@@ -99,22 +99,9 @@ endif;
 						echo 	"</td>
 					</tr>
 					<tr>
-							<td class=summarytext>Song plays</td>
-							<td class=\"summarystats\" >".number_format($mssplays,0,',',' ')."</td>
-							<td class=\"summaryimg\">";
-								if($mssPlaysPercentage>0)
-								{
-									echo $mssPlaysPercentage." % ".$html->image('up_icon.png');
-								}
-								elseif($mssPlaysPercentage<0)
-								{
-									echo abs($mssPlaysPercentage)." % ".$html->image('down_icon.png');
-								}
-								else
-								{
-									echo $html->image('circle_icon.png');
-								}
-						echo 	"</td>
+							<td class=summarytext></td>
+							<td class=\"summarystats\" ></td>
+							<td class=\"summaryimg\"></td>
 					</tr>
 				</table>
 				
