@@ -1,0 +1,3 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} !^www.yourtri.be$
+RewriteRule ^(.*)$ http://www.yourtri.be/$1 [R=301]
