@@ -14,8 +14,8 @@ class MssController extends AppController {
 	var $helpers = array('Html', 'Error', 'Javascript', 'FlashChart');
 	var $components = array('Cookie'); //  use component email
 	var $developerKey , $applicationId , $clientId , $username ;
-	var $consumer_key ="59f0f7ec119649698d1c5710afc29824";
-	var $consumer_secret = "2cb0a56532434ae7b34b9f95253e3082ccd08b5079354d208378a13cc1a44c5f";
+	var $consumer_key ="c87b1a3237324b5eaed23749e9ebff37";
+	var $consumer_secret = "46aed6a612744b80aab0c19cbb488140ee2bea3a7add45f982ec3765bc48c76e";
 	
 	/**
 	 * Name: beforeFilter
