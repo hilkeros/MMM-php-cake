@@ -11,13 +11,13 @@
 ?>
 		
 		<div id="home">
-			<div id="movie">
+			<!--><div id="movie">
 			
 				<object type="application/x-shockwave-flash" data="http://www.youtube.com/v/uG5HdJ2_w0Q" width="325" height="244">
 					<param name="movie" value="http://www.youtube.com/v/uG5HdJ2_w0Q" />
 					<param name="FlashVars" value="playerMode=embedded" />
 				</object>
-			</div>
+			</div> -->
 		</div>
 		
 		<div id="home-rightbar">
