@@ -123,7 +123,7 @@ endif;
 					
 					
 				echo 	"<li>";
-						echo $html->link($html->image('blog.png',array('border'=>0,'name'=>'blog')),"http://www.mmmotion.com/", array("onmouseover"=>"document.blog.src='".$this->webroot."img/blogOver.png'","onmouseout"=>"document.blog.src='".$this->webroot."img/blog.png'") , false , false);
+						echo $html->link($html->image('blog.png',array('border'=>0,'name'=>'blog')),"http://blog.mmmotion.com/", array("onmouseover"=>"document.blog.src='".$this->webroot."img/blogOver.png'","onmouseout"=>"document.blog.src='".$this->webroot."img/blog.png'") , false , false);
 				echo 	"</li>";
 					?>
 					
