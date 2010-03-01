@@ -152,7 +152,7 @@ class myspace_profile
 	// Get Number of comments
 	function get_no_comments()
 	{
-		return trim($this->strip($this->data, "von<span class=\"redtext\">","</span>"));
+		return trim($this->strip($this->data, "/<span class=\"redtext\">","</span>"));
 	}
         // Get comments return (array)
 
@@ -197,5 +197,4 @@ class myspace_profile
         } //         function get_comments()
 
 }
-
 ?>
