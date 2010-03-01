@@ -377,7 +377,7 @@ class UsersController extends AppController {
 		
 			/*
 			 *  100 user limit 
-			 */
+				Disabled for now
 			$user = $this->User->findAll();
 			if(count($user) >= 130)
 			{
@@ -388,6 +388,8 @@ class UsersController extends AppController {
 				$this->redirect('/users/index/');
 				exit;	
 			}
+			*/
+			
 		}
 		elseif(!empty($this->data['Login']))
 		{
