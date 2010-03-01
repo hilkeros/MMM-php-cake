@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+
+	RewriteCond %{HTTP_HOST}   !^www.mmmotion\.com [NC]
+	RewriteCond %{HTTP_HOST}   !^$
+	RewriteRule ^/?(.*)         http://www.mmmotion.com/$1 [L,R]
+</IfModule>
