@@ -9,7 +9,7 @@ class EmailComponent
     var $fromName     = "Motion Music Manager";
     var $smtpUserName = '';  // SMTP username
     var $smtpPassword = ''; // SMTP password
-    var $smtpHostNames= "mail.zeropoint.it";  // specify main and backup server
+    var $smtpHostNames= "localhost";  // specify main and backup server
     var $text_body = null;
     var $html_body = null;
     var $to = null;
