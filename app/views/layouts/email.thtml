@@ -1,24 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<body>
-Dear 
-<?php 
-echo $user; 
-?>
-<br>
-<br>
-We only need one final step to make your registration at Motion Music Manager complete. Please 
-<?php
-$base = $this->base ;
-echo "<a href=http://".$_SERVER['HTTP_HOST'].$base."/users/authentication/?sid=$ids&email=$email>click here to confirm</a>";
-?>
- your email address.
-<br>
-<br>
-Enjoy our service !
-<br>
-<br>
-Motion Music Manager
-</body>
+</head>
+  <body>
+    <?php echo $content_for_layout; ?>
+  </body>
 </html>

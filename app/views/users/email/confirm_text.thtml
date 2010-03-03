@@ -1,4 +1,9 @@
+Dear <?php echo $user; ?>,
 
+We only need one final step to make your registration at Motion Music Manager complete. Please go to this URL to confirm your email address:
+	<?php echo "http://".$_SERVER['HTTP_HOST'].$this->base."/users/authentication/?sid=$ids&email=$email"; ?>
 
-text confirmation
+Enjoy our service !
+
+Motion Music Manager
 
