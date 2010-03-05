@@ -142,8 +142,8 @@ class UsersController extends AppController {
 			
 			if ($this->data) {
 					
-				$results = $this->Login->find(array('email' => $this->data['Login']['email'] , 'status' => '1'));
-				if($results['Login']['registration_time']==NULL)
+				$results = $this->Login->find(array('email' => $this->data['Login']['email']));
+				if($results && $results['Login']['status']!=1)
 				{
 					$this->Session->setFlash(' Please check your email and confirm your identity.');
 					$this->redirect('/users/index/');
