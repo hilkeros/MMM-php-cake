@@ -511,7 +511,7 @@ class UsersController extends AppController {
 	 *	description : send mail to user for your account registration
 	 *
 	 */
-	function send_confirmation_mail($email,$from)
+	function send_confirmation_mail($email)
 	{
 		$this->Email->template = 'email/confirm';
 		$this->Email->to = $email;
