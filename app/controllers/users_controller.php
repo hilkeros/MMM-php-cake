@@ -351,7 +351,7 @@ class UsersController extends AppController {
 							$this->Session->write('email', $email );
 							
 							
-							$this->send($this->data['User']['email'],'register@mmmotion.com');
+							$this->send_confirmation_mail($this->data['User']['email']);
 		
 							$this->Session->write('id', $id);
 							$this->Session->write('user', $this->data['User']['username']);
@@ -511,15 +511,12 @@ class UsersController extends AppController {
 	 *	description : send mail to user for your account registration
 	 *
 	 */
-	function send($email,$from)
+	function send_confirmation_mail($email,$from)
 	{
 		$this->Email->template = 'email/confirm';
-		// You can use customised thmls or the default ones you setup at the start
-		 
-		$this->set('data', 'testing mail');
 		$this->Email->to = $email;
 		$this->Email->subject = 'your new account';
-		$result = $this->Email->send('email',$from);
+		$result = $this->Email->send('email', 'register@mmmotion.com');
 
 
 	}  //     function send() {
