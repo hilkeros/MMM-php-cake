@@ -145,7 +145,7 @@ class UsersController extends AppController {
 				$results = $this->Login->find(array('email' => $this->data['Login']['email']));
 				if($results && $results['Login']['status']!=1)
 				{
-					$this->Session->setFlash(' Please check your email and confirm your identity.');
+					$this->Session->setFlash(' Please check your email and confirm your identity. <a href="http://'.$_SERVER['HTTP_HOST'].$this->base.'/users/resend_confirmation?email=' . $this->data['Login']['email'] . '">Resend confirmation mail</a>');
 					$this->redirect('/users/index/');
 					exit;
 				} // 	if($results['Login']['registration_time']==NULL)
@@ -521,6 +521,21 @@ class UsersController extends AppController {
 
 	}  //     function send() {
 
+	
+	function resend_confirmation()
+	{
+		$results = $this->User->FindByEmail($this->params['url']['email']);
+		$user = $results['User'];
+		$this->set('id', $user['id']);
+		$this->set('email', $user['email']);
+		$this->set('user', $user['username']);
+		$this->set('ids',$user['session_id']);
+		$this->set('base',$this->base);	
+		$this->send_confirmation_mail($user['email']);
+		
+		$this->Session->setFlash('Confirmation mail has been resent, check your inbox!');
+		$this->redirect('/users/index/');		
+	}
 	
 	/*
 	 *	name :	authentiation
