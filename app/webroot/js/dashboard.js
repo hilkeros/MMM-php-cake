@@ -211,7 +211,10 @@ var Tweet = {
      * jquery function execute when page ready / load
      */	    
   $(document).ready(function(){
-	       
+	 
+	if (window.location.href.slice(window.location.href.indexOf('?') + 1).match(/#feedback$/)){
+		$('#report-bug').click();
+	}
 	       
     var width= Math.round(screen.width/1.75);
     var height = Math.round(screen.height/1.75);
