@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<body>
-<?php
-    echo $description;
-?>
-</body>
+  <title><?php echo $title_for_layout; ?></title>
+</head>
+  <body>
+    <div class="popup">
+      <?php echo $content_for_layout; ?>
+    </div>
+  </body>
 </html>
-
-

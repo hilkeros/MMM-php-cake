@@ -14,7 +14,8 @@
 			<div id="movie">
 				<object width="480" height="295">
 					<param name="movie" value="http://www.youtube.com/v/lsn8XM5hT7s&hl=en_US&fs=1&"></param>
-					<param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>
+					<param name="allowFullScreen" value="true"></param>
+					<param name="allowscriptaccess" value="always"></param>
 					<embed src="http://www.youtube.com/v/lsn8XM5hT7s&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="295"></embed>
 				</object>
 			</div>
@@ -30,6 +31,7 @@
 					<div class=\"textLogin\">			
 						".$html->input('Login/invitation',array('size'=>15))."
 					</div>
+					<a href='".$html->url('/users/request/')."' class='thickbox'>No invitation code yet?</a>
 					<div class=\"btnLogin\">
 						".$html->submit('register',array('class'=>'login-btn'))."
 					</div>
@@ -56,7 +58,7 @@
 						<div class=\"btnLogin\">
 							".$html->submit('login',array('class'=>'login-btn'))."
 						</div>
-						<div class=\"btnLogin\">				
+						<div class=\"btnLogin\">
 							".$html->link('forgot password ?','/users/forgetpassword')."
 						</div>
 					</form>

@@ -224,6 +224,15 @@ h5{
 }
 
 
+/* popup settings */
+.popup h1{
+	margin: 2px 0px 10px 0px;
+}
+
+.popup input{
+	padding: 4px;
+}
+
 /* band settings - setup */
 
 #TB_overlay {

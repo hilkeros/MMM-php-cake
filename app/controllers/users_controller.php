@@ -8,7 +8,7 @@ Project	     : MMM
 */
 class UsersController extends AppController {
 	var $name = 'Users';
-	var $uses = array('User','Login','Forget','Newpass','Admin','Cms','Country','Band','Page','Tip','Invite');
+	var $uses = array('User','Login','Forget','Newpass','Admin','Cms','Country','Band','Page','Tip','Invite', 'InvitationRequest');
 	var $helpers = array('Html', 'Error', 'Javascript', 'Ajax');
 	var $components = array('Email','Cookie'); //  use component email
 
@@ -284,6 +284,20 @@ class UsersController extends AppController {
 	function registration()
 	{
 		$this->set('Users');
+	}
+
+	/*
+	 * name: request
+	*/
+	function request()
+	{
+		if ($this->data) {
+			$this->InvitationRequest->save($this->data);
+			$this->Session->setFlash('Thanks for your interest! We will be in touch as soon as we have new invites!');
+			$this->redirect('/users/index/');
+		} else {
+			$this->layout="popup";	
+		}
 	}
 
 

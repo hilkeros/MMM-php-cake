@@ -1,0 +1,14 @@
+<h1>Request an invitation</h1>
+
+<p>Motion Music Manager is currently still in Beta, so admitance is limited. However, fill in your e-mail address below and we'll send you an invite when more come available!</p>
+
+<form method="POST" action="<?php echo $html->url('/users/request/') ?>">
+  <p>
+    <label for="email">E-Mail address:</label>
+    <input id="email" type="email" name="data[email]" placeholder="you@domain.com" />
+  </p>
+  
+  <p>
+    <input type="submit" value="Send me an invite!">
+  </p>
+</form>
